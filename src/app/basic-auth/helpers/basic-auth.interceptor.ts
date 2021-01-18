@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthenticationServiceService } from '../api-services/authentication-service.service';
+
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { AuthenticationServiceService } from 'src/app/api-services/authentication-service.service';
 
 @Injectable()
 export class BasicAuthInterceptor implements HttpInterceptor {
@@ -22,7 +23,7 @@ intercept(req: HttpRequest<any>, next: HttpHandler, ): Observable<HttpEvent<any>
                 }, error => {
                     if (error.status == 401) {
                         localStorage.removeItem('token');
-                        this.router.navigate(['/login']);
+                        this.router.navigate(['/account/login']);
                     }
                 }
             ));
