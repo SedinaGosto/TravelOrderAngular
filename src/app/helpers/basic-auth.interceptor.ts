@@ -3,25 +3,31 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 import { AuthenticationServiceService } from '../api-services/authentication-service.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class BasicAuthInterceptor implements HttpInterceptor {
     
-constructor(private authenticationService: AuthenticationServiceService) { }
+constructor(private authenticationService: AuthenticationServiceService, private router: Router) { }
 
-intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+intercept(req: HttpRequest<any>, next: HttpHandler, ): Observable<HttpEvent<any>> {
     // add header with basic auth credentials if user is logged in and request is to the api url
-    const user = this.authenticationService.userValue;
-    const isLoggedIn = user && user.authdata;
-    const isApiUrl = request.url.startsWith(environment.baseUrl);
-    if (isLoggedIn && isApiUrl) {
-        request = request.clone({
-            setHeaders: { 
-                Authorization: `Basic ${user.authdata}`
-            }
-        });
-    }
-
-    return next.handle(request);
+    var token = localStorage.getItem('token');
+        if (token != null) {
+            const clonedReq = req.clone({headers: req.headers.set('Authorization', 'Basic ' + token)});
+            return next.handle(clonedReq).pipe(tap(
+                succ => {
+                    
+                }, error => {
+                    if (error.status == 401) {
+                        localStorage.removeItem('token');
+                        this.router.navigate(['/login']);
+                    }
+                }
+            ));
+        } else {
+            return next.handle(req.clone());
+        }
 }
 }

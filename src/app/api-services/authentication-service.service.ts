@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class AuthenticationServiceService {
   private userSubject: BehaviorSubject<Admin>;
   public user: Observable<Admin>;
-
+    readonly url = environment.baseUrl + "/admin"
   constructor(
       private router: Router,
       private http: HttpClient
@@ -25,15 +25,9 @@ export class AuthenticationServiceService {
       return this.userSubject.value;
   }
 
-  login(username: string, password: string) {
-      return this.http.post<any>(`${environment.baseUrl}/admin`, { username, password })
-          .pipe(map(user => {
-              // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
-              user.authdata = window.btoa(username + ':' + password);
-              localStorage.setItem('user', JSON.stringify(user));
-              this.userSubject.next(user);
-              return user;
-          }));
+  login() {
+      return this.http.get<any>(this.url)
+        
   }
 
   logout() {

@@ -8,7 +8,6 @@ import { AuthenticationServiceService } from './api-services/authentication-serv
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
-import { ErrorInterceptor } from './helpers/error.interceptor';
 import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -26,7 +25,7 @@ import { HomeComponent } from './home/home.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    
 
     AuthenticationServiceService],
   bootstrap: [AppComponent]

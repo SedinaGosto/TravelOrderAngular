@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "TravelOrder"
+  "defaultProject": "TravelOrder",
+  "cli": {
+    "analytics": false
+  }
 }
