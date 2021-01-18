@@ -87,16 +87,19 @@ import { AuthenticationServiceService } from '../api-services/authentication-ser
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationServiceService) {}
+        private authenticationService: AuthenticationServiceService
+    ) { 
+        // redirect to home if already logged in
+        if (this.authenticationService.userValue) { 
+            this.router.navigate(['/']);
+        }
+    }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
-
-        // reset login status
-        this.authenticationService.logout();
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -115,16 +118,14 @@ import { AuthenticationServiceService } from '../api-services/authentication-ser
 
         this.loading = true;
         this.authenticationService.login(this.f.username.value, this.f.password.value)
-           .pipe(first())
-           /* .subscribe(
+            .pipe(first())
+            .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                    
                 },
                 error => {
                     this.error = error;
                     this.loading = false;
-                });*/
-                .subscribe(()=>{ this.router.navigate(['home']) } );
+                });
     }
 }
