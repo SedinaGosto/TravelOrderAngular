@@ -12,12 +12,14 @@ export class AuthenticationServiceService {
   private adminSubject: BehaviorSubject<Admin>;
     public admin: Observable<Admin>;
     public list: Observable<Admin[]>;
+
     
+  
     constructor(
         private router: Router,
         private http: HttpClient
     ) {
-        this.adminSubject = new BehaviorSubject<Admin>(JSON.parse(localStorage.getItem('admin')));
+        this.adminSubject = new BehaviorSubject<Admin>(JSON.parse(localStorage.getItem('currentUser')));
         this.admin = this.adminSubject.asObservable();
     }
 
@@ -38,7 +40,7 @@ export class AuthenticationServiceService {
             .subscribe(admin => {
                 // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
                 admin.authdata = window.btoa(username + ':' + password);
-                localStorage.setItem('admin', JSON.stringify(admin));
+                localStorage.setItem('currentUser', JSON.stringify(admin));
                 this.adminSubject.next(admin);
                 this.list=admin;
                 return this.list;
@@ -49,7 +51,7 @@ export class AuthenticationServiceService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('admin');
+        localStorage.removeItem('currentUser');
         this.adminSubject.next(null);
         this.router.navigate(['/login']);
     }
