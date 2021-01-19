@@ -3,16 +3,40 @@ import { CommonModule } from '@angular/common';
 import { ApplicationComponent } from './application.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
-import { ApplicationRoutingModule } from './application-routing.module';
-import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { EmployeeService } from '../api-services/employee.service';
+import { AppRoutingModule } from '../app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { LocationComponent } from './location/location.component';
+import { LocationService } from '../api-services/location.service';
+import { AddLocationComponent } from './location/add-location/add-location.component';
+import { TypeOfCarComponent } from './type-of-car/type-of-car.component';
+import { AddTypeOfCarComponent } from './type-of-car/add-type-of-car/add-type-of-car.component';
+import { TypeOfCarService } from '../api-services/type-of-car.service';
 
 
 
 @NgModule({
-  declarations: [ApplicationComponent, EmployeeComponent,HomeComponent],
+  declarations: [
+    ApplicationComponent,
+    EmployeeComponent,
+    HomeComponent,
+    AddEmployeeComponent,
+    LocationComponent,
+    AddLocationComponent,
+    TypeOfCarComponent,
+    AddTypeOfCarComponent,
+  ],
   imports: [
-    CommonModule, RouterModule,BrowserModule
-  ]
+    CommonModule, 
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [EmployeeService, LocationService, TypeOfCarService],
+  bootstrap: [ApplicationComponent]
 })
 export class ApplicationModule { }

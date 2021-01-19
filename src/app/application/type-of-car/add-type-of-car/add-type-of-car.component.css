@@ -1,0 +1,39 @@
+
+
+#typeOfCar-form{
+    width:70%;
+    margin:0 auto;
+}
+
+#label {
+    text-align: left !important;
+   font-size: 16px;
+   margin-top:2% ;
+}
+
+.okvir {
+    width: 70%;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 10%;
+    margin-left: 15%;
+    border-radius:10px;
+}
+
+#input {
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 1%;
+    margin-bottom: 7%;
+    margin-left: 10%;
+    padding: 7px;
+}
+
+#submit{
+    width:40%;
+    margin-bottom: 5%;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}

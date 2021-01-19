@@ -1,4 +1,5 @@
 
+
 <div class="input-group" id="searchName">
     <input type="text" class="form-control" placeholder="Pretraga po nazivu..." [(ngModel)]="name">
     <div class="input-group-append">
@@ -12,22 +13,19 @@
 <table class="table" > 
 <thead>
     <tr>
-        <th>Ime</th>
-        <th>Prezime</th>
-        <th>Pozicija</th>
+        <th>Naziv</th>       
         <th>Akcija</th>
     </tr>
 </thead>
 <tbody >
-    <tr *ngFor="let item of employee ">
+    <tr *ngFor="let item of TypeOfCar ">
         <td>{{item.name}}</td>
-        <td>{{item.surname}}</td>  
-        <td>{{item.typeOfWork}}</td>  
-        <td> <button type="button" class="btn btn-outline-primary" routerLink="add-employee/{{item.id}}"> <i class="fa fa-fw fa-edit"></i> Uredi</button>      
+      
+        <td> <button type="button" class="btn btn-outline-primary" routerLink="add-type-of-car/{{item.id}}"> <i class="fa fa-fw fa-edit"></i> Uredi</button>      
         <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i> Obriši</button></td>      
       </tr>
 </tbody> 
 </table>
 
 <br>
-<button type="button" class="btn btn-outline-primary" routerLink="add-employee" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novog</button>
+<button type="button" class="btn btn-outline-primary" routerLink="add-type-of-car" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novi</button>

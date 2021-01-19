@@ -1,0 +1,14 @@
+<div class="okvir">
+    <h2 class="form-title" style="padding: 5%; " *ngIf = "!editMode">Dodaj novu lokaciju</h2>
+    <h2 class="form-title" style="padding: 5%; " *ngIf = "editMode">Uredi lokaciju</h2>
+
+<form id="location-form" (ngSubmit)="onSubmit()" #locationForm="ngForm">
+    <div form-group>
+        <label id="label">Naziv: </label>
+        <input type="text" name="name" class="form-control"  id="input"  #name="ngModel" ngModel>
+    </div>
+
+
+    <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>
+</form>
+</div>
