@@ -14,7 +14,7 @@ export class LocationComponent implements OnInit {
 
   Location=[];
 
-  name= ' ';
+  name= '';
 
   ngOnInit(): void {
     if(this.Location.length>0){

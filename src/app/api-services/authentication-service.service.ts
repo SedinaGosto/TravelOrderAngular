@@ -32,7 +32,7 @@ export class AuthenticationServiceService {
 
   logout() {
       // remove user from local storage to log user out
-      localStorage.removeItem('user');
+      localStorage.removeItem('token');
       this.userSubject.next(null);
       this.router.navigate(['/account/login']);
   }

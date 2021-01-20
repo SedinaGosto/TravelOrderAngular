@@ -1,8 +1,8 @@
 
 <div class="input-group" id="searchName">
-    <input type="text" class="form-control" placeholder="Pretraga po nazivu..." [(ngModel)]="name">
+    <input type="text" class="form-control"  [(ngModel)]="name" placeholder="Pretraga po nazivu..." autofocus>
     <div class="input-group-append">
-      <button class="btn btn-secondary" type="button" (click) = "searchByName()">
+      <button class="btn btn-secondary" type="button" (click) ="searchByName()">
         <i class="fa fa-search"></i>
       </button>
     </div>

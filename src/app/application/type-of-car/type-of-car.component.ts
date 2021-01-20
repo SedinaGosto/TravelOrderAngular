@@ -13,7 +13,7 @@ export class TypeOfCarComponent implements OnInit {
 
   TypeOfCar=[];
 
-  name= ' ';
+  name= '';
 
   ngOnInit(): void {
     if(this.TypeOfCar.length>0){
