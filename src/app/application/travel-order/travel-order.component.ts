@@ -46,24 +46,19 @@ export class TravelOrderComponent implements OnInit {
 
   GetAll(){
     this._travelOrderService.GetAll().subscribe(data=>{
-      data.forEach(travelOrder=>{
-          this._locationService.GetById(travelOrder.locationId).subscribe(data=>{
-            this.locationName=data.name;       
-
-          this._employeeService.GetById(travelOrder.employeeId).subscribe(data=>{
-            this.employeeName=data.name;  
-
-          this._typeOfCarService.GetById(travelOrder.typeOfCarId).subscribe(data=>{
-            this.typeOfCarName=data.name;                 
-          
-         this.TravelOrder.push({id:travelOrder.id, numberOfOrder:travelOrder.numberOfOrder, reasonOfTravel:travelOrder.reasonOfTravel,
-                                descriptionOfTravel:travelOrder.descriptionOfTravel, daysOfTravel:travelOrder.daysOfTravel, advancePayment:travelOrder.advancePayment,
-                                advancePaymentStringnt:travelOrder.advancePaymentString, restOfAdvancePayment:travelOrder.restOfAdvancePayment, totalHours:travelOrder.totalHours,
-                                startDate:travelOrder.startDate, endDate:travelOrder.endDate, totalDaysOfTravel:travelOrder.totalDaysOfTravel,
-                                employeeId:travelOrder.employeeId, locationId:travelOrder.locationId, typeOfCar:travelOrder.typeOfCarId, 
-                                locationName:this.locationName, employeeName:this.employeeName, typeOfCarName:this.typeOfCarName})     
-      })})})})
-      console.log(this.TravelOrder );
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        this.TravelOrder.push(data[i])
+        this._locationService.GetById(this.TravelOrder[i].locationId).subscribe(l=>{
+          this.TravelOrder[i].locationName=l.name
+        })
+        this._employeeService.GetById(this.TravelOrder[i].employeeId).subscribe(e=>{
+          this.TravelOrder[i].employeeName=e.name
+        })
+        this._typeOfCarService.GetById(this.TravelOrder[i].typeOfCarId).subscribe(t=>{
+          this.TravelOrder[i].typeOfCarName=t.name
+        })
+      }
 
     });
     }
