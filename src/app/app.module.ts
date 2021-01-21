@@ -1,4 +1,4 @@
-import { ApplicationModule, NgModule } from '@angular/core';
+import { ApplicationModule, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +18,10 @@ import { ApplicationRoutingModule } from './application/application-routing.modu
 import { RouterModule } from '@angular/router';
 
 
+import bs from '@angular/common/locales/bs-Latn';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(bs);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +39,7 @@ import { RouterModule } from '@angular/router';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: "bs-Latn" },
     
 
     AuthenticationServiceService],

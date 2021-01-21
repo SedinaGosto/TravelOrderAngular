@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApplicationComponent } from './application.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -18,6 +18,10 @@ import { TypeOfCarService } from '../api-services/type-of-car.service';
 import { TravelOrderComponent } from './travel-order/travel-order.component';
 import { AddTravelOrderComponent } from './travel-order/add-travel-order/add-travel-order.component';
 
+
+import hr from '@angular/common/locales/hr';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(hr);
 
 
 @NgModule({
@@ -40,7 +44,10 @@ import { AddTravelOrderComponent } from './travel-order/add-travel-order/add-tra
     FormsModule,
     HttpClientModule
   ],
-  providers: [EmployeeService, LocationService, TypeOfCarService],
+  providers: [EmployeeService, LocationService, TypeOfCarService,
+    { provide: LOCALE_ID, useValue: "hr-HR" },
+  
+  ],
   bootstrap: [ApplicationComponent]
 })
 export class ApplicationModule { }

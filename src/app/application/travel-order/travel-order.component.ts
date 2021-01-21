@@ -20,25 +20,6 @@ export class TravelOrderComponent implements OnInit {
               private _locationService: LocationService, private _typeOfCarService: TypeOfCarService, private router: Router) { }
 
   TravelOrder=[];
-  numberOfOrder:number;
-  reasonOfTravel:string;
-  descriptionOfTravel:string;
-  daysOfTravel: number;
-  advancePayment: number;
-  advancePaymentString: string;
-  restOfAdvancePayment: number;
-  totalHours: string;
-  startDate: Date;
-  endDate: Date;
-  totalDaysOfTravel:number
-
-  location= new Location;
-  locationName:string;
-  employeeName:string;
-  typeOfCarName:string;
-
-  employee= new Employee;
-  typeOfCar= new TypeOfCar;
 
   ngOnInit(): void {
     this.GetAll();

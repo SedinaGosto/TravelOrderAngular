@@ -2,13 +2,17 @@
     <h2 class="form-title" style="padding: 5%; " *ngIf = "!editMode">Dodaj novu lokaciju</h2>
     <h2 class="form-title" style="padding: 5%; " *ngIf = "editMode">Uredi lokaciju</h2>
 
-<form id="location-form" (ngSubmit)="onSubmit()" #locationForm="ngForm">
-    <div form-group>
-        <label id="label">Naziv: </label>
-        <input type="text" name="name" class="form-control"  id="input"  #name="ngModel" ngModel>
-    </div>
-
+    <form id="location-form" (ngSubmit)="onSubmit()" #locationForm="ngForm">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Naziv</label>
+            <div class="col-sm-10">
+              <input type="text" name="name" class="form-control"  id="inputName"  #name="ngModel" ngModel>
+            </div>
+          </div>
 
     <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>
-</form>
+    </form>
 </div>
+
+
+

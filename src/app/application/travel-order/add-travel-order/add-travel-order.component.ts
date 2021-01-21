@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { equal } from 'assert';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
@@ -29,12 +30,17 @@ export class AddTravelOrderComponent implements OnInit {
   @ViewChild('travelOrderForm') public travelOrderFrm: NgForm;
 
   ngOnInit(): void {
-    this._travelOrderService.GetAll().subscribe(data=>{
-      this.listOfEmployees=data;
-      this.listOfLocations=data;
-      this.listOfTypeOfCars=data;
+    this._employeeService.GetAll().subscribe(employeesData=>{
+      this.listOfEmployees=employeesData
     })
-
+    this._locationService.GetAll().subscribe(locationsData=>{
+      this.listOfLocations=locationsData
+    })
+    this._typeOfCarService.GetAll().subscribe(typeOfCarsData=>{
+      this.listOfTypeOfCars=typeOfCarsData
+    })
+     
+  
     if (this.route.snapshot.params['id']){
       this.editMode = true;
       this.tavelOrderId = this.route.snapshot.params['id'];
@@ -70,12 +76,14 @@ export class AddTravelOrderComponent implements OnInit {
   private initForm(){
     this.travelOrderFrm=new NgForm([],[]);
     this._travelOrderService.GetById(this.tavelOrderId).subscribe(o=>{
+    console.log(o);
+      
       this.travelOrderFrm.controls['numberOfOrder'].setValue(o.numberOfOrder),
       this.travelOrderFrm.controls['reasonOfTravel'].setValue(o.reasonOfTravel),
       this.travelOrderFrm.controls['descriptionOfTravel'].setValue(o.descriptionOfTravel),
       this.travelOrderFrm.controls['daysOfTravel'].setValue(o.daysOfTravel),
       this.travelOrderFrm.controls['advancePayment'].setValue(o.advancePayment),
-      this.travelOrderFrm.controls['advancePaymentString'].setValue(o.advancePaymentString);
+    // this.travelOrderFrm.controls['advancePaymentString'].setValue(o.advancePaymentString);
       this.travelOrderFrm.controls['restOfAdvancePayment'].setValue(o.restOfAdvancePayment);
       this.travelOrderFrm.controls['totalHours'].setValue(o.totalHours);
       this.travelOrderFrm.controls['startDate'].setValue(o.startDate);
@@ -84,7 +92,9 @@ export class AddTravelOrderComponent implements OnInit {
       this.travelOrderFrm.controls['locationId'].setValue(o.locationId);
       this.travelOrderFrm.controls['employeeId'].setValue(o.employeeId);
       this.travelOrderFrm.controls['typeOfCarId'].setValue(o.typeOfCarId);
+    
     });
+    
   }
 
 
