@@ -31,7 +31,7 @@ ul li a{
   margin-left:7%;
   padding: 12px 12px 6px 0px;
   text-decoration: none;
-  font-size: 22px;
+  font-size: 20px;
   color: white;
   display: block;
   
@@ -41,10 +41,7 @@ ul li:hover {
   background-color: #33658a;
  border-radius: 8px;
 }
-ul li a:hover {
- font-size: 24px;
- 
-}
+
 
 section {
   height: 100%;
@@ -88,7 +85,6 @@ header li {
 header li:hover{
   color:rgba(245, 245, 245, 0.884);
   cursor: pointer;
-  font-size:20px;
   background-color: transparent;
 }
 

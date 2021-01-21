@@ -78,17 +78,17 @@ export class AddTravelOrderComponent implements OnInit {
     this._travelOrderService.GetById(this.tavelOrderId).subscribe(o=>{
     console.log(o);
       
-      this.travelOrderFrm.controls['numberOfOrder'].setValue(o.numberOfOrder),
+    //  this.travelOrderFrm.controls['numberOfOrder'].setValue(o.numberOfOrder),
       this.travelOrderFrm.controls['reasonOfTravel'].setValue(o.reasonOfTravel),
       this.travelOrderFrm.controls['descriptionOfTravel'].setValue(o.descriptionOfTravel),
       this.travelOrderFrm.controls['daysOfTravel'].setValue(o.daysOfTravel),
       this.travelOrderFrm.controls['advancePayment'].setValue(o.advancePayment),
     // this.travelOrderFrm.controls['advancePaymentString'].setValue(o.advancePaymentString);
       this.travelOrderFrm.controls['restOfAdvancePayment'].setValue(o.restOfAdvancePayment);
-      this.travelOrderFrm.controls['totalHours'].setValue(o.totalHours);
+    //  this.travelOrderFrm.controls['totalHours'].setValue(o.totalHours);
       this.travelOrderFrm.controls['startDate'].setValue(o.startDate);
       this.travelOrderFrm.controls['endDate'].setValue(o.endDate);
-      this.travelOrderFrm.controls['totalDaysOfTravel'].setValue(o.totalDaysOfTravel);
+    //  this.travelOrderFrm.controls['totalDaysOfTravel'].setValue(o.totalDaysOfTravel);
       this.travelOrderFrm.controls['locationId'].setValue(o.locationId);
       this.travelOrderFrm.controls['employeeId'].setValue(o.employeeId);
       this.travelOrderFrm.controls['typeOfCarId'].setValue(o.typeOfCarId);

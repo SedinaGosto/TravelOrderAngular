@@ -1,17 +1,12 @@
 
 
-#location-form{
-    width:70%;
+#costOfOrder-form{
+    width:75%;
     margin:0 auto;
 }
 
-label {
-    text-align: left;
-    font-size: 16px;
- }
-
 .okvir {
-    width: 70%;
+    width: 75%;
     padding: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 10%;
@@ -19,18 +14,18 @@ label {
     border-radius:10px;
 }
 
-#input {
-    width: 80%;
-    border: 1px solid gray;
-    border-radius: 5px;
-    margin-top: 1%;
-    margin-bottom: 7%;
-    margin-left: 10%;
-    padding: 7px;
+input, select{
+    width:80%;
+    margin-left:5%;
+}
+
+label{
+   text-align: left;
+   font-size: 16px;
 }
 
 #submit{
-    width:45%;
+    width:35%;
     margin-bottom: 5%;
     margin-top: 5%;
     font-size: 18px;

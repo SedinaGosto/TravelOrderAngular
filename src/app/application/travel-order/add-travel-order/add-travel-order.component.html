@@ -4,16 +4,16 @@
 
 <form id="travelOrder-form" (ngSubmit)="onSubmit()" #travelOrderForm="ngForm">
 
-<div class="form-group row">
+<!--<div class="form-group row">
     <label for="numberOfOrder" class="col-sm-2 col-form-label">Broj naloga</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputNumberOfOrder"  name="numberOfOrder" #numberOfOrder="ngModel" ngModel>
     </div>
-  </div>
+  </div>-->
 
 <div class="form-group row">
-    <label for="employeeId" class="col-sm-2 col-form-label">Zaposlenik</label>
-    <div class="col-sm-10">
+    <label for="employeeId" class="col-sm-3 col-form-label">Zaposlenik</label>
+    <div class="col-sm-9">
       <select name="employeeId" #employeeId="ngModel"  class="form-control" ngModel>
         <option *ngFor="let item of listOfEmployees" [value]=item.id >               
             {{item.name}} {{item.surname}}
@@ -23,8 +23,8 @@
   </div>
 
 <div class="form-group row">
-    <label for="locationId" class="col-sm-2 col-form-label">Lokacija</label>
-    <div class="col-sm-10">
+    <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
+    <div class="col-sm-9">
       <select name="locationId" #locationId="ngModel"  class="form-control" ngModel>
         <option *ngFor="let item of listOfLocations" [value]=item.id >               
             {{item.name}} 
@@ -34,8 +34,8 @@
   </div>
 
 <div class="form-group row">
-    <label for="typeOfCarId" class="col-sm-2 col-form-label">Tip vozila</label>
-    <div class="col-sm-10">
+    <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
+    <div class="col-sm-9">
       <select name="typeOfCarId" #typeOfCarId="ngModel"  class="form-control" ngModel>
         <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
             {{item.name}} 
@@ -45,70 +45,70 @@
   </div>
 
 <div class="form-group row">
-    <label for="reasonOfTravel" class="col-sm-2 col-form-label">Razlog</label>
-    <div class="col-sm-10">
+    <label for="reasonOfTravel" class="col-sm-3 col-form-label">Razlog</label>
+    <div class="col-sm-9">
       <input type="text" class="form-control" id="inputReasonOfTravel" name="reasonOfTravel" #reasonOfTravel="ngModel" ngModel>
     </div>
   </div>
 
 <div class="form-group row">
-    <label for="descriptionOfTravel" class="col-sm-2 col-form-label">Opis</label>
-    <div class="col-sm-10">
+    <label for="descriptionOfTravel" class="col-sm-3 col-form-label">Opis</label>
+    <div class="col-sm-9">
       <input type="text" class="form-control" id="inputDescriptionOfTravel" name="descriptionOfTravel" #descriptionOfTravel="ngModel" ngModel>
     </div>
   </div>
 
 <div class="form-group row">
-    <label for="daysOfTravel" class="col-sm-2 col-form-label">Predviđen broj dana</label>
-    <div class="col-sm-10">
+    <label for="daysOfTravel" class="col-sm-3 col-form-label">Predviđen broj dana</label>
+    <div class="col-sm-9">
       <input type="text" class="form-control" id="inputDaysOfTravel" name="daysOfTravel" #daysOfTravel="ngModel" ngModel>
     </div>
   </div>
 
 <div class="form-group row">
-    <label for="startDate" class="col-sm-2 col-form-label">Početak</label>
-    <div class="col-sm-10">
+    <label for="startDate" class="col-sm-3 col-form-label">Početak</label>
+    <div class="col-sm-9">
       <input type="datetime-local" class="form-control" id="inputStartDate" name="startDate" #startDate="ngModel" ngModel>
     </div>
   </div>
 
 <div class="form-group row">
-    <label for="endDate" class="col-sm-2 col-form-label">Kraj</label>
-    <div class="col-sm-10">
+    <label for="endDate" class="col-sm-3 col-form-label">Kraj</label>
+    <div class="col-sm-9">
       <input type="datetime-local" class="form-control" id="inputEndDate" name="endDate" #endDate="ngModel" ngModel>
     </div>
   </div>
 
-<div class="form-group row">
+<!--<div class="form-group row">
     <label for="totalHours" class="col-sm-2 col-form-label">Broj sati</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputTotalHours" name="totalHours" #totalHours="ngModel" ngModel>
     </div>
-  </div>
+  </div>-->
 
-<div class="form-group row">
+<!--<div class="form-group row">
     <label for="totalDaysOfTravel" class="col-sm-2 col-form-label">Ukupan broj dana</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputTotalDaysOfTravel" name="totalDaysOfTravel" #totalDaysOfTravel="ngModel" ngModel>
     </div>
-  </div>
+  </div>-->
 
 <div class="form-group row">
-    <label for="advancePayment" class="col-sm-2 col-form-label">Akontacija</label>
-    <div class="col-sm-10">
+    <label for="advancePayment" class="col-sm-3 col-form-label">Akontacija</label>
+    <div class="col-sm-9">
       <input type="text" class="form-control" id="inputAdvancePayment" name="advancePayment" #advancePayment="ngModel" ngModel>
     </div>
   </div>
  
 <div class="form-group row">
-    <label for="restOfAdvancePayment" class="col-sm-2 col-form-label">Ostatak akontacije</label>
-    <div class="col-sm-10">
+    <label for="restOfAdvancePayment" class="col-sm-3 col-form-label">Ostatak akontacije</label>
+    <div class="col-sm-9">
       <input type="text" class="form-control" id="inputRestOfAdvancePayment" name="restOfAdvancePayment" #restOfAdvancePayment="ngModel" ngModel>
     </div>
   </div>
 
   <div class="form-group row">
-    <div class="col-sm-10">
+        <div class="col-sm-12">
         <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>
     </div>
    </div>

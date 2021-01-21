@@ -13,4 +13,6 @@ export class CostOfOrder {
     otherCostDecimal: number;
     totalCostFinish: number;
     travelOrderId: number;
+
+    numberOfTravelOrder:number;
 }

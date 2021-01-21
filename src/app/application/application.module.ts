@@ -21,6 +21,8 @@ import { AddTravelOrderComponent } from './travel-order/add-travel-order/add-tra
 
 import hr from '@angular/common/locales/hr';
 import { registerLocaleData } from '@angular/common';
+import { CostOfOrderComponent } from './cost-of-order/cost-of-order.component';
+import { AddCostOfOrderComponent } from './cost-of-order/add-cost-of-order/add-cost-of-order.component';
 registerLocaleData(hr);
 
 
@@ -36,6 +38,8 @@ registerLocaleData(hr);
     AddTypeOfCarComponent,
     TravelOrderComponent,
     AddTravelOrderComponent,
+    CostOfOrderComponent,
+    AddCostOfOrderComponent,
   ],
   imports: [
     CommonModule, 

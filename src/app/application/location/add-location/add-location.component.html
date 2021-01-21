@@ -4,13 +4,18 @@
 
     <form id="location-form" (ngSubmit)="onSubmit()" #locationForm="ngForm">
         <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Naziv</label>
-            <div class="col-sm-10">
+            <label for="name" class="col-sm-3 col-form-label">Naziv</label>
+            <div class="col-sm-9">
               <input type="text" name="name" class="form-control"  id="inputName"  #name="ngModel" ngModel>
             </div>
           </div>
 
-    <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>
+          <div class="form-group row">
+    
+            <div class="col-sm-12"> 
+              <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>
+            </div>
+          </div>
     </form>
 </div>
 

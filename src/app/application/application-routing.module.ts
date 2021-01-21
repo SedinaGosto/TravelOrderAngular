@@ -11,6 +11,8 @@ import { TypeOfCarComponent } from './type-of-car/type-of-car.component';
 import { AddTypeOfCarComponent } from './type-of-car/add-type-of-car/add-type-of-car.component';
 import { TravelOrderComponent } from './travel-order/travel-order.component';
 import { AddTravelOrderComponent } from './travel-order/add-travel-order/add-travel-order.component';
+import { CostOfOrderComponent } from './cost-of-order/cost-of-order.component';
+import { AddCostOfOrderComponent } from './cost-of-order/add-cost-of-order/add-cost-of-order.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,9 @@ const routes: Routes = [
   { path: 'travel-order', component: TravelOrderComponent },
   { path: 'travel-order/add-travel-order', component: AddTravelOrderComponent },
   { path: 'travel-order/add-travel-order/:id', component: AddTravelOrderComponent },
+  { path: 'cost-of-order', component: CostOfOrderComponent },
+  { path: 'cost-of-order/add-cost-of-order', component: AddCostOfOrderComponent },
+  { path: 'cost-of-order/add-cost-of-order/:id', component: AddCostOfOrderComponent },
 
 ]}]
 @NgModule({

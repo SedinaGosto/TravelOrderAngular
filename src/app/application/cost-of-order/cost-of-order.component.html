@@ -1,0 +1,28 @@
+<table class="table" > 
+    <thead>
+        <tr>      
+            <th>Iznos dnevnice</th>
+            <th>Ukupan broj dnevnica</th>
+            <th>Izdatak za noćenje</th>
+            <th>Gorivo (l/KM) </th>
+            <th>Broj kilometara</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let item of CostOfOrder">
+            <td>{{item.priceOfWage}}</td>
+            <td>{{item.totalNumbersOfWages}}</td>   
+            <td>{{item.salaryPerNight}}</td>  
+            <td>{{item.priceOfFuel}}</td>  
+            <td>{{item.numberOfKilometers}}</td>  
+            <td> <button type="button" class="btn btn-outline-primary" routerLink="add-cost-of-order/{{item.id}}"> <i class="fa fa-fw fa-edit"></i> Uredi</button>      
+            <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i> Obriši</button></td>      
+        </tr>
+    </tbody> 
+    </table>
+    
+    <br>
+    <button type="button" class="btn btn-outline-primary" routerLink="add-cost-of-order" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novi</button>
+    
+    
