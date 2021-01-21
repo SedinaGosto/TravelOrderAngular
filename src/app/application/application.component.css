@@ -84,9 +84,12 @@ header li {
   text-decoration: none;
 }
 
+
 header li:hover{
   color:rgba(245, 245, 245, 0.884);
   cursor: pointer;
+  font-size:20px;
+  background-color: transparent;
 }
 
 

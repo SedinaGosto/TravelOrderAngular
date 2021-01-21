@@ -1,0 +1,32 @@
+  <table class="table" > 
+  <thead>
+      <tr>       
+          <th>Broj naloga</th>
+          <th>Zaposlenik</th>
+          <th>Lokacija</th>
+          <th>Razlog </th>
+          <th>Vozilo</th>
+          <th>Početak</th>
+          <th>Kraj</th>           
+          <th>Akcija</th>
+      </tr>
+  </thead>
+  <tbody >
+      <tr *ngFor="let item of TravelOrder">
+          <td>{{item.numberOfOrder}}</td>
+          <td>{{item.employeeName}}</td>   
+          <td>{{item.locationName}}</td>  
+          <td>{{item.reasonOfTravel}}</td>  
+          <td>{{item.typeOfCarName}}</td>  
+          <td>{{item.startDate}}</td>  
+          <td>{{item.endDate}}</td>  
+          <td> <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order/{{item.id}}"> <i class="fa fa-fw fa-edit"></i> Uredi</button>      
+          <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i> Obriši</button></td>      
+      </tr>
+  </tbody> 
+  </table>
+  
+  <br>
+  <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>
+  
+  

@@ -15,6 +15,8 @@ import { AddLocationComponent } from './location/add-location/add-location.compo
 import { TypeOfCarComponent } from './type-of-car/type-of-car.component';
 import { AddTypeOfCarComponent } from './type-of-car/add-type-of-car/add-type-of-car.component';
 import { TypeOfCarService } from '../api-services/type-of-car.service';
+import { TravelOrderComponent } from './travel-order/travel-order.component';
+import { AddTravelOrderComponent } from './travel-order/add-travel-order/add-travel-order.component';
 
 
 
@@ -28,6 +30,8 @@ import { TypeOfCarService } from '../api-services/type-of-car.service';
     AddLocationComponent,
     TypeOfCarComponent,
     AddTypeOfCarComponent,
+    TravelOrderComponent,
+    AddTravelOrderComponent,
   ],
   imports: [
     CommonModule, 
