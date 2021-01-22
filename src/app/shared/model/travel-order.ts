@@ -13,10 +13,10 @@ export class TravelOrder {
     totalDaysOfTravel:number
     locationId: number; 
     employeeId: number;
-    typeOfCarId: number;
+    carId: number;
 
     locationName:string;
     employeeName: string;
-    typeOfCarName: string;
+    carName: string;
 }
 

@@ -1,5 +1,12 @@
 
+#searchLocation{
+    width:30%;
+    margin-top:7%;
+}
+
 #addNew{
-    width:20%;
     font-size:16px;
+    float:right;
+    margin-bottom:2%;
+    margin-top:0;
 }

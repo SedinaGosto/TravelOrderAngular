@@ -1,16 +1,15 @@
 
 
-#typeOfCar-form{
+#car-form{
     width:70%;
     margin:0 auto;
 }
 
 
- label {
+ label,legend {
         text-align: left;
         font-size: 16px;
      }
-
 
 .okvir {
     width: 70%;

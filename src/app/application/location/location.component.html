@@ -7,24 +7,25 @@
       </button>
     </div>
   </div>
-
-  <br>
+  
+  <button type="button" class="btn btn-outline-primary" routerLink="add-location" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>
 <table class="table" > 
 <thead>
     <tr>
         <th>Naziv</th>       
+        <th>Broj kilometara</th>       
         <th>Akcija</th>
     </tr>
 </thead>
 <tbody >
     <tr *ngFor="let item of Location ">
         <td>{{item.name}}</td>
+        <td>{{item.numberOfKilometers}}</td>
       
-        <td> <button type="button" class="btn btn-outline-primary" routerLink="add-location/{{item.id}}"> <i class="fa fa-fw fa-edit"></i> Uredi</button>      
-        <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i> Obriši</button></td>      
+        <td> <button type="button" class="btn btn-outline-primary" routerLink="add-location/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
+        <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button></td>      
       </tr>
 </tbody> 
 </table>
 
 <br>
-<button type="button" class="btn btn-outline-primary" routerLink="add-location" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>

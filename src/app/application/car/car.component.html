@@ -1,0 +1,38 @@
+
+
+<!--<div class="input-group" id="searchName">
+    <input type="text" class="form-control" placeholder="Pretraga po nazivu..." [(ngModel)]="name">
+    <div class="input-group-append">
+      <button class="btn btn-secondary" type="button" (click) = "searchByName()">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>-->
+
+  <button type="button" class="btn btn-outline-primary" routerLink="add-car" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novi</button>
+  
+  <table class="table" > 
+<thead>
+    <tr>
+        <th>Naziv</th>       
+        <th>Model</th>       
+        <th>Registracija</th>       
+        <th>Tip vozila</th>       
+        <th>Akcija</th>
+    </tr>
+</thead>
+<tbody >
+    <tr *ngFor="let item of Car ">
+        <td>{{item.name}}</td>
+        <td>{{item.model}}</td>
+        <td>{{item.numberOfRegistration}}</td>
+        <td *ngIf="item.privateCar" > Privatno </td>
+        <td *ngIf="item.officialCar" > Službeno </td>
+      
+        <td> <button type="button" class="btn btn-outline-primary" routerLink="add-car/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
+        <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button></td>      
+      </tr>
+</tbody> 
+</table>
+
+<br>

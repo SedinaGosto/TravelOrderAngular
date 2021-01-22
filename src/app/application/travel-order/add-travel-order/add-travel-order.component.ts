@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { equal } from 'assert';
+import { CarService } from 'src/app/api-services/car.service';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
-import { TypeOfCarService } from 'src/app/api-services/type-of-car.service';
 import { TravelOrderUpsert } from 'src/app/shared/model/travel-order-upsert';
 
 @Component({
@@ -17,7 +17,7 @@ export class AddTravelOrderComponent implements OnInit {
 
  
   constructor(private _travelOrderService: TravelOrderService, private _employeeService: EmployeeService, private _locationService: LocationService, 
-              private _typeOfCarService: TypeOfCarService, private router: Router, private route: ActivatedRoute) { }
+              private _carService: CarService, private router: Router, private route: ActivatedRoute) { }
 
   editMode = false;
 
@@ -36,7 +36,7 @@ export class AddTravelOrderComponent implements OnInit {
     this._locationService.GetAll().subscribe(locationsData=>{
       this.listOfLocations=locationsData
     })
-    this._typeOfCarService.GetAll().subscribe(typeOfCarsData=>{
+    this._carService.GetAll().subscribe(typeOfCarsData=>{
       this.listOfTypeOfCars=typeOfCarsData
     })
      
@@ -91,7 +91,7 @@ export class AddTravelOrderComponent implements OnInit {
     //  this.travelOrderFrm.controls['totalDaysOfTravel'].setValue(o.totalDaysOfTravel);
       this.travelOrderFrm.controls['locationId'].setValue(o.locationId);
       this.travelOrderFrm.controls['employeeId'].setValue(o.employeeId);
-      this.travelOrderFrm.controls['typeOfCarId'].setValue(o.typeOfCarId);
+      this.travelOrderFrm.controls['carId'].setValue(o.carId);
     
     });
     

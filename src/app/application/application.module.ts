@@ -12,9 +12,6 @@ import { AddEmployeeComponent } from './employee/add-employee/add-employee.compo
 import { LocationComponent } from './location/location.component';
 import { LocationService } from '../api-services/location.service';
 import { AddLocationComponent } from './location/add-location/add-location.component';
-import { TypeOfCarComponent } from './type-of-car/type-of-car.component';
-import { AddTypeOfCarComponent } from './type-of-car/add-type-of-car/add-type-of-car.component';
-import { TypeOfCarService } from '../api-services/type-of-car.service';
 import { TravelOrderComponent } from './travel-order/travel-order.component';
 import { AddTravelOrderComponent } from './travel-order/add-travel-order/add-travel-order.component';
 
@@ -23,6 +20,9 @@ import hr from '@angular/common/locales/hr';
 import { registerLocaleData } from '@angular/common';
 import { CostOfOrderComponent } from './cost-of-order/cost-of-order.component';
 import { AddCostOfOrderComponent } from './cost-of-order/add-cost-of-order/add-cost-of-order.component';
+import { CarComponent } from './car/car.component';
+import { CarService } from '../api-services/car.service';
+import { AddCarComponent } from './car/add-car/add-car.component';
 registerLocaleData(hr);
 
 
@@ -34,8 +34,8 @@ registerLocaleData(hr);
     AddEmployeeComponent,
     LocationComponent,
     AddLocationComponent,
-    TypeOfCarComponent,
-    AddTypeOfCarComponent,
+    CarComponent,
+    AddCarComponent,
     TravelOrderComponent,
     AddTravelOrderComponent,
     CostOfOrderComponent,
@@ -48,7 +48,7 @@ registerLocaleData(hr);
     FormsModule,
     HttpClientModule
   ],
-  providers: [EmployeeService, LocationService, TypeOfCarService,
+  providers: [EmployeeService, LocationService, CarService,
     { provide: LOCALE_ID, useValue: "hr-HR" },
   
   ],

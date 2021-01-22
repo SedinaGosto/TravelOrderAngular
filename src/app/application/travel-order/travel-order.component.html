@@ -1,12 +1,13 @@
   
-  <!--<div class="input-group" id="searchLocation">
-    <input type="text" class="form-control" placeholder="Pretraga po lokaciji..." [(ngModel)]="name">
+  <div class="input-group" id="searchLocation">
+    <input type="text" class="form-control" placeholder="Pretraga po lokaciji..."><!-- [(ngModel)]="name"-->
     <div class="input-group-append">
-      <button class="btn btn-secondary" type="button" (click) = "searchByLocation()">
+      <button class="btn btn-secondary" type="button"><!--dodati click search-->
         <i class="fa fa-search"></i>
       </button>
     </div>
-  </div>-->
+  </div>
+  <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>
 
   <table class="table" > 
   <thead>
@@ -27,16 +28,17 @@
           <td>{{item.employeeName}}</td>   
           <td>{{item.locationName}}</td>  
           <td>{{item.reasonOfTravel}}</td>  
-          <td>{{item.typeOfCarName}}</td>  
+          <td>{{item.carName}}</td>  
           <td>{{item.startDate}}</td>  
           <td>{{item.endDate}}</td>  
-          <td> <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order/{{item.id}}"> <i class="fa fa-fw fa-edit"></i> Uredi</button>      
-          <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i> Obriši</button></td>      
+          <td> <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
+          <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button>
+          <button type="button" class="btn btn-outline-success" routerLink="" style="margin-left: 2%;"><i class="fas fa-euro-sign"></i></button>
+          </td>      
       </tr>
   </tbody> 
   </table>
   
   <br>
-  <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>
   
   

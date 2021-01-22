@@ -31,7 +31,8 @@ export class AddEmployeeComponent implements OnInit {
 
 
   onSubmit(){
-    var employee = new EmployeeUpsert(0,this.employeeFrm.value.name, this.employeeFrm.value.surname, this. employeeFrm.value.typeOfWork);
+    var employee = new EmployeeUpsert(0,this.employeeFrm.value.name, this.employeeFrm.value.surname, this. employeeFrm.value.typeOfWork,
+                  this.employeeFrm.value.uniqueNumber, 0, this.employeeFrm.value.wage);
     
     if (this.editMode){
       this._employeeService.Update(this.employeeId, employee).subscribe(data=>{
@@ -53,6 +54,9 @@ export class AddEmployeeComponent implements OnInit {
       this.employeeFrm.controls['name'].setValue(o.name),
       this.employeeFrm.controls['surname'].setValue(o.surname),
       this.employeeFrm.controls['typeOfWork'].setValue(o.typeOfWork);
+      this.employeeFrm.controls['uniqueNumber'].setValue(o.uniqueNumber);
+    //  this.employeeFrm.controls['counterNumber'].setValue(o.counterNumber);
+      this.employeeFrm.controls['wage'].setValue(o.wage);
     });
   }
 

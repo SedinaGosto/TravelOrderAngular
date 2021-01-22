@@ -7,12 +7,12 @@ import { EmployeeComponent } from './employee/employee.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 import { LocationComponent } from './location/location.component';
 import { AddLocationComponent } from './location/add-location/add-location.component';
-import { TypeOfCarComponent } from './type-of-car/type-of-car.component';
-import { AddTypeOfCarComponent } from './type-of-car/add-type-of-car/add-type-of-car.component';
 import { TravelOrderComponent } from './travel-order/travel-order.component';
 import { AddTravelOrderComponent } from './travel-order/add-travel-order/add-travel-order.component';
 import { CostOfOrderComponent } from './cost-of-order/cost-of-order.component';
 import { AddCostOfOrderComponent } from './cost-of-order/add-cost-of-order/add-cost-of-order.component';
+import { CarComponent } from './car/car.component';
+import { AddCarComponent } from './car/add-car/add-car.component';
 
 const routes: Routes = [
   {
@@ -25,9 +25,9 @@ const routes: Routes = [
   { path: 'location', component: LocationComponent },
   { path: 'location/add-location', component: AddLocationComponent },
   { path: 'location/add-location/:id', component: AddLocationComponent },
-  { path: 'type-of-car', component: TypeOfCarComponent },
-  { path: 'type-of-car/add-type-of-car', component: AddTypeOfCarComponent },
-  { path: 'type-of-car/add-type-of-car/:id', component: AddTypeOfCarComponent },
+  { path: 'car', component: CarComponent },
+  { path: 'car/add-car', component: AddCarComponent },
+  { path: 'car/add-car/:id', component: AddCarComponent },
   { path: 'travel-order', component: TravelOrderComponent },
   { path: 'travel-order/add-travel-order', component: AddTravelOrderComponent },
   { path: 'travel-order/add-travel-order/:id', component: AddTravelOrderComponent },

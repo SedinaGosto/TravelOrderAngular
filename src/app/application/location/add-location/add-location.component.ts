@@ -32,7 +32,7 @@ export class AddLocationComponent implements OnInit {
 
 
   onSubmit(){
-    var location = new LocationUpsert(0,this.locationFrm.value.name);
+    var location = new LocationUpsert(0,this.locationFrm.value.name, this.locationFrm.value.numberOfKilometers);
     
     if (this.editMode){
       this._locationService.Update(this.locationId, location).subscribe(data=>{
@@ -52,6 +52,7 @@ export class AddLocationComponent implements OnInit {
     this.locationFrm=new NgForm([],[]);
     this._locationService.GetById(this.locationId).subscribe(data=>{
       this.locationFrm.controls['name'].setValue(data.name);
+      this.locationFrm.controls['numberOfKilometers'].setValue(data.numberOfKilometers);
      
     });
   }

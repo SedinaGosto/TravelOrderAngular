@@ -8,13 +8,16 @@
     </div>
   </div>
 
-  <br>
+<button type="button" class="btn btn-outline-primary" routerLink="add-employee" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novog</button>
+
 <table class="table" > 
 <thead>
     <tr>
         <th>Ime</th>
         <th>Prezime</th>
         <th>Pozicija</th>
+        <th>Jedinstveni broj</th>
+        <th>Dnevnica</th>
         <th>Akcija</th>
     </tr>
 </thead>
@@ -23,11 +26,12 @@
         <td>{{item.name}}</td>
         <td>{{item.surname}}</td>  
         <td>{{item.typeOfWork}}</td>  
-        <td> <button type="button" class="btn btn-outline-primary" routerLink="add-employee/{{item.id}}"> <i class="fa fa-fw fa-edit"></i> Uredi</button>      
-        <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i> Obriši</button></td>      
+        <td>{{item.uniqueNumber}}</td>  
+        <td>{{item.wage}}</td>  
+        <td> <button type="button" class="btn btn-outline-primary" routerLink="add-employee/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
+        <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button></td>      
       </tr>
 </tbody> 
 </table>
 
 <br>
-<button type="button" class="btn btn-outline-primary" routerLink="add-employee" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novog</button>

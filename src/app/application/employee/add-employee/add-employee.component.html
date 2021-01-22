@@ -27,6 +27,20 @@
       </div>
 
       <div class="form-group row">
+        <label for="uniqueNumber" class="col-sm-3 col-form-label">Jedinstveni broj</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputUniqueNumber" name="uniqueNumber" #uniqueNumber="ngModel" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="wage" class="col-sm-3 col-form-label">Dnevnica</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="inputWage" name="wage" #wage="ngModel" ngModel>
+        </div>
+      </div>
+
+      <div class="form-group row">
     
         <div class="col-sm-12"> 
           <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>

@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CarService } from 'src/app/api-services/car.service';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
-import { TypeOfCarService } from 'src/app/api-services/type-of-car.service';
 import { Employee } from 'src/app/shared/model/employee';
 import { Location } from 'src/app/shared/model/location';
-import { TypeOfCar } from 'src/app/shared/model/type-of-car';
 
 
 @Component({
@@ -17,7 +16,7 @@ import { TypeOfCar } from 'src/app/shared/model/type-of-car';
 export class TravelOrderComponent implements OnInit {
 
   constructor( private _travelOrderService: TravelOrderService, private _employeeService: EmployeeService, 
-              private _locationService: LocationService, private _typeOfCarService: TypeOfCarService, private router: Router) { }
+              private _locationService: LocationService, private _carService: CarService, private router: Router) { }
 
   TravelOrder=[];
 
@@ -36,8 +35,8 @@ export class TravelOrderComponent implements OnInit {
         this._employeeService.GetById(this.TravelOrder[i].employeeId).subscribe(e=>{
           this.TravelOrder[i].employeeName=e.name
         })
-        this._typeOfCarService.GetById(this.TravelOrder[i].typeOfCarId).subscribe(t=>{
-          this.TravelOrder[i].typeOfCarName=t.name
+        this._carService.GetById(this.TravelOrder[i].carId).subscribe(t=>{
+          this.TravelOrder[i].carName=t.name
         })
       }
 
