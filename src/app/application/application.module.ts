@@ -23,6 +23,7 @@ import { AddCostOfOrderComponent } from './cost-of-order/add-cost-of-order/add-c
 import { CarComponent } from './car/car.component';
 import { CarService } from '../api-services/car.service';
 import { AddCarComponent } from './car/add-car/add-car.component';
+import { TestComponent } from './test/test.component';
 registerLocaleData(hr);
 
 
@@ -40,6 +41,7 @@ registerLocaleData(hr);
     AddTravelOrderComponent,
     CostOfOrderComponent,
     AddCostOfOrderComponent,
+    TestComponent,
   ],
   imports: [
     CommonModule, 
