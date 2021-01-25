@@ -24,6 +24,9 @@ export class TravelOrderService {
     const url = `${_url}/${id}`;
     return this.http.get<TravelOrder>(url);
   }
+  GetByEmployee(id:number):Observable<TravelOrder[]>{
+    return this.http.get<TravelOrder[]>(`${_url}?EmployeeId=${id}`);
+  }
 
   Add(travelOrder: TravelOrderUpsert): Observable<TravelOrder> {
     return this.http.post<TravelOrder>(_url, travelOrder);

@@ -1,6 +1,6 @@
 export class TravelOrder {
     id:number;
-    numberOfOrder:number;
+    numberOfOrder:string;
     reasonOfTravel:string;
     descriptionOfTravel:string;
     daysOfTravel: number;
@@ -17,6 +17,7 @@ export class TravelOrder {
 
     locationName:string;
     employeeName: string;
+    typeofWork:string;
     carName: string;
 }
 
