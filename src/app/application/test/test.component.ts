@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -8,6 +8,8 @@ import { CarService } from 'src/app/api-services/car.service';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
+declare  var jQuery:  any;
+
 declare  var jQuery:  any;
 
 @Component({
@@ -25,8 +27,12 @@ counter: number
   length: number
   pdf: jsPDF
 
+
+
+
 ngOnInit(): void {
 this.GetAll();
+ 
 }
 
 GetAll(){
@@ -43,7 +49,12 @@ this.TravelOrder[i].typeofWork=e.typeOfWork;
 
 })
 this._carService.GetById(this.TravelOrder[i].carId).subscribe(t=>{
-this.TravelOrder[i].carName=t.name
+this.TravelOrder[i].carName=t.name;
+this.TravelOrder[i].privateCar=t.privateCar;
+this.TravelOrder[i].officialCar=t.officialCar;
+
+  
+
 })
 }
 
