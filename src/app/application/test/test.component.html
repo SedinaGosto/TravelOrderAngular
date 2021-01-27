@@ -1,36 +1,50 @@
-<div *ngFor="let item of TravelOrder">
-<div class="main" id="content" #content >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
-<br>
+
+        
+
+        <button  id="downloadbtn" (click)="generatePDF()"><b>Click to Download HTML as PDF</b></button>
+        <div class="canvas_div_pdf mt-2">
+    <div   *ngFor="let item of TravelOrder;" >
+        <br><br>
     <div class="name">
-    <p>___________________________________</p>
-    <p class="subname">(naziv preduzeća-ustanove)</p>
-    
-    <p>___________________________________</p>
-    <p class="subname">(mjesto i datum)</p>
-    </div><br>
+        <span class="above"><u > AS PANAMERA d.o.o</u><span class="below">(naziv preduzeća - ustanove)</span></span>
+   <br>
+   <span class="above"><u >  Mostar, {{item.startDate | date}} </u><span class="below">(mjesto i datum)</span></span>
+    </div><br><br><br>
     <div class="center">
         <h3>NALOG ZA SLUŽBENO PUTOVANJE</h3>
         <p >broj _____ / _______</p>
     </div><br><br><br>
 
     <div class="mainText">
-        <p>Za  <u>{{item.employeeName}} </u>  na radu u _______________________________ na radnom mjestu <u>{{item.typeofWork}}</u> otputovati će dana
-            _______________________ godine na službeno putovanje u ___________________________ radi ____________________________________________________________
-        </p><br>
-        <p>Predvidivo trajanje putovanja je _____________ dana.</p>
-        <p>Za ovo službeno putovanje odobrava se isplata akontacije putnih troškova u iznosu od KM _____________________________,</p> 
-        <p>slovima(KM) __________________________________________________________________________________________________________</p>
+        <p>Za <u > {{ item.employeeName}}</u> na radu u <span class="above"><u > AS PANAMERA d.o.o</u> <span class="below">(naziv poslovne ili org.jedinice)</span></span> na radnom mjestu <span class="above"><u >{{item.typeofWork}}</u><span class="below">(naziv radnog mjesta)</span></span> otputovati će dana
+            <u>{{item.startDate | date}} </u>  godine na službeno putovanje u <span class="above"> <u>{{item.locationName}} </u> <span class="below">(mjesto)</span></span> radi <span class="above"> <u>{{item.reasonOfTravel}} </u><span class="below">(razlog)</span></span><br>
+            <span class="above"><u>{{item.descriptionOfTravel}} </u> <span class="below">(opis zadataka)</span></span>
+                        </p><br>
+        <p>Predvidivo trajanje putovanja je   <u> __{{item.daysOfTravel }}__ </u> dana.</p>
+        <p>Za ovo službeno putovanje odobrava se isplata akontacije putnih troškova u iznosu od KM <u>{{item.advancePayment}} </u>,</p> 
+        <p>slovima(KM) <u>{{item.advancePaymentString}} </u></p>
         <p>Za prijevoz može koristiti:</p>
-        <p>U odlasku ____________________________________________________________________________________________________________</p>
-        <p>U povratku ___________________________________________________________________________________________________________</p><br><br><br>
+        <p>U odlasku <u>{{item.carName}}  ( 
+             <span *ngIf=item.privateCar > Privatno </span>
+             <span *ngIf=item.officialCar > Službeno</span>
+          ) </u></p>
+
+        <p>U povratku <u>{{item.carName}}  ( 
+            <span *ngIf=item.privateCar > Privatno </span>
+            <span *ngIf=item.officialCar > Službeno</span>
+         ) </u></p><br><br><br>
         
-    </div>
+    </div><br><br><br><br>
     <div class="footer">
         <p>__________________________________________________<span style="margin-left:7%; margin-right: 7%; font-weight: bold;">M.P</span>_______________________________________________</p>
         <p class="footersubname" >(Paraf šefa posl.org.jed)<span style="margin-left:360px;">(Potpis direktora)</span></p>
     </div>
-    <br><br><br>
+    <br><br><br><br><br>
     <div class="table">
         <table >
             <tr>
@@ -59,55 +73,55 @@
                 <td style="width:38%; text-align: center;">Potvrđuje</td>
             </tr>
           </table>
-          
+          <br><br>
     </div>
-</div>
 
-<div class="pagebreak"> </div>
 
-<div class="main">
+    <div style="page-break-after: always"></div>
+    <div style="page-break-before: always"></div>
+    
     <br>
     <h5>OBRAČUN PUTNIH TROŠKOVA</h5><br><br><br>
     <div class="textSecondPage"> 
     <p>Za obavljeno službeno putovanje na temelju ovog naloga podnosimo ovaj obračun:</p>
-    <p>Na put sam krenu(o)la dana _________________ godine u ___________ sati.</p>
-    <p>Vrati(o)la sam se dana _________________ godine u ___________ sati.</p><br>
+    <p>Na put sam krenu(o)la dana <u>{{item.startDate | date}} </u> godine u <u>{{item.startDate | date:'shortTime' }} </u> sati.</p>
+    <p>Vrati(o)la sam se dana <u>{{item.startDate | date}} </u> godine u <u>{{item.startDate | date:'shortTime' }} </u>  sati.</p><br>
     <p>Na putu sam prove(o)la _________________ sati, što čini ukupno ___________ dnevnica.</p>
     </div>
 
     <table>
         <tr>
             <th colspan="4" style="width:45%">Vrsta troškova</th>
-            <th>Ukupni broj dnevnica</th>
-            <th colspan="2" >Iznos jedne dnevnice</th>
-            <th colspan="2" style="width:15%">Ukupno</th>
+            <th colspan="2">Ukupni broj dnevnica</th>
+            <th colspan="5" >Iznos jedne dnevnice</th>
+            <th colspan="3" style="width:15%">Ukupno</th>
         </tr>
         <tr >
             <td rowspan="4" class="rotate" >A.DNEVNICE</td>
             <td >1</td>
             <td colspan="2">DNEVNICE</td>
-            <td >7</td>
-            <td colspan="2">195</td>
-            <td colspan="2" >1365 KM</td>
+            <td colspan="2"></td>
+            <td colspan="5"></td>
+            <td colspan="3" > KM</td>
         </tr>
         <tr>
             <td>2</td>
             <td colspan="2"></td>
-            <td >-</td>
             <td colspan="2">-</td>
-            <td colspan="2"  >  KM</td>
+            <td colspan="5">-</td>
+            <td colspan="3"  >  KM</td>
         </tr>
         <tr>
             <td>3</td>
-            <td colspan="5" style="text-align: left;">Izdaci za noćenje</td>
+            <td colspan="9" style="text-align: left;">Izdaci za noćenje</td>
           
-            <td  colspan="2" >  KM</td>
+            <td  colspan="3" >  KM</td>
         </tr>
         <tr>
             <td>4</td>
-            <td colspan="5" style="text-align: left;">UKUPNO DNEVNICE</td>
+            <td colspan="9" style="text-align: left;">UKUPNO DNEVNICE</td>
           
-            <td colspan="2" > 1365 KM</td>
+            <td colspan="3" >  KM</td>
         </tr>
 
 
@@ -118,56 +132,60 @@
         <tr >
             <td rowspan="8" class="rotate" >B.TROŠKOVI PRIJEVOZA</td>
             <td rowspan="2">Redni broj</td>
-            <td colspan="3">RELACIJA</td>
-            <td colspan="2">PRIJEVOZ</td>
-            <td rowspan="2" colspan="2" > </td>
+            <td colspan="4">RELACIJA</td>
+            <td colspan="5">PRIJEVOZ</td>
+            <td rowspan="2" colspan="3" > </td>
         </tr>
         <tr>
             <td colspan="2">OD</td>
-            <td style="width:210px">DO</td>
-            <td colspan="2">-</td>
+            <td style="width:210px" colspan="2">DO</td>
+            <td colspan="5">-</td>
           
         </tr>
         <tr>
             <td>1</td>
             <td colspan="2"></td>          
-            <td></td>          
             <td colspan="2"></td>          
-            <td colspan="2" > KM</td>
+            <td colspan="5"></td>          
+            <td colspan="3" > KM</td>
         </tr>
         <tr>
             <td>2</td>
             <td colspan="2"></td>          
-            <td></td>          
             <td colspan="2"></td>          
-            <td colspan="2" > KM</td>
+            <td colspan="5"></td>          
+            <td colspan="3" > KM</td>
         </tr>
         <tr>
             <td>3</td>
-            <td colspan="5">OSOBNO VOZILO KORIŠTENO U SLUŽBENE SVRHE</td>          
+            <td colspan="9">OSOBNO VOZILO KORIŠTENO U SLUŽBENE SVRHE</td>          
             <td rowspan="2"  colspan="2"></td>          
            
         </tr>
         <tr>
             <td>4</td>
             <td style="width:180px">CIJENA L. BENZ</td>          
-            <td style="width:130px">BROJ KM</td>          
-            <td style="width:160px">20% CIJENE</td>          
-            <td colspan="2">IZNOS</td>          
+            <td style="width:130px">BROJ KM</td>  
+            <td ></td>        
+            <td style="width:160px">20% CIJENE</td>  
+            <td></td>        
+            <td colspan="4">IZNOS</td>          
         </tr>
         <tr>
             <td>5</td>
             <td></td>          
             <td></td>          
+            <td>X</td>
             <td></td>          
-            <td colspan="2"></td>          
-            <td  > KM</td>
+            <td>=</td>    
+            <td colspan="4"></td>      
+            <td colspan="3" > KM</td>
         </tr>
         <tr>
             <td>6</td>
-            <td colspan="5" style="text-align:left">UKUPNI IZDACI ZA PRIJEVOZ</td>          
+            <td colspan="9" style="text-align:left">UKUPNI IZDACI ZA PRIJEVOZ</td>          
          
-            <td  > KM</td>
+            <td colspan="3" > KM</td>
         </tr>
 
 
@@ -178,53 +196,53 @@
         <tr >
             <td rowspan="3" class="rotate" >C.OSTALO</td>
             <td >1</td>
-            <td colspan="5"></td>
-            <td  colspan="2"> KM </td>
+            <td colspan="9"></td>
+            <td  colspan="3"> KM </td>
         </tr>
         <tr >
             <td >2</td>
-            <td colspan="5"></td>
-            <td  colspan="2"> KM </td>
+            <td colspan="9"></td>
+            <td  colspan="3"> KM </td>
         </tr>
         <tr >
             <td >3</td>
-            <td colspan="5" style="text-align:left">UKUPNI OSTALI TROŠKOVI</td>
-            <td  colspan="2" > KM </td>
+            <td colspan="9" style="text-align:left">UKUPNI OSTALI TROŠKOVI</td>
+            <td  colspan="3" > KM </td>
         </tr>
         <tr>
-            <td colspan="7" style="text-align:left;">SVEUKUPNI TROŠKOVI</td>
-            <td colspan="2" >1365,00 KM</td>
+            <td colspan="11" style="text-align:left;">SVEUKUPNI TROŠKOVI</td>
+            <td colspan="3" >1365,00 KM</td>
         </tr>
         <tr>
-            <td colspan="7" style="text-align:left;">ISPLAĆENA AKONTACIJA</td>
-            <td colspan="2" >KM</td>
+            <td colspan="11" style="text-align:left;">ISPLAĆENA AKONTACIJA</td>
+            <td colspan="3" >KM</td>
         </tr>
         <tr>
-            <td colspan="7" style="text-align:left;">OSTATAK ZA ISPLATU - POVRAT</td>
-            <td colspan="2" >1365,00 KM</td>
+            <td colspan="11" style="text-align:left;">OSTATAK ZA ISPLATU - POVRAT</td>
+            <td colspan="3" >1365,00 KM</td>
         </tr>
 
     </table>
 
 
-    <br><br><br>
+    <br><br><br><br><br><br>
     <div >
         <p style="margin-left:-52%">Mostar,<span style="margin-left:15%">godine</span></p>
         <hr>
     </div>
-    <br>
+    <br><br>
     <div class="name" style="float:right; margin-right:6%">
-        <p>___________________________________</p>
-        <p class="subname">(podnosilac računa)</p>
+        <span class="above"> <hr style="float:right; width:230px"><span class="below">(podnosilac računa)</span></span>
+        
     </div>
 
-    <br><br><br><br>
+    <br><br><br><br><br><br><br><br>
     <div class="footer">
         <p>__________________________________________________<span style="margin-left:7%; margin-right: 7%; font-weight: bold;">M.P</span>_______________________________________________</p>
         <p class="footersubname" >(Paraf šefa posl.org.jed)<span style="margin-left:360px;">(Potpis direktora)</span></p>
     </div>
 
-<br><br>
+<br><br><br><br><br>
     <table>
         <tr>
             <td>
@@ -243,6 +261,10 @@
             </td>
         </tr>
     </table>
-    <br><br><br>
+    <br><br><br><br><br><br><br>
+    <div style="page-break-after: always"></div>
+    <div style="page-break-before: always"></div>
 </div>
+
 </div>
+

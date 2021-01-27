@@ -19,5 +19,8 @@ export class TravelOrder {
     employeeName: string;
     typeofWork:string;
     carName: string;
+    privateCar:boolean;
+    officialCar:boolean;
+  
 }
 
