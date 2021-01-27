@@ -6,15 +6,16 @@
 .name{
     float:left;  
     margin-left:6%;  
+    font-size:18px;
 }
 
 h3{
     font-weight: bold;
 }
 .subname{
-    margin-top:-14px;
+    width:200px;
     font-size: 14px;
-    margin-left:6%;
+    margin-left:2%;
 }
 .center{
     text-align: center;
@@ -73,11 +74,14 @@ td{
     text-align: left;
 }
 
-
+@media all {
+    .page-break { display: none; }
+}
 
 @media print {
-    .pagebreak { page-break-after: always; } /* page-break-after works, as well */
+    .page-break { display: block; page-break-before: always; }
 }
+
 
 
 h5{
@@ -112,8 +116,48 @@ hr{
 
 .rotate {
     white-space:nowrap;
+    transform: rotate(270deg);
      -webkit-transform: rotate(270deg);
      -moz-transform: rotate(270deg);
      -o-transform: rotate(270deg);
     writing-mode: lr-tb;
   }
+
+
+  *{
+      letter-spacing: 1px;
+  }
+
+  caption{
+      font-size: 14px;
+      width:200px;
+      margin-top:-10px;
+      text-align: center;
+  }
+
+  .above {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5em;
+  }
+  .above::before {
+    position: absolute;
+    top: 90%;
+    height: 6px;
+    width: 100%;
+    content: "";
+  }
+  .above .below {
+    position: absolute;
+    width: 130%;
+    left: -10%;
+    top: 100%;
+    font-size: 0.75em;
+    text-align: center;
+  }
+
+  .underline {
+    border-bottom: 1px solid black;
+  }
+
+

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { equal } from 'assert';
+import { of } from 'rxjs';
 import { CarService } from 'src/app/api-services/car.service';
 import { CostOfOrderService } from 'src/app/api-services/cost-of-order.service';
 import { EmployeeService } from 'src/app/api-services/employee.service';
@@ -29,6 +30,7 @@ export class AddTravelOrderComponent implements OnInit {
   listOfEmployees=[];
   listOfLocations=[];
   listOfTypeOfCars=[];
+  travelorder=[];
  
 
 uniquenumber:string;
@@ -59,106 +61,119 @@ employee:Employee;
   }
 
 
-  
    onSubmit(){
-    let date = new Date(this.travelOrderFrm.value.endDate);
-    let currentDate = new Date(this.travelOrderFrm.value.startDate);
-    var ModifayDate=new Date(this.travelOrderFrm.value.startDate);
-   
-    let days = Math.floor((date.getTime() - currentDate.getTime()) / 1000 / 60 / 60 / 24);
-    console.log(days);
-
-    /*var id=this.travelOrderFrm.value.employeeId;
-    var testovaj="";
- 
-   this._employeeService.GetById(id).subscribe(e=>{
-     console.log(id);
-               this.employee=e;
-               this._travelOrderService.GetByEmployee(id).subscribe(travel=>{
-     
-                 
-             testovaj=e.uniqueNumber+"/"+travel.length.toString();
-            
-     
-        
+     let date = new Date(this.travelOrderFrm.value.endDate);
+     let currentDate = new Date(this.travelOrderFrm.value.startDate);
+     var ModifayDate = new Date(this.travelOrderFrm.value.startDate);
+     var id=this.travelOrderFrm.value.employeeId;
+     var travellength=0;
     
-            })
-          })*/
-    
-    for (let index = 0; index < days; index++) {
-        
 
-      if(ModifayDate<=date)
-      { 
-        var day =ModifayDate.getDay();
-        console.log(day);
-        var travelOrder;
-        if(day===1)
-        {
-      travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
-        this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-        this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
-        ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this. travelOrderFrm.value.locationMondayId,
-        this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarMondayId);
-        console.log(travelOrder);
-      }
-      if(day===2)
-      {
-         travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
-          this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-          this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
-          ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this. travelOrderFrm.value.locationTuesdayId,
-          this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarTuesdayId);
-        console.log(travelOrder);
-
-      }
-      if(day===3)
-      {
-         travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
-          this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-          this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
-          ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this. travelOrderFrm.value.locationWednesdayId,
-          this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarWednesdayId);
-        console.log(travelOrder);
-
-      }
-      if(day===4)
-      {
-         travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
-          this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-          this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
-          ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this. travelOrderFrm.value.locationThursdayId,
-          this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarThursdayId);
-        console.log(travelOrder);
-
-      }
-      if(day===5)
-      {
-         travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
-          this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-          this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
-          ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this. travelOrderFrm.value.locationFridayId,
-          this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarFridayId);
-      }
-      if(day>=1 && day<=5)
-      {
-        this._travelOrderService.Add(travelOrder).subscribe(data=>{
-       console.log(data);
-      var costoforde=new CostOfOrderUpsert(0,0,0,0,0,0,0,0,0,0,"other cost",0,0,data.id);
-       this._costOfOrderService.Add(costoforde).subscribe(cost=>{
-         console.log(cost);
-       })
-        })
-      }
-      
-       ModifayDate=new Date( ModifayDate.setDate(ModifayDate.getDate()+1));
-       console.log(ModifayDate);
-      }
+     var travelOrder;
+    if(this.travelOrderFrm.value.locationMondayId == ""){
+      console.log("volim sedinu")
     }
+    
+     var brojac=1;
+     this._travelOrderService.GetByEmployee(id).subscribe(travel => {
+
+     while (ModifayDate <= date) {
+       if (ModifayDate.getDay() != 0 && ModifayDate.getDay() != 6) {
+         switch (ModifayDate.getDay()) {
+           case 1:
+             if(this.travelOrderFrm.value.locationMondayId != ""){
+              travelOrder = new TravelOrderUpsert(0, "", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
+              this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString,
+              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationMondayId,
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarMondayId);
+             }
+             else{
+               travelOrder = null;
+             }
+          
+             break;
+           case 2:
+            if(this.travelOrderFrm.value.locationTuesdayId != ""){
+              travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
+              this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
+              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationTuesdayId,
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarTuesdayId);
+            }
+            else{
+              travelOrder = null;
+            }
+          
+             break;
+
+          case 3:
+            if(this.travelOrderFrm.value.locationWednesdayId != ""){
+              travelOrder=new TravelOrderUpsert(0," ", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
+              this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
+              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationWednesdayId,
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarWednesdayId);
+            }
+            else{
+              travelOrder = null
+            }
+            break;
+          case 4:
+            if(this.travelOrderFrm.value.locationThursdayId != ""){
+              travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
+              this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
+              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationThursdayId,
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarThursdayId);
+            }
+           
+            else{
+              travelOrder = null;
+            }
+            break;
+           default:
+            if(this.travelOrderFrm.value.locationFridayId != ""){
+              travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
+            this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
+            this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+            ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationFridayId,
+            this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarFridayId);
+            }
+            else{
+              travelOrder = null
+            }
+            
+             break;
+         }
+        
+
+           if (travellength == 0) {
+             travellength = travel.length;
+           }
+           if(travelOrder){
+            travelOrder.numberOfOrder = ((brojac++) + travellength) + "/" + ModifayDate.getFullYear()
+            console.log(travelOrder)
+            this._travelOrderService.Add(travelOrder).subscribe(data => {
+          
+              var costoforde=new CostOfOrderUpsert(0,0,0,0,0,0,0,0,0,0,"other cost",0,0,data.id);
+               this._costOfOrderService.Add(costoforde).subscribe(cost=>{
+                 console.log(cost);
  
+            })
+           })
+          }
+           
+
+          }
+          ModifayDate= new Date(ModifayDate.setDate(ModifayDate.getDate() + 1))
+        }
+      })
+
+  
 
 
-  this.router.navigate(['app/travel-order']);
+ // this.router.navigate(['app/travel-order']);
   }
 
   private initForm(){
