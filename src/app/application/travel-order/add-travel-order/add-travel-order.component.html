@@ -14,7 +14,8 @@
 <div class="form-group row">
     <label for="employeeId" class="col-sm-3 col-form-label">Zaposlenik</label>
     <div class="col-sm-9">
-      <select name="employeeId" #employeeId="ngModel"  class="form-control" ngModel>
+      <select name="employeeId" #employeeId="ngModel" [(ngModel)]="fromClientID"  class="custom-select mr-sm-4"ngModel>
+        <option [ngValue]="undefined">OOO</option>
         <option *ngFor="let item of listOfEmployees" [value]=item.id >               
             {{item.name}} {{item.surname}}
         </option>
@@ -54,12 +55,12 @@
       <input type="text" class="form-control" id="inputAdvancePayment" name="advancePayment" #advancePayment="ngModel" ngModel>
     </div>
   </div>
-  <p style="color:dimgray;">Ponedjeljak</p>
+  <p style="color:dimgray;font-weight: bold; text-align: center;">Ponedjeljak</p>
 
 <div class="form-group row">
     <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
     <div class="col-sm-9">
-      <select name="locationMondayId" #locationMondayId="ngModel"  class="form-control" ngModel>
+      <select name="locationMondayId" #locationMondayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
         <option *ngFor="let item of listOfLocations" [value]=item.id >               
             {{item.name}} 
         </option>
@@ -70,19 +71,19 @@
 <div class="form-group row">
     <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
     <div class="col-sm-9">
-      <select name="typeOfCarMondayId" #typeOfCarMondayId="ngModel"  class="form-control" ngModel>
+      <select class="custom-select mr-sm-4" name="typeOfCarMondayId" #typeOfCarMondayId="ngModel"   ngModel>
         <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
             {{item.name}} 
         </option>
     </select>
     </div>
   </div>
-  <p style="color:dimgray;">Utorak</p>
+  <p style="color:dimgray;font-weight: bold;">Utorak</p>
 
   <div class="form-group row">
       <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
       <div class="col-sm-9">
-        <select name="locationTuesdayId" #locationTuesdayId="ngModel"  class="form-control" ngModel>
+        <select name="locationTuesdayId" #locationTuesdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
           <option *ngFor="let item of listOfLocations" [value]=item.id >               
               {{item.name}} 
           </option>
@@ -93,7 +94,7 @@
   <div class="form-group row">
       <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
       <div class="col-sm-9">
-        <select name="typeOfCarTuesdayId" #typeOfCarTuesdayId="ngModel"  class="form-control" ngModel>
+        <select name="typeOfCarTuesdayId" #typeOfCarTuesdayId="ngModel" class="custom-select mr-sm-4"  ngModel>
           <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
               {{item.name}} 
           </option>
@@ -101,12 +102,12 @@
       </div>
     </div>
 
-    <p style="color:dimgray;">Srijeda</p>
+    <p style="color:dimgray;font-weight: bold;">Srijeda</p>
 
     <div class="form-group row">
         <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
         <div class="col-sm-9">
-          <select name="locationWednesdayId" #locationWednesdayId="ngModel"  class="form-control" ngModel>
+          <select name="locationWednesdayId" #locationWednesdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
             <option *ngFor="let item of listOfLocations" [value]=item.id >               
                 {{item.name}} 
             </option>
@@ -117,19 +118,20 @@
     <div class="form-group row">
         <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
         <div class="col-sm-9">
-          <select name="typeOfCarWednesdayId" #typeOfCarWednesdayId="ngModel"  class="form-control" ngModel>
+          <select name="typeOfCarWednesdayId" #typeOfCarWednesdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
             <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
                 {{item.name}} 
             </option>
         </select>
         </div>
       </div>
-      <p style="color:dimgray;">Četvrtak</p>
+      <p style="color:dimgray;font-weight: bold;">Četvrtak</p>
 
       <div class="form-group row">
           <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
           <div class="col-sm-9">
-            <select name="locationThursdayId" #locationThursdayId="ngModel"  class="form-control" ngModel>
+            <select name="locationThursdayId" #locationThursdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
+              <option value="Odaberi.." [selected]></option>
               <option *ngFor="let item of listOfLocations" [value]=item.id >               
                   {{item.name}} 
               </option>
@@ -140,19 +142,19 @@
       <div class="form-group row">
           <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
           <div class="col-sm-9">
-            <select name="typeOfCarThursdayId" #typeOfCarThursdayId="ngModel"  class="form-control" ngModel>
+            <select name="typeOfCarThursdayId" #typeOfCarThursdayId="ngModel"  class="custom-select mr-sm-4" ngModel>
               <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
                   {{item.name}} 
               </option>
           </select>
           </div>
         </div>
-        <p style="color:dimgray;">Petak</p>
+        <p style="color:dimgray;font-weight: bold;">Petak</p>
 
 <div class="form-group row">
     <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
     <div class="col-sm-9">
-      <select name="locationFridayId" #locationFridayId="ngModel"  class="form-control" ngModel>
+      <select name="locationFridayId" #locationFridayId="ngModel" class="custom-select mr-sm-4"  ngModel>
         <option *ngFor="let item of listOfLocations" [value]=item.id >               
             {{item.name}} 
         </option>
@@ -163,7 +165,7 @@
 <div class="form-group row">
     <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
     <div class="col-sm-9">
-      <select name="typeOfCarFridayId" #typeOfCarFridayId="ngModel"  class="form-control" ngModel>
+      <select name="typeOfCarFridayId" #typeOfCarFridayId="ngModel" class="custom-select mr-sm-4"  ngModel>
         <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
             {{item.name}} 
         </option>
