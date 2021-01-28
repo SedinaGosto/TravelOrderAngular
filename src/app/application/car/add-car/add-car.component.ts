@@ -36,6 +36,8 @@ export class AddCarComponent implements OnInit {
 
 
   onSubmit(){
+    if (!this.carFrm.valid) 
+    return;
     var car = new CarUpsert(0,this.carFrm.value.name, this.carFrm.value.model, this.carFrm.value.numberOfRegistration, this.private, this.official);
     
     if (this.editMode){

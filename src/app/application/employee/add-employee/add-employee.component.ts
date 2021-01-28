@@ -31,6 +31,8 @@ export class AddEmployeeComponent implements OnInit {
 
 
   onSubmit(){
+    if (!this.employeeFrm.valid) 
+      return;
     var employee = new EmployeeUpsert(0,this.employeeFrm.value.name, this.employeeFrm.value.surname, this. employeeFrm.value.typeOfWork,
                   this.employeeFrm.value.uniqueNumber, 0, this.employeeFrm.value.wage);
     

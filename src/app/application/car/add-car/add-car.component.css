@@ -39,3 +39,17 @@
     font-weight: bold;
     letter-spacing: 1px;
 }
+
+
+.alert-div {
+    position: relative;
+    top: -10px;
+    font-size: 14px;
+    color:red;
+}
+
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
