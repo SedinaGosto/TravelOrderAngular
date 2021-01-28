@@ -32,6 +32,8 @@ export class AddLocationComponent implements OnInit {
 
 
   onSubmit(){
+    if (!this.locationFrm.valid) 
+    return;
     var location = new LocationUpsert(0,this.locationFrm.value.name, this.locationFrm.value.numberOfKilometers);
     
     if (this.editMode){

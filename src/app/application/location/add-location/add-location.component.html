@@ -6,21 +6,32 @@
         <div class="form-group row">
             <label for="name" class="col-sm-3 col-form-label">Naziv</label>
             <div class="col-sm-9">
-              <input type="text"  name="name" class="form-control"  id="inputName"  #name="ngModel" ngModel>
+              <input type="text"  name="name" class="form-control" required id="inputName"  #name="ngModel" ngModel>
             </div>
           </div>
+          <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <span *ngIf="name.errors.required">
+                Naziv je obavezno polje.
+            </span>
+        </div>
+    
 
           <div class="form-group row">
             <label for="numberOfKilometers" class="col-sm-3 col-form-label">Broj kilometara</label>
             <div class="col-sm-9">
-              <input type="text"  name="numberOfKilometers" class="form-control"  id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel>
+              <input type="text"  name="numberOfKilometers" class="form-control" required  id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel>
             </div>
           </div>
+          <div class="alert-div" *ngIf="numberOfKilometers.invalid && (numberOfKilometers.dirty || numberOfKilometers.touched)">
+            <span *ngIf="numberOfKilometers.errors.required">
+                Broj kilometara je obavezno polje.
+            </span>
+        </div>
 
           <div class="form-group row">
     
             <div class="col-sm-12"> 
-              <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>
+              <button type="submit" id="submit" class="btn btn-outline-info"[disabled]="!locationForm.valid"><i class="fas fa-save"></i>  Sačuvaj</button>
             </div>
           </div>
     </form>
