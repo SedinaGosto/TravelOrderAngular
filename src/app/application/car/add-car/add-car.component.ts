@@ -22,6 +22,8 @@ export class AddCarComponent implements OnInit {
   official:boolean=true;
 
   _typeOfCar:string;
+  mode:boolean=true;
+   
   
   ngOnInit(): void {
 

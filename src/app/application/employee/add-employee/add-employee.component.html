@@ -7,21 +7,21 @@
 
 
     <div class="form-group row">
-        <label for="name" class="col-sm-3 col-form-label">Ime</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputName" name="name" required #name="ngModel" ngModel>
+       <!--<label for="name" class="col-sm-3 col-form-label">Ime</label>--> 
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="inputName" placeholder="Ime" name="name" required #name="ngModel" ngModel>
         </div>
       </div>
       <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
         <span *ngIf="name.errors.required">
-            Naziv je obavezno polje.
+            Ime je obavezno polje.
         </span>
     </div>
 
       <div class="form-group row">
-        <label for="surname" class="col-sm-3 col-form-label">Prezime</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputSurname" name="surname" required #surname="ngModel" ngModel>
+        <!--<label for="surname" class="col-sm-3 col-form-label">Prezime</label>-->
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="inputSurname" placeholder="Prezime" name="surname" required #surname="ngModel" ngModel>
         </div>
       </div>
       <div class="alert-div" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
@@ -31,9 +31,9 @@
     </div>
 
       <div class="form-group row">
-        <label for="typeOfWork" class="col-sm-3 col-form-label">Pozicija</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputTypeOfWork" name="typeOfWork" required #typeOfWork="ngModel" ngModel>
+       <!--<label for="typeOfWork" class="col-sm-3 col-form-label">Pozicija</label>--> 
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="inputTypeOfWork" placeholder="Pozicija" name="typeOfWork" required #typeOfWork="ngModel" ngModel>
         </div>
       </div>
       <div class="alert-div" *ngIf="typeOfWork.invalid && (typeOfWork.dirty || typeOfWork.touched)">
@@ -43,9 +43,9 @@
     </div>
 
       <div class="form-group row">
-        <label for="uniqueNumber" class="col-sm-3 col-form-label">Jedinstveni broj</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputUniqueNumber" name="uniqueNumber" required #uniqueNumber="ngModel" ngModel>
+      <!-- <label for="uniqueNumber" class="col-sm-3 col-form-label">Jedinstveni broj</label>--> 
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="inputUniqueNumber" name="uniqueNumber" placeholder="Jedinstveni broj" required #uniqueNumber="ngModel" ngModel>
         </div>
       </div>
       <div class="alert-div" *ngIf="uniqueNumber.invalid && (uniqueNumber.dirty || uniqueNumber.touched)">
@@ -55,9 +55,9 @@
     </div>
 
       <div class="form-group row">
-        <label for="wage" class="col-sm-3 col-form-label">Dnevnica</label>
-        <div class="col-sm-9">
-          <input type="text" class="form-control" id="inputWage" name="wage" required #wage="ngModel" ngModel>
+       <!-- <label for="wage" class="col-sm-3 col-form-label">Dnevnica</label>-->
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="inputWage" name="wage" placeholder="Dnevnica" required #wage="ngModel" ngModel>
         </div>
       </div>
       <div class="alert-div" *ngIf="wage.invalid && (wage.dirty || wage.touched)">

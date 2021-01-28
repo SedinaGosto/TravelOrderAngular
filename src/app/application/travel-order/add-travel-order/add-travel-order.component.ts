@@ -1,3 +1,4 @@
+import { getLocaleDateTimeFormat } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,13 +26,25 @@ export class AddTravelOrderComponent implements OnInit {
 
   editMode = false;
   fromClientID: number;
+  fromLocationMondayID: number;
+  fromLocationTuesdayID: number;
+  fromLocationWednesdayID: number;
+  fromLocationThursdayID: number;
+  fromLocationFridayID: number;
+  fromCarMondayID: number;
+  fromCarTuesdayID: number;
+  fromCarWednesdayID: number;
+  fromCarThursdayID: number;
+  fromCarFridayID: number;
   tavelOrderId:number;
+  current=Date.now();
  
   listOfEmployees=[];
   listOfLocations=[];
   listOfTypeOfCars=[];
   travelorder=[];
  
+
 
 uniquenumber:string;
 numberofOrder:string;
@@ -62,6 +75,9 @@ employee:Employee;
 
 
    onSubmit(){
+    if(!this.travelOrderFrm.valid) 
+    return;
+  
      let date = new Date(this.travelOrderFrm.value.endDate);
      let currentDate = new Date(this.travelOrderFrm.value.startDate);
      var ModifayDate = new Date(this.travelOrderFrm.value.startDate);
@@ -70,9 +86,7 @@ employee:Employee;
     
 
      var travelOrder;
-    if(this.travelOrderFrm.value.locationMondayId == ""){
-      console.log("volim sedinu")
-    }
+    
     
      var brojac=1;
      this._travelOrderService.GetByEmployee(id).subscribe(travel => {
@@ -81,7 +95,8 @@ employee:Employee;
        if (ModifayDate.getDay() != 0 && ModifayDate.getDay() != 6) {
          switch (ModifayDate.getDay()) {
            case 1:
-             if(this.travelOrderFrm.value.locationMondayId != ""){
+
+             if(this.travelOrderFrm.value.locationMondayId != "" && this.travelOrderFrm.value.locationMondayId != undefined){
               travelOrder = new TravelOrderUpsert(0, "", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString,
               this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
@@ -94,7 +109,7 @@ employee:Employee;
           
              break;
            case 2:
-            if(this.travelOrderFrm.value.locationTuesdayId != ""){
+            if(this.travelOrderFrm.value.locationTuesdayId != "" && this.travelOrderFrm.value.locationTuesdayId != undefined){
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
               this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
@@ -108,7 +123,7 @@ employee:Employee;
              break;
 
           case 3:
-            if(this.travelOrderFrm.value.locationWednesdayId != ""){
+            if(this.travelOrderFrm.value.locationWednesdayId != "" && this.travelOrderFrm.value.locationWednesdayId != undefined){
               travelOrder=new TravelOrderUpsert(0," ", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
               this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
@@ -120,7 +135,7 @@ employee:Employee;
             }
             break;
           case 4:
-            if(this.travelOrderFrm.value.locationThursdayId != ""){
+            if(this.travelOrderFrm.value.locationThursdayId != "" && this.travelOrderFrm.value.locationThursdayId != undefined){
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
               this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
@@ -133,7 +148,7 @@ employee:Employee;
             }
             break;
            default:
-            if(this.travelOrderFrm.value.locationFridayId != ""){
+            if(this.travelOrderFrm.value.locationFridayId != "" && this.travelOrderFrm.value.locationFridayId != undefined){
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
             this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
             this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,

@@ -4,18 +4,12 @@
 
 <form id="travelOrder-form" (ngSubmit)="onSubmit()" #travelOrderForm="ngForm">
 
-<!--<div class="form-group row">
-    <label for="numberOfOrder" class="col-sm-2 col-form-label">Broj naloga</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputNumberOfOrder"  name="numberOfOrder" #numberOfOrder="ngModel" ngModel>
-    </div>
-  </div>-->
 
 <div class="form-group row">
-    <label for="employeeId" class="col-sm-3 col-form-label">Zaposlenik</label>
-    <div class="col-sm-9">
-      <select name="employeeId" #employeeId="ngModel" [(ngModel)]="fromClientID"  class="custom-select mr-sm-4"ngModel>
-        <option [ngValue]="undefined">OOO</option>
+    <!--<label for="employeeId" class="col-sm-3 col-form-label">Zaposlenik</label>-->
+    <div class="col-sm-12">
+      <select name="employeeId" #employeeId="ngModel" [(ngModel)]="fromClientID" required class="custom-select mr-sm-4"ngModel>
+        <option [ngValue]="undefined">Odaberi zaposlenika</option>
         <option *ngFor="let item of listOfEmployees" [value]=item.id >               
             {{item.name}} {{item.surname}}
         </option>
@@ -23,44 +17,62 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="startDate" class="col-sm-3 col-form-label">Početak</label>
-    <div class="col-sm-9">
-      <input type="datetime-local" class="form-control" id="inputStartDate" name="startDate" #startDate="ngModel" ngModel>
+    <!--<label for="startDate" class="col-sm-3 col-form-label">Početak</label>-->
+    <div class="col-sm-12">
+      <input type="datetime-local" class="form-control" id="inputStartDate" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel>
     </div>
   </div>
 
 <div class="form-group row">
-    <label for="endDate" class="col-sm-3 col-form-label">Kraj</label>
-    <div class="col-sm-9">
-      <input type="datetime-local" class="form-control" id="inputEndDate" name="endDate" #endDate="ngModel" ngModel>
+    <!--<label for="endDate" class="col-sm-3 col-form-label">Kraj</label>-->
+    <div class="col-sm-12">
+      <input type="datetime-local" class="form-control" id="inputEndDate"  placeholder="Kraj" name="endDate" #endDate="ngModel" ngModel>
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="reasonOfTravel" class="col-sm-3 col-form-label">Razlog</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputReasonOfTravel" name="reasonOfTravel" #reasonOfTravel="ngModel" ngModel>
+   <!-- <label for="reasonOfTravel" class="col-sm-3 col-form-label">Razlog</label>-->
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="inputReasonOfTravel" required placeholder="Razlog" name="reasonOfTravel" #reasonOfTravel="ngModel" ngModel>
     </div>
   </div>
+  <div class="alert-div" *ngIf="reasonOfTravel.invalid && (reasonOfTravel.dirty || reasonOfTravel.touched)">
+    <span *ngIf="reasonOfTravel.errors.required">
+                        Razlog je obavezno polje.
+    </span>
+</div>    
 
 <div class="form-group row">
-    <label for="descriptionOfTravel" class="col-sm-3 col-form-label">Opis</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputDescriptionOfTravel" name="descriptionOfTravel" #descriptionOfTravel="ngModel" ngModel>
+    <!--<label for="descriptionOfTravel" class="col-sm-3 col-form-label">Opis</label>-->
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="inputDescriptionOfTravel" name="descriptionOfTravel" required placeholder="Opis" #descriptionOfTravel="ngModel" ngModel>
     </div>
   </div>
+  <div class="alert-div" *ngIf="descriptionOfTravel.invalid && (descriptionOfTravel.dirty || descriptionOfTravel.touched)">
+    <span *ngIf="descriptionOfTravel.errors.required">
+                        Opis je obavezno polje.
+    </span>
+</div>
+
   <div class="form-group row">
-    <label for="advancePayment" class="col-sm-3 col-form-label">Akontacija</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputAdvancePayment" name="advancePayment" #advancePayment="ngModel" ngModel>
+    <!--<label for="advancePayment" class="col-sm-3 col-form-label">Akontacija</label>-->
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="inputAdvancePayment" required name="advancePayment" placeholder="Akontacija" #advancePayment="ngModel" ngModel>
     </div>
   </div>
+  <div class="alert-div" *ngIf="advancePayment.invalid && (advancePayment.dirty || advancePayment.touched)">
+    <span *ngIf="advancePayment.errors.required">
+                        Akontacija je obavezno polje.
+    </span>
+</div>
+
   <p style="color:dimgray;font-weight: bold; text-align: center;">Ponedjeljak</p>
 
 <div class="form-group row">
-    <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
-    <div class="col-sm-9">
-      <select name="locationMondayId" #locationMondayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
+    <!--<label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>-->
+    <div class="col-sm-12">
+      <select name="locationMondayId" #locationMondayId="ngModel" [(ngModel)]="fromLocationMondayID"   class="custom-select mr-sm-4"  ngModel>
+        <option [ngValue]="undefined">Odaberi lokaciju</option>
         <option *ngFor="let item of listOfLocations" [value]=item.id >               
             {{item.name}} 
         </option>
@@ -69,9 +81,10 @@
   </div>
 
 <div class="form-group row">
-    <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
-    <div class="col-sm-9">
-      <select class="custom-select mr-sm-4" name="typeOfCarMondayId" #typeOfCarMondayId="ngModel"   ngModel>
+    <!--<label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>-->
+    <div class="col-sm-12">
+      <select class="custom-select mr-sm-4" name="typeOfCarMondayId" #typeOfCarMondayId="ngModel" [(ngModel)]="fromCarMondayID"   ngModel>
+        <option [ngValue]="undefined">Odaberi vozilo</option>
         <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
             {{item.name}} 
         </option>
@@ -81,9 +94,11 @@
   <p style="color:dimgray;font-weight: bold;">Utorak</p>
 
   <div class="form-group row">
-      <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
-      <div class="col-sm-9">
-        <select name="locationTuesdayId" #locationTuesdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
+      <!--<label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>-->
+      <div class="col-sm-12">
+        <select name="locationTuesdayId" #locationTuesdayId="ngModel" [(ngModel)]="fromLocationTuesdayID"  class="custom-select mr-sm-4"  ngModel>
+        <option [ngValue]="undefined">Odaberi lokaciju</option>
+          
           <option *ngFor="let item of listOfLocations" [value]=item.id >               
               {{item.name}} 
           </option>
@@ -92,9 +107,11 @@
     </div>
   
   <div class="form-group row">
-      <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
-      <div class="col-sm-9">
-        <select name="typeOfCarTuesdayId" #typeOfCarTuesdayId="ngModel" class="custom-select mr-sm-4"  ngModel>
+      <!--<label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>-->
+      <div class="col-sm-12">
+        <select name="typeOfCarTuesdayId" #typeOfCarTuesdayId="ngModel" [(ngModel)]="fromCarTuesdayID" class="custom-select mr-sm-4"  ngModel>
+        <option [ngValue]="undefined">Odaberi vozilo</option>
+          
           <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
               {{item.name}} 
           </option>
@@ -105,9 +122,11 @@
     <p style="color:dimgray;font-weight: bold;">Srijeda</p>
 
     <div class="form-group row">
-        <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
-        <div class="col-sm-9">
-          <select name="locationWednesdayId" #locationWednesdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
+        <!--<label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>-->
+        <div class="col-sm-12">
+          <select name="locationWednesdayId" #locationWednesdayId="ngModel"  [(ngModel)]="fromLocationWednesdayID"   class="custom-select mr-sm-4"  ngModel>
+        <option [ngValue]="undefined">Odaberi lokaciju</option>
+           
             <option *ngFor="let item of listOfLocations" [value]=item.id >               
                 {{item.name}} 
             </option>
@@ -116,9 +135,11 @@
       </div>
     
     <div class="form-group row">
-        <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
-        <div class="col-sm-9">
-          <select name="typeOfCarWednesdayId" #typeOfCarWednesdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
+        <!--<label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>-->
+        <div class="col-sm-12">
+          <select name="typeOfCarWednesdayId" #typeOfCarWednesdayId="ngModel"  [(ngModel)]="fromCarWednesdayID"  class="custom-select mr-sm-4"  ngModel>
+        <option [ngValue]="undefined">Odaberi vozilo</option>
+            
             <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
                 {{item.name}} 
             </option>
@@ -128,10 +149,11 @@
       <p style="color:dimgray;font-weight: bold;">Četvrtak</p>
 
       <div class="form-group row">
-          <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
-          <div class="col-sm-9">
-            <select name="locationThursdayId" #locationThursdayId="ngModel"  class="custom-select mr-sm-4"  ngModel>
-              <option value="Odaberi.." [selected]></option>
+          <!--<label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>-->
+          <div class="col-sm-12">
+            <select name="locationThursdayId" #locationThursdayId="ngModel"  [(ngModel)]="fromLocationThursdayID"  class="custom-select mr-sm-4"  ngModel>
+              <option [ngValue]="undefined">Odaberi lokaciju</option>
+
               <option *ngFor="let item of listOfLocations" [value]=item.id >               
                   {{item.name}} 
               </option>
@@ -140,9 +162,11 @@
         </div>
       
       <div class="form-group row">
-          <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
-          <div class="col-sm-9">
-            <select name="typeOfCarThursdayId" #typeOfCarThursdayId="ngModel"  class="custom-select mr-sm-4" ngModel>
+          <!--<label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>-->
+          <div class="col-sm-12">
+            <select name="typeOfCarThursdayId" #typeOfCarThursdayId="ngModel"  [(ngModel)]="fromCarThursdayID"  class="custom-select mr-sm-4" ngModel>
+        <option [ngValue]="undefined">Odaberi vozilo</option>
+            
               <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
                   {{item.name}} 
               </option>
@@ -152,9 +176,11 @@
         <p style="color:dimgray;font-weight: bold;">Petak</p>
 
 <div class="form-group row">
-    <label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>
-    <div class="col-sm-9">
-      <select name="locationFridayId" #locationFridayId="ngModel" class="custom-select mr-sm-4"  ngModel>
+    <!--label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>-->
+    <div class="col-sm-12">
+      <select name="locationFridayId" #locationFridayId="ngModel" class="custom-select mr-sm-4"   [(ngModel)]="fromLocationFridayID"   ngModel>
+        <option [ngValue]="undefined">Odaberi lokaciju</option>
+        
         <option *ngFor="let item of listOfLocations" [value]=item.id >               
             {{item.name}} 
         </option>
@@ -163,9 +189,11 @@
   </div>
 
 <div class="form-group row">
-    <label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>
-    <div class="col-sm-9">
-      <select name="typeOfCarFridayId" #typeOfCarFridayId="ngModel" class="custom-select mr-sm-4"  ngModel>
+    <!--<label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>-->
+    <div class="col-sm-12">
+      <select name="typeOfCarFridayId" #typeOfCarFridayId="ngModel"  [(ngModel)]="fromCarFridayID" class="custom-select mr-sm-4"  ngModel>
+        <option [ngValue]="undefined">Odaberi vozilo</option>
+        
         <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
             {{item.name}} 
         </option>
@@ -173,42 +201,9 @@
     </div>
   </div>
 
-
-<!-- <div class="form-group row">
-    <label for="daysOfTravel" class="col-sm-3 col-form-label">Predviđen broj dana</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputDaysOfTravel" name="daysOfTravel" #daysOfTravel="ngModel" ngModel>
-    </div>
-  </div>-->
-
-
-
-<!--<div class="form-group row">
-    <label for="totalHours" class="col-sm-2 col-form-label">Broj sati</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputTotalHours" name="totalHours" #totalHours="ngModel" ngModel>
-    </div>
-  </div>-->
-
-<!--<div class="form-group row">
-    <label for="totalDaysOfTravel" class="col-sm-2 col-form-label">Ukupan broj dana</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputTotalDaysOfTravel" name="totalDaysOfTravel" #totalDaysOfTravel="ngModel" ngModel>
-    </div>
-  </div>-->
-
-
-<!--
-<div class="form-group row">
-    <label for="restOfAdvancePayment" class="col-sm-3 col-form-label">Ostatak akontacije</label>
-    <div class="col-sm-9">
-      <input type="text" class="form-control" id="inputRestOfAdvancePayment" name="restOfAdvancePayment" #restOfAdvancePayment="ngModel" ngModel>
-    </div>
-  </div>
---> 
   <div class="form-group row">
         <div class="col-sm-12">
-        <button type="submit" id="submit" class="btn btn-outline-info"><i class="fas fa-save"></i>  Sačuvaj</button>
+        <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!travelOrderForm.valid"><i class="fas fa-save" ></i>  Sačuvaj</button>
     </div>
    </div>
 

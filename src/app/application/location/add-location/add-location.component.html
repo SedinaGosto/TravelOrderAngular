@@ -4,9 +4,9 @@
 
     <form id="location-form" (ngSubmit)="onSubmit()" #locationForm="ngForm">
         <div class="form-group row">
-            <label for="name" class="col-sm-3 col-form-label">Naziv</label>
-            <div class="col-sm-9">
-              <input type="text"  name="name" class="form-control" required id="inputName"  #name="ngModel" ngModel>
+          <!--  <label for="name" class="col-sm-3 col-form-label">Naziv</label>-->
+            <div class="col-sm-12">
+              <input type="text"  name="name" class="form-control" placeholder="Naziv" required id="inputName"  #name="ngModel" ngModel>
             </div>
           </div>
           <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
@@ -17,9 +17,9 @@
     
 
           <div class="form-group row">
-            <label for="numberOfKilometers" class="col-sm-3 col-form-label">Broj kilometara</label>
-            <div class="col-sm-9">
-              <input type="text"  name="numberOfKilometers" class="form-control" required  id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel>
+          <!--  <label for="numberOfKilometers" class="col-sm-3 col-form-label">Broj kilometara</label>-->
+            <div class="col-sm-12">
+              <input type="text"  name="numberOfKilometers" class="form-control" required placeholder="Broj kilometara" id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel>
             </div>
           </div>
           <div class="alert-div" *ngIf="numberOfKilometers.invalid && (numberOfKilometers.dirty || numberOfKilometers.touched)">
