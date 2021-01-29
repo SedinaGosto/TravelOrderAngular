@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 
 
 import { CarService } from 'src/app/api-services/car.service';
+import { CostOfOrderService } from 'src/app/api-services/cost-of-order.service';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
@@ -19,16 +20,17 @@ declare  var jQuery:  any;
 })
 export class TestComponent implements OnInit {
 
-  constructor( private _travelOrderService: TravelOrderService, private _employeeService: EmployeeService, 
-    private _locationService: LocationService, private _carService: CarService, private router: Router) { }
+  constructor( private _travelOrderService: TravelOrderService, private _employeeService: EmployeeService, private _costOfOrderService: CostOfOrderService,
+    private _locationService: LocationService, private _carService: CarService, private router: Router,private activatedroute:ActivatedRoute) { }
 
 TravelOrder=[];
 counter: number
   length: number
   pdf: jsPDF
+  startDate:Date
+  endDate:Date
 
-
-
+  CostOfOrder=[];
 
 ngOnInit(): void {
 this.GetAll();
@@ -36,9 +38,14 @@ this.GetAll();
 }
 
 GetAll(){
-this._travelOrderService.GetAll().subscribe(data=>{
+  this.startDate = this.activatedroute.snapshot.params["startDate"];
+  this.endDate = this.activatedroute.snapshot.params["endDate"];
+
+
+
+this._travelOrderService.GetByDate(this.startDate,this.endDate).subscribe(data=>{
 console.log(data);
-for (let i = 0; i < data.length; i++) {
+for (let i = 0; i < data.length; i++) {  
 this.TravelOrder.push(data[i])
 this._locationService.GetById(this.TravelOrder[i].locationId).subscribe(l=>{
 this.TravelOrder[i].locationName=l.name 
@@ -53,10 +60,11 @@ this.TravelOrder[i].carName=t.name;
 this.TravelOrder[i].privateCar=t.privateCar;
 this.TravelOrder[i].officialCar=t.officialCar;
 
-  
-
 })
+
+
 }
+
 
 });
 }

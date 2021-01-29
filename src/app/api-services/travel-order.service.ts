@@ -28,6 +28,16 @@ export class TravelOrderService {
     return this.http.get<TravelOrder[]>(`${_url}?EmployeeId=${id}`);
   }
 
+  GetByDate(startDate:Date, endDate:Date):Observable<TravelOrder[]>{
+    return this.http.get<TravelOrder[]>(`${_url}?startDate=${startDate}&endDate=${endDate}`);
+ 
+  }
+
+  GetByEmployeeAndDate(id:number,startDate:Date, endDate:Date):Observable<TravelOrder[]>{
+    return this.http.get<TravelOrder[]>(`${_url}?EmployeeId=${id}&startDate=${startDate}&endDate=${endDate}`);
+  }
+
+
   Add(travelOrder: TravelOrderUpsert): Observable<TravelOrder> {
     return this.http.post<TravelOrder>(_url, travelOrder);
   }

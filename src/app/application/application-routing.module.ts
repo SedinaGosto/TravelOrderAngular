@@ -17,7 +17,7 @@ import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {
-   path: 'PDF', component: TestComponent}, 
+   path: 'PDF/:startDate/:endDate', component: TestComponent}, 
   { path: 'app', component: ApplicationComponent, canActivate: [AuthGuard], children: [
   { path: '', redirectTo: '/app/employee', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -37,6 +37,7 @@ const routes: Routes = [
   { path: 'cost-of-order/add-cost-of-order', component: AddCostOfOrderComponent },
   { path: 'cost-of-order/add-cost-of-order/:id', component: AddCostOfOrderComponent },
   { path: 'test', component: TestComponent },
+
 
 ]}]
 @NgModule({

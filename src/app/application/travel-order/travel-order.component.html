@@ -1,13 +1,21 @@
   
-  <div class="input-group" id="searchLocation">
-    <input type="text" class="form-control" placeholder="Pretraga po lokaciji..."><!-- [(ngModel)]="name"-->
-    <div class="input-group-append">
-      <button class="btn btn-secondary" type="button"><!--dodati click search-->
-        <i class="fa fa-search"></i>
+  <div class="input-group" id="searchStartDate" >
+    <input type="text" class="form-control" placeholder="Datum od..." [(ngModel)]="startDate"
+          onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required >
+         
+    <input type="text" class="form-control" placeholder="Datum do..." [(ngModel)]="endDate"
+          onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required style="margin-left:3%">
+       
+
+    <div class="input-group-append" style="margin-left:6%">
+      <button class="btn btn-primary" type="button" [routerLink]="['/PDF',startDate,endDate]" [disabled]="startDate==undefined || endDate==undefined ||startDate>endDate " >
+        <i class="fas fa-file-pdf"></i>
       </button>
     </div>
   </div>
-  <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>
+ 
+<br>
+  <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novi nalog</button>
 
   <table class="table" > 
   <thead>
@@ -33,7 +41,7 @@
           <td>{{item.endDate | date}}</td>  
           <td> <button type="button" class="btn btn-outline-primary" routerLink="add-travel-order/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
           <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button>
-          <button type="button" class="btn btn-outline-success" routerLink="" style="margin-left: 2%;"><i class="fas fa-euro-sign"></i></button>
+          <button type="button" class="btn btn-outline-success" routerLink="/app/cost-of-order/add-cost-of-order/{{item.id}}" style="margin-left: 2%;"><i class="fas fa-euro-sign"></i></button>
           </td>      
       </tr>
   </tbody> 

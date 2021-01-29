@@ -40,20 +40,22 @@ this.initForm();
 
 onSubmit(){
 var costOfOrder=new CostOfOrderUpsert(0,this.costOfOrderFrm.value.totalNumbersOfWages, this.costOfOrderFrm.value.priceOfWage, this.costOfOrderFrm.value.totalNumbersOfWagesDecimalBam,
-                  this.costOfOrderFrm.value.salaryPerNight, this.costOfOrderFrm.value.priceOfFuel, this.costOfOrderFrm.value.totalCost, 
-                  this.costOfOrderFrm.value.numberOfKilometers, this.costOfOrderFrm.value.totalFuelKilometers, this.costOfOrderFrm.value.totalFuelKilometersDecimalBam,
+                  this.costOfOrderFrm.value.salaryPerNight, 0, this.costOfOrderFrm.value.totalCost, 
+                  this.costOfOrderFrm.value.numberOfKilometers, 0, this.costOfOrderFrm.value.totalFuelKilometersDecimalBam,
                   this.costOfOrderFrm.value.otherCostString, this.costOfOrderFrm.value.otherCostDecimal, this. costOfOrderFrm.value.totalCostFinish,
                   this.costOfOrderFrm.value.travelOrderId);
 
 if (this.editMode){
-  this._costOfOrderService.Update(this.costOfOrderId, costOfOrder).subscribe(data=>{
-    this.router.navigate(['app/cost-of-order']);
+  console.log(costOfOrder);
+  this._costOfOrderService.Update(this.costOfOrderFrm.value.id, costOfOrder).subscribe(data=>{
+    
+    this.router.navigate(['app/travel-order']);
   })   
 } 
 
 else{ 
   this._costOfOrderService.Add(costOfOrder).subscribe(data=>{
-    this.router.navigate(['app/cost-of-order']);
+    this.router.navigate(['app/travel-order']);
   })
 }
 
@@ -61,8 +63,34 @@ else{
 
 private initForm(){
   this.costOfOrderFrm=new NgForm([],[]);
+  this._costOfOrderService.GetByTravelOrderId(this.costOfOrderId).subscribe(costTravel=>{
+      costTravel.forEach(element => {
+        this._costOfOrderService.GetById(element.id).subscribe(cost=>{
+            this.costOfOrderFrm.controls['totalNumbersOfWages'].setValue(cost.totalNumbersOfWages),
+            this.costOfOrderFrm.controls['priceOfWage'].setValue(cost.priceOfWage),
+            this.costOfOrderFrm.controls['totalNumbersOfWagesDecimalBam'].setValue(cost.totalNumbersOfWagesDecimalBam),
+            this.costOfOrderFrm.controls['salaryPerNight'].setValue(cost.salaryPerNight),
+            //this.costOfOrderFrm.controls['priceOfFuel'].setValue(cost.priceOfFuel),
+             this.costOfOrderFrm.controls['totalCost'].setValue(cost.totalCost);
+            this.costOfOrderFrm.controls['numberOfKilometers'].setValue(cost.numberOfKilometers);
+            // this.costOfOrderFrm.controls['totalFuelKilometers'].setValue(o.totalFuelKilometers);
+             this.costOfOrderFrm.controls['totalFuelKilometersDecimalBam'].setValue(cost.totalFuelKilometersDecimalBam);
+             this.costOfOrderFrm.controls['otherCostString'].setValue(cost.otherCostString);
+             this.costOfOrderFrm.controls['otherCostDecimal'].setValue(cost.otherCostDecimal);
+             this.costOfOrderFrm.controls['totalCostFinish'].setValue(cost.totalCostFinish);
+             this.costOfOrderFrm.controls['travelOrderId'].setValue(cost.travelOrderId);
+             this.costOfOrderFrm.controls['id'].setValue(cost.id);
+ 
+        })
+      });
+         
+  })
+  
+  /*this.costOfOrderFrm=new NgForm([],[]);
   this._costOfOrderService.GetById(this.costOfOrderId).subscribe(o=>{
     console.log(o);
+
+   
 
    // this.costOfOrderFrm.controls['totalNumbersOfWages'].setValue(o.totalNumbersOfWages),
     this.costOfOrderFrm.controls['priceOfWage'].setValue(o.priceOfWage),
@@ -78,7 +106,7 @@ private initForm(){
    // this.costOfOrderFrm.controls['totalCostFinish'].setValue(o.totalCostFinish);
    // this.costOfOrderFrm.controls['travelOrderId'].setValue(o.travelOrderId);
 
-});
+});*/
 
 }
 

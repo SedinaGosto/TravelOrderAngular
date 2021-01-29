@@ -43,6 +43,7 @@ export class AddTravelOrderComponent implements OnInit {
   listOfLocations=[];
   listOfTypeOfCars=[];
   travelorder=[];
+  checkEmployee=false;
  
 
 
@@ -171,10 +172,10 @@ employee:Employee;
             console.log(travelOrder)
             this._travelOrderService.Add(travelOrder).subscribe(data => {
           
-              var costoforde=new CostOfOrderUpsert(0,0,0,0,0,0,0,0,0,0,"other cost",0,0,data.id);
+              var costoforde=new CostOfOrderUpsert(0,0,0,0,0,0,0,0,0,0,"",0,0,data.id);
                this._costOfOrderService.Add(costoforde).subscribe(cost=>{
                  console.log(cost);
- 
+                 this.router.navigate(['app/travel-order']);
             })
            })
           }
@@ -215,5 +216,25 @@ employee:Employee;
     
   }
 
+
+
+  CheckEmployee(){
+    
+    if(this.travelOrderFrm.value.employeeId!=undefined && this.travelOrderFrm.value.startDate!="" && this.travelOrderFrm.value.endDate!="")
+    {
+ 
+    this._travelOrderService.GetByEmployeeAndDate(this.travelOrderFrm.value.employeeId,this.travelOrderFrm.value.startDate,this.travelOrderFrm.value.endDate).subscribe(data=>{
+
+      if(data.length>0)
+      {
+        this.checkEmployee=true;
+      }
+      else{
+        this.checkEmployee=false;
+
+      }
+    }) 
+  }
+  }
 
 }

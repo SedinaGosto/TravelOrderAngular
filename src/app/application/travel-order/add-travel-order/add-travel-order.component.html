@@ -1,3 +1,4 @@
+
 <div class="okvir">
 <h2 class="form-title" style="padding: 5%; " *ngIf = "!editMode">Dodaj novi nalog</h2>
 <h2 class="form-title" style="padding: 5%; " *ngIf = "editMode">Uredi nalog</h2>
@@ -8,7 +9,7 @@
 <div class="form-group row">
     <!--<label for="employeeId" class="col-sm-3 col-form-label">Zaposlenik</label>-->
     <div class="col-sm-12">
-      <select name="employeeId" #employeeId="ngModel" [(ngModel)]="fromClientID" required class="custom-select mr-sm-4"ngModel>
+      <select name="employeeId" #employeeId="ngModel" [(ngModel)]="fromClientID" required class="custom-select mr-sm-4"ngModel (change)="CheckEmployee()" >
         <option [ngValue]="undefined">Odaberi zaposlenika</option>
         <option *ngFor="let item of listOfEmployees" [value]=item.id >               
             {{item.name}} {{item.surname}}
@@ -19,16 +20,34 @@
   <div class="form-group row">
     <!--<label for="startDate" class="col-sm-3 col-form-label">Početak</label>-->
     <div class="col-sm-12">
-      <input type="datetime-local" class="form-control" id="inputStartDate" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel>
+      <input type="text" class="form-control" id="inputStartDate"
+       onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel>
     </div>
   </div>
+  <div class="alert-div" *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)">
+    <span *ngIf="startDate.errors.required">
+                        Početak je obavezno polje.
+    </span>
+</div> 
 
 <div class="form-group row">
     <!--<label for="endDate" class="col-sm-3 col-form-label">Kraj</label>-->
     <div class="col-sm-12">
-      <input type="datetime-local" class="form-control" id="inputEndDate"  placeholder="Kraj" name="endDate" #endDate="ngModel" ngModel>
+      <input type="text" class="form-control" id="inputEndDate" (change)="CheckEmployee()" 
+      onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Kraj" name="endDate" #endDate="ngModel" ngModel>
+                  
     </div>
   </div>
+  <div class="alert-div" *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)">
+    <span *ngIf="endDate.errors.required">
+                        Kraj je obavezno polje.
+    </span>
+</div>
+ <div class="alert-div" *ngIf="checkEmployee">
+    <span >
+          Zaposlenik već ima angažman u tom periodu.
+    </span>
+</div>
 
   <div class="form-group row">
    <!-- <label for="reasonOfTravel" class="col-sm-3 col-form-label">Razlog</label>-->

@@ -20,6 +20,9 @@ export class TravelOrderComponent implements OnInit {
 
   TravelOrder=[];
 
+  startDate:Date;
+  endDate:Date;
+
   ngOnInit(): void {
     this.GetAll();
   }
@@ -42,5 +45,11 @@ export class TravelOrderComponent implements OnInit {
 
     });
     }
+
+    redirect(){
+      this.router.navigate(['/PDF',{startDate:this.startDate, endDate:this.endDate}]);
+    }
+ 
+    
 
 }

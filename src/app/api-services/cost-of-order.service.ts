@@ -24,6 +24,10 @@ export class CostOfOrderService {
     return this.http.get<CostOfOrder>(url);
   }
 
+  GetByTravelOrderId(travelOrderId:number):Observable<CostOfOrder[]>{
+    return this.http.get<CostOfOrder[]>(`${_url}?TravelOrderId=${travelOrderId}`);
+  }
+
   Add(costOfOrder: CostOfOrderUpsert): Observable<CostOfOrder> {
     return this.http.post<CostOfOrder>(_url, costOfOrder);
   }

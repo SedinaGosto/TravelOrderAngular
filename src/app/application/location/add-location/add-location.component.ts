@@ -35,7 +35,7 @@ export class AddLocationComponent implements OnInit {
     if (!this.locationFrm.valid) 
     return;
     var location = new LocationUpsert(0,this.locationFrm.value.name, this.locationFrm.value.numberOfKilometers);
-    
+    console.log(location)
     if (this.editMode){
       this._locationService.Update(this.locationId, location).subscribe(data=>{
         this.router.navigate(['app/location']);

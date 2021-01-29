@@ -21,6 +21,20 @@ export class TravelOrder {
     carName: string;
     privateCar:boolean;
     officialCar:boolean;
+
+    totalNumbersOfWages:number;
+    priceOfWage:number;
+    totalNumbersOfWagesDecimalBam:number;
+    salaryPerNight: number;
+    priceOfFuel: number;
+    totalCost: number;
+    numberOfKilometers: number;
+    totalFuelKilometers: number;
+    totalFuelKilometersDecimalBam: number;
+    otherCostString: string;
+    otherCostDecimal: number;
+    totalCostFinish: number;
+
   
 }
 
