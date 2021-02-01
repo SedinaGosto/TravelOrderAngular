@@ -4,8 +4,7 @@
 
 <form id="car-form" (ngSubmit)="onSubmit()" #carForm="ngForm">
     
-    <div class="form-group row">
-        <!--<label for="name" class="col-sm-3 col-form-label">Naziv</label>-->
+   <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" id="inputName" name="name" class="form-control" placeholder="Naziv" required #name="ngModel" ngModel>
         </div>
@@ -15,11 +14,34 @@
             Naziv je obavezno polje.
         </span>
     </div>
+--> 
+<div class="col-auto">
+  <div class="input-group mb-2">
+    <div class="input-group-prepend">
+      <div class="input-group-text inputLabelStyle" >Naziv:</div>
+    </div>
+    <input type="text" name="name" placeholder="Naziv" required id="inputName"  #name="ngModel" ngModel class="form-control inputStyle" >
+  </div>
+</div>
+<div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
+  <span *ngIf="name.errors.required">
+      Naziv je obavezno polje.
+  </span>
+</div>
 
-      <div class="form-group row">
-        <!--<label for="model" class="col-sm-3 col-form-label">Model</label>-->
+
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" id="inputModel" name="model" class="form-control" placeholder="Model" required #model="ngModel" ngModel>
+        </div>
+      </div>-->
+
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" >Model:</div>
+          </div>
+          <input type="text" name="model" placeholder="Model" required id="inputModel"  #model="ngModel" ngModel class="form-control inputStyle" >
         </div>
       </div>
       <div class="alert-div" *ngIf="model.invalid && (model.dirty || model.touched)">
@@ -28,10 +50,17 @@
         </span>
     </div>
 
-      <div class="form-group row">
-        <!--<label for="numberOfRegistration" class="col-sm-3 col-form-label">Broj registracije</label>-->
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" id="inputNumberOfRegistration" name="numberOfRegistration" placeholder="Broj registracije" class="form-control" required #numberOfRegistration="ngModel" ngModel>
+        </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" >Broj registracije:</div>
+          </div>
+          <input type="text" name="numberOfRegistration" placeholder="Broj registracije" required id="inputNumberOfRegistration"  #numberOfRegistration="ngModel" ngModel class="form-control inputStyle" >
         </div>
       </div>
       <div class="alert-div" *ngIf="numberOfRegistration.invalid && (numberOfRegistration.dirty || numberOfRegistration.touched)">
@@ -40,7 +69,7 @@
         </span>
     </div>
 
-        <div class=" form-group row"style="color:gray"> 
+        <!--<div class=" form-group row" style="color:gray"> 
           <legend class="col-form-label col-sm-7" >Tip vozila</legend>
           <div class="col-sm-5  ">
             <div class="form-check form-check-inline">
@@ -54,7 +83,27 @@
             </div>
            
         </div>
+        </div>-->
+
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend " >
+              <div class="input-group-text inputLabelStyle" style="border:transparent" >Tip vozila:</div>
+            </div>
+         
+            <div class="form-check form-check-inline ">
+              <input class="form-check-input inline "  type="radio" id="privateCar" name="_typeOfCar"  value="privateCar"  #_typeOfCar="ngModel" ngModel (click)="onClick('privatno')">
+              <label class="form-check-label" for="privateCar">Privatno</label><br>
+             
+          </div>
+          <div class="form-check form-check-inline ">
+              <input class="form-check-input inline "  type="radio" id="officialCar" [value]="true" [(ngModel)]="mode" name="_typeOfCar" value="officialCar"  #_typeOfCar="ngModel" ngModel  (click)="onClick('sluzbeno')">           
+                   <label class="form-check-label" for="officialCar">Službeno</label><br>
+          </div>
+      
+          </div>
         </div>
+
       <div class="form-group row">
         <div class="col-sm-12">  
         <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!carForm.valid"><i class="fas fa-save"></i>  Sačuvaj</button>
