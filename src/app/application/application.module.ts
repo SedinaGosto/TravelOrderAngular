@@ -24,6 +24,7 @@ import { CarComponent } from './car/car.component';
 import { CarService } from '../api-services/car.service';
 import { AddCarComponent } from './car/add-car/add-car.component';
 import { TestComponent } from './test/test.component';
+import { UpdateTravelOrderComponent } from './travel-order/update-travel-order/update-travel-order.component';
 registerLocaleData(hr);
 
 
@@ -42,6 +43,7 @@ registerLocaleData(hr);
     CostOfOrderComponent,
     AddCostOfOrderComponent,
     TestComponent,
+    UpdateTravelOrderComponent,
   ],
   imports: [
     CommonModule, 
