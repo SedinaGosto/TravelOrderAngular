@@ -1,5 +1,6 @@
 
     <div   *ngFor="let item of TravelOrder" >
+
         <div >
         <br><br>
     <div class="name">
@@ -33,7 +34,7 @@
         
     </div><br>
     <div class="footer">
-        <p>__________________________________________________<span style="margin-left:7%; margin-right: 7%; font-weight: bold;">M.P</span>_______________________________________________</p>
+        <p>_________________________________________________<span style="margin-left:6%; margin-right: 6%; font-weight: bold;">M.P</span>______________________________________________</p>
         <p class="footersubname" >(Paraf šefa posl.org.jed)<span style="margin-left:360px;">(Potpis direktora)</span></p>
     </div>
     <br><br>
@@ -43,24 +44,24 @@
               <th colspan="2">POTVRDA BORAVKA</th>
             </tr>
             <tr>
-              <td class="secondRow" style="height:5px">Dan dolaska i odlaska</td>
-              <td class="secondRow" style="height:5px">Štambilj i potpis poslovne veze</td>
+              <td class="secondRow" style="height:5px; text-align: center;">Dan dolaska i odlaska</td>
+              <td class="secondRow" style="height:5px; text-align: center;">Štambilj i potpis poslovne veze</td>
             </tr>
             <tr >
               <td class="thirdRow" style="width:50%">
-                  <p>Osoba  _______________________________________________________</p>
-                  <p>Boravio-la je u  _______________________________________________</p>
-                  <p>Dolazak dana  ________________________________________________</p>
-                  <p>Odlazak dana  ________________________________________________</p>
+                  <p>Osoba  <span style="letter-spacing: -1px; margin-left: 2%;">_____________________________________________________________________</span></p>
+                  <p>Boravio-la je u <span style="letter-spacing: -1px; margin-left: 2%;">_________________________________________________________</span></p>
+                  <p>Dolazak dana  <span style="letter-spacing: -1px; margin-left: 2%;">__________________________________________________________</span></p>
+                  <p>Odlazak dana <span style="letter-spacing: -1px; margin-left: 2%;">__________________________________________________________</span></p>
               </td>
               <td class="thirdRow"  style="width:38%; text-align: center;"></td>
             </tr>
             <tr  >
               <td  class="fourthRow" style="width:50%">
-                <p>Osoba  _______________________________________________________</p>
-                  <p>Boravio-la je u  _______________________________________________</p>
-                  <p>Dolazak dana  ________________________________________________</p>
-                  <p>Odlazak dana  ________________________________________________</p>
+                <p>Osoba  <span style="letter-spacing: -1px; margin-left: 2%;">______________________________________________________________________</span></p>
+                  <p>Boravio-la je u <span style="letter-spacing: -1px; margin-left: 2%;">__________________________________________________________</span></p>
+                  <p>Dolazak dana <span style="letter-spacing: -1px; margin-left: 2%;">____________________________________________________________</span></p>
+                  <p>Odlazak dana <span style="letter-spacing: -1px; margin-left: 2%;">____________________________________________________________</span></p>
               </td>
                 <td style="width:38%; text-align: center;">Potvrđuje</td>
             </tr>
@@ -79,9 +80,9 @@
     <p>Za obavljeno službeno putovanje na temelju ovog naloga podnosimo ovaj obračun:</p>
     <p>Na put sam krenu(o)la dana <u>{{item.startDate | date}} </u> godine u <u>{{item.startDate | date:'shortTime' }} </u> sati.</p>
     <p>Vrati(o)la sam se dana <u>{{item.startDate | date}} </u> godine u <u>{{item.startDate | date:'shortTime' }} </u>  sati.</p><br>
-    <p>Na putu sam prove(o)la _________________ sati, što čini ukupno ___________ dnevnica.</p>
+    <p>Na putu sam prove(o)la  <u>{{item.totalHours}} </u> sati, što čini ukupno <u>{{item.totalNumbersOfWages}} </u> dnevnica.</p>
     </div>
-
+    
     <table>
         <tr>
             <th colspan="4" style="width:45%">Vrsta troškova</th>
@@ -91,30 +92,30 @@
         </tr>
         <tr >
             <td rowspan="4" class="rotate"  style="height: 120px;">A.DNEVNICE</td>
-            <td >1</td>
+            <td style="text-align: center;">1</td>
             <td colspan="2">DNEVNICE</td>
-            <td colspan="2"></td>
-            <td colspan="5"></td>
-            <td colspan="3" > KM</td>
+            <td colspan="2" style="text-align: center;">{{item.totalNumbersOfWages}}</td>
+            <td colspan="5" style="text-align: center;">{{item.priceOfWage}}</td>
+            <td colspan="3" style="text-align: center;">{{item.totalNumbersOfWagesDecimalBam}} KM</td>
         </tr>
         <tr>
-            <td>2</td>
+            <td style="text-align: center;">2</td>
             <td colspan="2"></td>
-            <td colspan="2">-</td>
-            <td colspan="5">-</td>
-            <td colspan="3"  >  KM</td>
+            <td colspan="2"style="text-align: center;"></td>
+            <td colspan="5"style="text-align: center;"></td>
+            <td colspan="3"  style="text-align: center;">  KM</td>
         </tr>
         <tr>
-            <td>3</td>
+            <td style="text-align: center;">3</td>
             <td colspan="9" style="text-align: left;">Izdaci za noćenje</td>
           
-            <td  colspan="3" >  KM</td>
+            <td  colspan="3" style="text-align: center;"> {{item.salaryPerNight}} KM</td>
         </tr>
         <tr>
-            <td>4</td>
+            <td style="text-align: center;">4</td>
             <td colspan="9" style="text-align: left;">UKUPNO DNEVNICE</td>
           
-            <td colspan="3" >  KM</td>
+            <td colspan="3" style="text-align: center;  font-weight: bold;">{{item.totalWagesAndSalaryPerNight}}  KM</td>
         </tr>
 
 
@@ -124,61 +125,64 @@
 
         <tr >
             <td rowspan="8" class="rotate" style="height:240px" >B.TROŠKOVI PRIJEVOZA</td>
-            <td rowspan="2">Redni broj</td>
-            <td colspan="4">RELACIJA</td>
-            <td colspan="5">PRIJEVOZ</td>
+            <td rowspan="2"style="text-align: center;">Redni broj</td>
+            <td colspan="4"  style="text-align: center;">RELACIJA</td>
+            <td colspan="5"  style="text-align: center;">PRIJEVOZ</td>
             <td rowspan="2" colspan="3" > </td>
         </tr>
         <tr>
-            <td colspan="2">OD</td>
-            <td style="width:210px" colspan="2">DO</td>
-            <td colspan="5">-</td>
+            <td colspan="2" style="text-align: center;">OD</td>
+            <td style="width:210px" colspan="2" style="text-align: center;">DO</td>
+            <td colspan="5"></td>
           
         </tr>
         <tr>
-            <td>1</td>
+            <td style="text-align: center;">1</td>
+            <td colspan="2"></td>          
+            <td colspan="2"  style="text-align: center;">{{item.locationName}} </td>          
+            <td colspan="5" style="text-align: center;">
+                <span *ngIf=item.privateCar  > Privatno </span>
+                <span *ngIf=item.officialCar  > Službeno</span>
+            </td>          
+            <td colspan="3" style="text-align: center;"> {{item.transportOfficialCarBam}} KM</td>
+        </tr>
+        <tr>
+            <td style="text-align: center;">2</td>
             <td colspan="2"></td>          
             <td colspan="2"></td>          
             <td colspan="5"></td>          
-            <td colspan="3" > KM</td>
+            <td colspan="3" style="text-align: center;"> KM</td>
         </tr>
         <tr>
-            <td>2</td>
-            <td colspan="2"></td>          
-            <td colspan="2"></td>          
-            <td colspan="5"></td>          
-            <td colspan="3" > KM</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td colspan="9">OSOBNO VOZILO KORIŠTENO U SLUŽBENE SVRHE</td>          
+            <td style="text-align: center;">3</td>
+            <td colspan="9" style="text-align: center;">OSOBNO VOZILO KORIŠTENO U SLUŽBENE SVRHE</td>          
             <td rowspan="2"  colspan="2"></td>          
            
         </tr>
         <tr>
-            <td>4</td>
-            <td style="width:180px">CIJENA L. BENZ</td>          
-            <td style="width:130px">BROJ KM</td>  
+            <td style="text-align: center;">4</td>
+            <td style="width:180px" style="text-align: center;">CIJENA L. BENZ</td>          
+            <td style="width:130px" style="text-align: center;">BROJ KM</td>  
             <td ></td>        
-            <td style="width:160px">20% CIJENE</td>  
+            <td style="width:160px" style="text-align: center;">20% CIJENE</td>  
             <td></td>        
-            <td colspan="4">IZNOS</td>          
+            <td colspan="4" style="text-align: center;">IZNOS</td>          
         </tr>
         <tr>
-            <td>5</td>
+            <td style="text-align: center;">5</td>
+            <td ></td>          
+            <td style="text-align: center;">{{item.numberOfKilometers}}</td>          
+            <td style="text-align: center;">X</td>
             <td></td>          
-            <td></td>          
-            <td>X</td>
-            <td></td>          
-            <td>=</td>    
+            <td style="text-align: center;">=</td>    
             <td colspan="4"></td>      
-            <td colspan="3" > KM</td>
+            <td colspan="3"style="text-align: center;" > {{item.totalFuelKilometersDecimalBam}} KM</td>
         </tr>
         <tr>
-            <td>6</td>
+            <td style="text-align: center;">6</td>
             <td colspan="9" style="text-align:left">UKUPNI IZDACI ZA PRIJEVOZ</td>          
          
-            <td colspan="3" > KM</td>
+            <td colspan="3" style="text-align: center;  font-weight: bold;"> {{item.totalTransportPrivateOfficialCar}} KM</td>
         </tr>
 
 
@@ -188,31 +192,31 @@
 <!--        3.dio                    -->
         <tr >
             <td rowspan="3" class="rotate" style="height: 110px;" >C.OSTALO</td>
-            <td >1</td>
-            <td colspan="9"></td>
-            <td  colspan="3"> KM </td>
+            <td style="text-align: center;">1</td>
+            <td colspan="9" >{{item.otherCostString}}</td>
+            <td  colspan="3" style="text-align:center">{{item.otherCostDecimal}} KM</td>
         </tr>
         <tr >
-            <td >2</td>
-            <td colspan="9"></td>
-            <td  colspan="3"> KM </td>
+            <td style="text-align: center;">2</td>
+            <td colspan="9" ></td>
+            <td  colspan="3" style="text-align: center;"> KM</td>
         </tr>
         <tr >
-            <td >3</td>
+            <td style="text-align: center;">3</td>
             <td colspan="9" style="text-align:left">UKUPNI OSTALI TROŠKOVI</td>
-            <td  colspan="3" > KM </td>
+            <td  colspan="3" style="text-align: center;  font-weight: bold;"> {{item.otherCostDecimal}} KM </td>
         </tr>
         <tr>
             <td colspan="11" style="text-align:left;">SVEUKUPNI TROŠKOVI</td>
-            <td colspan="3" >1365,00 KM</td>
+            <td colspan="3" style="text-align: center;  font-weight: bold;"> {{item.totalCost}} KM</td>
         </tr>
         <tr>
             <td colspan="11" style="text-align:left;">ISPLAĆENA AKONTACIJA</td>
-            <td colspan="3" >KM</td>
+            <td colspan="3" style="text-align: center; font-weight: bold;">{{ item.advancePayment}} KM</td>
         </tr>
         <tr>
             <td colspan="11" style="text-align:left;">OSTATAK ZA ISPLATU - POVRAT</td>
-            <td colspan="3" >1365,00 KM</td>
+            <td colspan="3" style="text-align: center;  font-weight: bold;"> {{item.totalCostFinish}} KM</td>
         </tr>
 
     </table>
@@ -220,7 +224,7 @@
 
    <br><br>
     <div >
-        <p style="margin-left:-52%">Mostar,<span style="margin-left:15%">godine</span></p>
+        <p style="margin-left:7%;">Mostar,<span style="margin-left:14%">godine</span></p>
         <hr>
     </div>
     <br><br>
@@ -240,17 +244,17 @@
         <tr>
             <td>
                 <p style="text-align: left;">LIKVIDATURA</p>
-                <p style="text-align: left;" >Ispravno s KM _____________________</p>
+                <p style="text-align: left; letter-spacing: -1px;" >Ispravno s KM _____________________</p>
             </td>
             <td>
                 <p style="text-align: left;">BLAGAJNA</p>
                 <p style="text-align: left;" >Isplaćeno </p>
-                <p style="text-align: left;" >Vraćeno KM _____________________</p>
+                <p style="text-align: left;letter-spacing: -1px;" >Vraćeno KM _____________________</p>
 
             </td>
             <td>
-                <p>Rukovoodilac računovodstva</p>
-                <p>_____________________________</p>
+                <p style="text-align: center;">Rukovoodilac računovodstva</p>
+                <p style="text-align: center; letter-spacing: -1px;">________________________________</p>
             </td>
         </tr>
     </table>
@@ -260,6 +264,7 @@
 </div>
 <div style="page-break-after: always"></div>
 <div style="page-break-before: always"></div>
+
 </div>
 
 

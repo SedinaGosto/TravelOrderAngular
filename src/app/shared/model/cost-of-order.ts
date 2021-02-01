@@ -13,6 +13,9 @@ export class CostOfOrder {
     otherCostDecimal: number;
     totalCostFinish: number;
     travelOrderId: number;
+    totalWagesAndSalaryPerNight:number;
+    transportOfficialCarBam:number;
+    totalTransportPrivateOfficialCar:number;
 
     numberOfTravelOrder:number;
 }

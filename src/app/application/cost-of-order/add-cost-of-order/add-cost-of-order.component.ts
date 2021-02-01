@@ -43,7 +43,8 @@ var costOfOrder=new CostOfOrderUpsert(0,this.costOfOrderFrm.value.totalNumbersOf
                   this.costOfOrderFrm.value.salaryPerNight, 0, this.costOfOrderFrm.value.totalCost, 
                   this.costOfOrderFrm.value.numberOfKilometers, 0, this.costOfOrderFrm.value.totalFuelKilometersDecimalBam,
                   this.costOfOrderFrm.value.otherCostString, this.costOfOrderFrm.value.otherCostDecimal, this. costOfOrderFrm.value.totalCostFinish,
-                  this.costOfOrderFrm.value.travelOrderId);
+                  this.costOfOrderFrm.value.travelOrderId, this.costOfOrderFrm.value.totalWagesAndSalaryPerNight,this.costOfOrderFrm.value.transportOfficialCarBam,
+                  this.costOfOrderFrm.value.totalTransportPrivateOfficialCar);
 
 if (this.editMode){
   console.log(costOfOrder);

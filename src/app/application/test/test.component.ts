@@ -30,7 +30,7 @@ counter: number
   startDate:Date
   endDate:Date
 
-  CostOfOrder=[];
+
 
 ngOnInit(): void {
 this.GetAll();
@@ -48,7 +48,7 @@ console.log(data);
 for (let i = 0; i < data.length; i++) {  
 this.TravelOrder.push(data[i])
 this._locationService.GetById(this.TravelOrder[i].locationId).subscribe(l=>{
-this.TravelOrder[i].locationName=l.name 
+this.TravelOrder[i].locationName=l.name;
 })
 this._employeeService.GetById(this.TravelOrder[i].employeeId).subscribe(e=>{
 this.TravelOrder[i].employeeName=e.name+ " "+e.surname;
@@ -59,12 +59,31 @@ this._carService.GetById(this.TravelOrder[i].carId).subscribe(t=>{
 this.TravelOrder[i].carName=t.name;
 this.TravelOrder[i].privateCar=t.privateCar;
 this.TravelOrder[i].officialCar=t.officialCar;
-
 })
+this._costOfOrderService.GetByTravelOrderId(this.TravelOrder[i].id).subscribe(c=>{
+  c.forEach(element => {
+    this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
+    this.TravelOrder[i].priceOfWage=element.priceOfWage;
+    this.TravelOrder[i].totalNumbersOfWages=element.totalNumbersOfWages;
+    this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
+    this.TravelOrder[i].numberOfKilometers=element.numberOfKilometers;
+    this.TravelOrder[i].totalNumbersOfWagesDecimalBam=element.totalNumbersOfWagesDecimalBam;
+    this.TravelOrder[i].otherCostString=element.otherCostString;
+    this.TravelOrder[i].otherCostDecimal=element.otherCostDecimal;
+    this.TravelOrder[i].totalFuelKilometersDecimalBam=element.totalFuelKilometersDecimalBam;
+    this.TravelOrder[i].totalFuelKilometers=element.totalFuelKilometers;
+    this.TravelOrder[i].totalCostFinish=element.totalCostFinish;
+    this.TravelOrder[i].totalCost=element.totalCost;
+    this.TravelOrder[i].totalWagesAndSalaryPerNight=element.totalWagesAndSalaryPerNight;
+    this.TravelOrder[i].transportOfficialCarBam=element.transportOfficialCarBam;
+    this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;
 
+       
+  });
+})
+console.log(data);
 
 }
-
 
 });
 }
