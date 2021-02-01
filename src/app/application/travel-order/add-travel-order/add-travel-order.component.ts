@@ -172,7 +172,7 @@ employee:Employee;
             console.log(travelOrder)
             this._travelOrderService.Add(travelOrder).subscribe(data => {
           
-              var costoforde=new CostOfOrderUpsert(0,0,0,0,0,0,0,0,0,0,"",0,0,data.id);
+              var costoforde=new CostOfOrderUpsert(0,0,0,0,0,0,0,0,0,0,"",0,0,data.id,0,0,0);
                this._costOfOrderService.Add(costoforde).subscribe(cost=>{
                  console.log(cost);
                  this.router.navigate(['app/travel-order']);
