@@ -3,7 +3,7 @@
     
     <form id="travelOrder-form" (ngSubmit)="onSubmit()" #travelOrderForm="ngForm">
     
-        <div class="form-group row">
+        <!--<div class="form-group row">
             <div class="col-sm-6">
               <input type="text" class="form-control" id="numberOfOrder" name="numberOfOrder" readonly #numberOfOrder="ngModel" ngModel>
          
@@ -18,24 +18,63 @@
             </div>
             <input type="text" class="form-control" id="inputemployeeId" name="employeeId" readonly #employeeId="ngModel" ngModel hidden>
 
+        </div>-->
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text inputLabelStyle" > Broj naloga: </div>
+            </div>
+            <input type="text" class="form-control inputStyle"  id="numberOfOrder" name="numberOfOrder" readonly #numberOfOrder="ngModel" ngModel>
+
+          </div>
         </div>
-      <div class="form-group row">
-        <!--<label for="startDate" class="col-sm-3 col-form-label">Početak</label>-->
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text inputLabelStyle" > Zaposlenik: </div>
+            </div>
+            <input type="text" class="form-control inputStyle" id="inputemployee" name="employee" readonly #employee="ngModel" ngModel>
+            <input type="text" class="form-control" id="inputemployeeId" name="employeeId" readonly #employeeId="ngModel" ngModel hidden>
+
+
+          </div>
+        </div>
+     <!-- <div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputStartDate"
            onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel>
         </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Početak: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputStartDate"
+           onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel>
+
+        </div>
       </div>
+
       <div class="alert-div" *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)">
         <span *ngIf="startDate.errors.required">
                             Početak je obavezno polje.
         </span>
     </div> 
     
-    <div class="form-group row">
-        <!--<label for="endDate" class="col-sm-3 col-form-label">Kraj</label>-->
+    <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputEndDate" (change)="CheckEmployee()" 
+          onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Kraj" name="endDate" #endDate="ngModel" ngModel>
+                      
+        </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Kraj: </div>
+          </div>
+          <input type="text" class="form-control  inputStyle" id="inputEndDate" (change)="CheckEmployee()" 
           onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Kraj" name="endDate" #endDate="ngModel" ngModel>
                       
         </div>
@@ -51,10 +90,17 @@
         </span>
     </div>
     
-      <div class="form-group row">
-       <!-- <label for="reasonOfTravel" class="col-sm-3 col-form-label">Razlog</label>-->
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputReasonOfTravel" required placeholder="Razlog" name="reasonOfTravel" #reasonOfTravel="ngModel" ngModel>
+        </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Razlog: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputReasonOfTravel" required placeholder="Razlog" name="reasonOfTravel" #reasonOfTravel="ngModel" ngModel>
         </div>
       </div>
       <div class="alert-div" *ngIf="reasonOfTravel.invalid && (reasonOfTravel.dirty || reasonOfTravel.touched)">
@@ -63,34 +109,53 @@
         </span>
     </div>    
     
-    <div class="form-group row">
-        <!--<label for="descriptionOfTravel" class="col-sm-3 col-form-label">Opis</label>-->
+    <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputDescriptionOfTravel" name="descriptionOfTravel" required placeholder="Opis" #descriptionOfTravel="ngModel" ngModel>
         </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Opis: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputDescriptionOfTravel" name="descriptionOfTravel" required placeholder="Opis" #descriptionOfTravel="ngModel" ngModel>
+
+        </div>
       </div>
+
       <div class="alert-div" *ngIf="descriptionOfTravel.invalid && (descriptionOfTravel.dirty || descriptionOfTravel.touched)">
         <span *ngIf="descriptionOfTravel.errors.required">
                             Opis je obavezno polje.
         </span>
     </div>
     
-      <div class="form-group row">
-        <!--<label for="advancePayment" class="col-sm-3 col-form-label">Akontacija</label>-->
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputAdvancePayment" required name="advancePayment" placeholder="Akontacija" #advancePayment="ngModel" ngModel>
         </div>
+      </div>-->
+
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Akontacija: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputAdvancePayment" required name="advancePayment" placeholder="Akontacija" #advancePayment="ngModel" ngModel>
+
+
+        </div>
       </div>
+
       <div class="alert-div" *ngIf="advancePayment.invalid && (advancePayment.dirty || advancePayment.touched)">
         <span *ngIf="advancePayment.errors.required">
                             Akontacija je obavezno polje.
         </span>
     </div>
     
-      <p style="color:dimgray;font-weight: bold; text-align: center;">Ponedjeljak</p>
+     
     
-    <div class="form-group row">
-        <!--<label for="locationId" class="col-sm-3 col-form-label">Lokacija</label>-->
+    <!--<div class="form-group row">
         <div class="col-sm-12">
           <select name="locationId" #locationId="ngModel"   class="custom-select mr-sm-4"  ngModel>
             <option *ngFor="let item of listOfLocations" [value]=item.id >               
@@ -98,10 +163,24 @@
             </option>
         </select>
         </div>
+      </div>-->
+
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Lokacija: </div>
+          </div>
+          <select name="locationId" #locationId="ngModel"   class="custom-select inputStyle"  ngModel>
+            <option *ngFor="let item of listOfLocations" [value]=item.id >               
+                {{item.name}} 
+            </option>
+        </select>
+
+
+        </div>
       </div>
     
-    <div class="form-group row">
-        <!--<label for="typeOfCarId" class="col-sm-3 col-form-label">Tip vozila</label>-->
+    <!--<div class="form-group row">
         <div class="col-sm-12">
           <select class="custom-select mr-sm-4" name="carId" #carId="ngModel"   ngModel>
        
@@ -110,24 +189,22 @@
             </option>
         </select>
         </div>
-      </div>
-   
-    
-    
-      
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Vozilo: </div>
+          </div>
+          <select class="custom-select inputStyle" name="carId" #carId="ngModel"   ngModel>
+       
+            <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
+                {{item.name}} 
+            </option>
+        </select>
 
-    
-    
-        
-     
-    
-          
-        
-    
-  
-    
-  
-    
+
+        </div>
+      </div>
       <div class="form-group row">
             <div class="col-sm-12">
             <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!travelOrderForm.valid"><i class="fas fa-save" ></i>  Sačuvaj</button>

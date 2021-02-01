@@ -16,6 +16,7 @@ export class TravelOrder {
     carId: number;
 
     locationName:string;
+    startLocation:string
     employeeName: string;
     typeofWork:string;
     carName: string;

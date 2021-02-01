@@ -14,7 +14,7 @@
 
 input, select{
     width:90%;
-    margin-left:5%;
+   
 }
 
 label {
@@ -30,7 +30,17 @@ label {
     font-weight: bold;
     letter-spacing: 1px;
 }
+.inputStyle{
+    padding-left:120px; 
+    border-left: transparent;
+}
 
+.inputLabelStyle{
+    width: 170px;
+    background-color: transparent;
+    border-right: transparent; 
+    font-weight: bold;
+}
 .alert-div {
     position: relative;
     top: -3px;

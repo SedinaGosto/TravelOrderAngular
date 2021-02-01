@@ -6,46 +6,82 @@
 <form id="employee-form" (ngSubmit)="onSubmit()" #employeeForm="ngForm">
 
 
-    <div class="form-group row">
-       <!--<label for="name" class="col-sm-3 col-form-label">Ime</label>--> 
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputName" placeholder="Ime" name="name" required #name="ngModel" ngModel>
         </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Ime: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputName" placeholder="Ime" name="name" required #name="ngModel" ngModel>
+
+        </div>
       </div>
+
       <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
         <span *ngIf="name.errors.required">
             Ime je obavezno polje.
         </span>
     </div>
 
-      <div class="form-group row">
-        <!--<label for="surname" class="col-sm-3 col-form-label">Prezime</label>-->
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputSurname" placeholder="Prezime" name="surname" required #surname="ngModel" ngModel>
         </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Prezime: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputSurname" placeholder="Prezime" name="surname" required #surname="ngModel" ngModel>
+
+
+        </div>
       </div>
+
       <div class="alert-div" *ngIf="surname.invalid && (surname.dirty || surname.touched)">
         <span *ngIf="surname.errors.required">
             Prezime je obavezno polje.
         </span>
     </div>
 
-      <div class="form-group row">
-       <!--<label for="typeOfWork" class="col-sm-3 col-form-label">Pozicija</label>--> 
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputTypeOfWork" placeholder="Pozicija" name="typeOfWork" required #typeOfWork="ngModel" ngModel>
         </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Pozicija: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputTypeOfWork" placeholder="Pozicija" name="typeOfWork" required #typeOfWork="ngModel" ngModel>
+        </div>
       </div>
+
       <div class="alert-div" *ngIf="typeOfWork.invalid && (typeOfWork.dirty || typeOfWork.touched)">
         <span *ngIf="typeOfWork.errors.required">
             Pozicija je obavezno polje.
         </span>
     </div>
 
-      <div class="form-group row">
-      <!-- <label for="uniqueNumber" class="col-sm-3 col-form-label">Jedinstveni broj</label>--> 
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputUniqueNumber" name="uniqueNumber" placeholder="Jedinstveni broj" required #uniqueNumber="ngModel" ngModel>
+        </div>
+      </div>-->
+
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Jedinstveni broj: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputUniqueNumber" name="uniqueNumber" placeholder="Jedinstveni broj" required #uniqueNumber="ngModel" ngModel>
+
         </div>
       </div>
       <div class="alert-div" *ngIf="uniqueNumber.invalid && (uniqueNumber.dirty || uniqueNumber.touched)">
@@ -54,12 +90,20 @@
         </span>
     </div>
 
-      <div class="form-group row">
-       <!-- <label for="wage" class="col-sm-3 col-form-label">Dnevnica</label>-->
+      <!--<div class="form-group row">
         <div class="col-sm-12">
           <input type="text" class="form-control" id="inputWage" name="wage" placeholder="Dnevnica" required #wage="ngModel" ngModel>
         </div>
+      </div>-->
+      <div class="col-auto">
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text inputLabelStyle" > Dnevnica: </div>
+          </div>
+          <input type="text" class="form-control inputStyle" id="inputWage" name="wage" placeholder="Dnevnica" required #wage="ngModel" ngModel>
+        </div>
       </div>
+
       <div class="alert-div" *ngIf="wage.invalid && (wage.dirty || wage.touched)">
         <span *ngIf="wage.errors.required">
             Dnevnica je obavezno polje.
