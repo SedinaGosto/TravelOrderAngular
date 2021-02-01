@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 
 import bs from '@angular/common/locales/bs-Latn';
 import { registerLocaleData } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 registerLocaleData(bs);
 
 @NgModule({
@@ -34,7 +35,7 @@ registerLocaleData(bs);
     ReactiveFormsModule,
     BasicAuthModule,
     ApplicationRoutingModule,
-    ApplicationModule, RouterModule
+    ApplicationModule, RouterModule, BrowserAnimationsModule
 
   ],
   providers: [

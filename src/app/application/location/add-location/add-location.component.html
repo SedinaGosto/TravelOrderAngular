@@ -3,30 +3,36 @@
     <h2 class="form-title" style="padding: 5%; " *ngIf = "editMode">Uredi lokaciju</h2>
 
     <form id="location-form" (ngSubmit)="onSubmit()" #locationForm="ngForm">
-        <div class="form-group row">
-          <!--  <label for="name" class="col-sm-3 col-form-label">Naziv</label>-->
-            <div class="col-sm-12">
-              <input type="text"  name="name" class="form-control" placeholder="Naziv" required id="inputName"  #name="ngModel" ngModel>
+  
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text inputLabelStyle" >Naziv:</div>
             </div>
+            <input type="text" name="name" placeholder="Naziv" required id="inputName"  #name="ngModel" ngModel class="form-control inputStyle" id="inlineFormInputGroup" >
           </div>
-          <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
-            <span *ngIf="name.errors.required">
-                Naziv je obavezno polje.
-            </span>
         </div>
-    
+        <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
+          <span *ngIf="name.errors.required">
+              Naziv je obavezno polje.
+          </span>
+      </div>
 
-          <div class="form-group row">
-          <!--  <label for="numberOfKilometers" class="col-sm-3 col-form-label">Broj kilometara</label>-->
-            <div class="col-sm-12">
-              <input type="text"  name="numberOfKilometers" class="form-control" required placeholder="Broj kilometara" id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel>
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text inputLabelStyle" >Broj kilometara:</div>
             </div>
+            <input type="text" name="numberOfKilometers" class="form-control inputStyle" required placeholder="Broj kilometara" id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel >
           </div>
-          <div class="alert-div" *ngIf="numberOfKilometers.invalid && (numberOfKilometers.dirty || numberOfKilometers.touched)">
-            <span *ngIf="numberOfKilometers.errors.required">
-                Broj kilometara je obavezno polje.
-            </span>
         </div>
+        <div class="alert-div" *ngIf="numberOfKilometers.invalid && (numberOfKilometers.dirty || numberOfKilometers.touched)">
+          <span *ngIf="numberOfKilometers.errors.required">
+              Broj kilometara je obavezno polje.
+          </span>
+      </div>
+       
+       
 
           <div class="form-group row">
     
