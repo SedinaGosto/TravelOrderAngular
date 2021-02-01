@@ -12,6 +12,7 @@ export class TravelOrder {
     endDate: Date;
     totalDaysOfTravel:number
     locationId: number; 
+    locationStartId:number
     employeeId: number;
     carId: number;
 

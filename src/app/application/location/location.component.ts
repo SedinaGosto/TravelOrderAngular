@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from 'src/app/api-services/location.service';
 import { Location } from 'src/app/shared/model/location';
+import { LocationUpsert } from 'src/app/shared/model/location-upsert';
 
 @Component({
   selector: 'app-location',
@@ -45,6 +46,34 @@ export class LocationComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+  changeStatus(id,event){
+    this.Location.forEach(element => {
+      if(element.startLocation==true && event==true)
+      {
+        element.startLocation=false;
+        var newLocation=new LocationUpsert(element.id,element.name,element.numberOfKilometers,false);
+        console.log(newLocation)
+        this._locationService.Update(element.id,newLocation).subscribe(data=>{
+         console.log(data);
+        })
+      }
+    });
+
+  this.Location.forEach(element => {
+    if(element.id==id && element.startLocation==false)
+    {
+      element.startLocation=event;
+      var newLocation=new LocationUpsert(element.id,element.name,element.numberOfKilometers,element.startLocation);
+      console.log(newLocation)
+      this._locationService.Update(element.id,newLocation).subscribe(data=>{
+       console.log(data);
+      })
+      
+    }
+  });
+ 
+
   }
 
 }
