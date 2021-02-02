@@ -23,7 +23,7 @@
     <tr *ngFor="let item of Location ">
         <td>{{item.name}}</td>
         <td>{{item.numberOfKilometers}}</td>
-      <td><input value="{{item.startLocation}}" type="checkbox" [checked]="item.startLocation" (change)="changeStatus(item.id,$event.target.checked)"></td>
+      <td><input  [disabled]="item.startLocation" value="{{item.startLocation}}" type="checkbox" [checked]="item.startLocation"  (change)="changeStatus(item.id,$event.target.checked)"  ></td>
         <td> <button type="button" class="btn btn-outline-primary" routerLink="add-location/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
         <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button></td>      
       </tr>
