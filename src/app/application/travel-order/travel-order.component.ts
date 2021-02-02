@@ -6,6 +6,7 @@ import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
 import { Employee } from 'src/app/shared/model/employee';
 import { Location } from 'src/app/shared/model/location';
+import { TravelOrder } from 'src/app/shared/model/travel-order';
 
 
 @Component({
@@ -24,9 +25,16 @@ export class TravelOrderComponent implements OnInit {
   endDate:Date;
 
   ngOnInit(): void {
+    if(this.TravelOrder.length>0){
+      this.TravelOrder=[];
+    }
     this.GetAll();
   }
-
+  delete(travelOrder:TravelOrder): void {
+    this._travelOrderService.Delete(travelOrder.id).subscribe(data => {
+      this.ngOnInit();    
+    });
+  }
   GetAll(){
     this._travelOrderService.GetAll().subscribe(data=>{
       console.log(data);

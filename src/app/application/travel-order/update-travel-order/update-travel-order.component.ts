@@ -59,7 +59,7 @@ export class UpdateTravelOrderComponent implements OnInit {
     this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
     this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours,  this.travelOrderFrm.value.startDate,
     this.travelOrderFrm.value.endDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationId,
-    this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.carId);
+    this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.carId,this.travelOrderFrm.value.startLocationId);
   
   if (this.editMode){
     console.log(travelOrder);
@@ -78,6 +78,9 @@ export class UpdateTravelOrderComponent implements OnInit {
     this.travelOrderFrm=new NgForm([],[]);
     this._travelOrderService.GetById(this.travelOrderId).subscribe(o=>{
       this._employeeService.GetById(o.employeeId).subscribe(e=>{
+        this._locationService.GetById(o.locationId).subscribe(l=>{
+
+    
 
 
         console.log(o);
@@ -97,9 +100,11 @@ export class UpdateTravelOrderComponent implements OnInit {
           this.travelOrderFrm.controls['locationId'].setValue(o.locationId);
           this.travelOrderFrm.controls['employeeId'].setValue(o.employeeId);
           this.travelOrderFrm.controls['employee'].setValue(e.name+ " "+e.surname);
+          this.travelOrderFrm.controls['startLocation'].setValue(l.name);
+          this.travelOrderFrm.controls['startLocationId'].setValue(l.id);
 
           this.travelOrderFrm.controls['carId'].setValue(o.carId);
-
+        })
 
       })
    
