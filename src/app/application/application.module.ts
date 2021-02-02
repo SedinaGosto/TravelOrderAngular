@@ -25,6 +25,8 @@ import { CarService } from '../api-services/car.service';
 import { AddCarComponent } from './car/add-car/add-car.component';
 import { TestComponent } from './test/test.component';
 import { UpdateTravelOrderComponent } from './travel-order/update-travel-order/update-travel-order.component';
+import { CompanyComponent } from './company/company.component';
+import { AddCompanyComponent } from './company/add-company/add-company.component';
 registerLocaleData(hr);
 
 
@@ -44,6 +46,8 @@ registerLocaleData(hr);
     AddCostOfOrderComponent,
     TestComponent,
     UpdateTravelOrderComponent,
+    CompanyComponent,
+    AddCompanyComponent,
   ],
   imports: [
     CommonModule, 

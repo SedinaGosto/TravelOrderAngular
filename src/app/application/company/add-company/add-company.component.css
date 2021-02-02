@@ -1,0 +1,64 @@
+
+
+#company-form{
+    width:70%;
+    margin:0 auto;
+}
+
+label {
+    text-align: left;
+    font-size: 16px;
+ }
+
+.okvir {
+    width: 70%;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 10%;
+    margin-left: 15%;
+    border-radius:10px;
+}
+
+#input {
+    width: 80%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 1%;
+    margin-left: 10%;
+    padding: 7px;
+}
+
+
+#submit{
+    width:45%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.inputStyle{
+    padding-left:120px; 
+    border-left: transparent;
+}
+
+.inputLabelStyle{
+    width: 170px;
+    background-color: transparent;
+    border-right: transparent; 
+    font-weight: bold;
+}
+
+
+.alert-div {
+    position: relative;
+    top: -10px;
+    font-size: 14px;
+    color:red;
+}
+
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}

@@ -5,6 +5,7 @@ import { jsPDF } from 'jspdf';
 
 
 import { CarService } from 'src/app/api-services/car.service';
+import { CompanyService } from 'src/app/api-services/company.service';
 import { CostOfOrderService } from 'src/app/api-services/cost-of-order.service';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { LocationService } from 'src/app/api-services/location.service';
@@ -21,7 +22,7 @@ declare  var jQuery:  any;
 export class TestComponent implements OnInit {
 
   constructor( private _travelOrderService: TravelOrderService, private _employeeService: EmployeeService, private _costOfOrderService: CostOfOrderService,
-    private _locationService: LocationService, private _carService: CarService, private router: Router,private activatedroute:ActivatedRoute) { }
+    private _locationService: LocationService, private _carService: CarService, private _companyService: CompanyService, private router: Router,private activatedroute:ActivatedRoute) { }
 
 TravelOrder=[];
 counter: number
@@ -29,6 +30,7 @@ counter: number
   pdf: jsPDF
   startDate:Date
   endDate:Date
+
 
 
 
@@ -60,6 +62,17 @@ this.TravelOrder[i].carName=t.name;
 this.TravelOrder[i].privateCar=t.privateCar;
 this.TravelOrder[i].officialCar=t.officialCar;
 })
+
+this._companyService.GetAll().subscribe(company=>{
+  company.forEach(element=>{
+    this.TravelOrder[i].name=element.name;
+    this.TravelOrder[i].adress=element.adress;
+    this.TravelOrder[i].city=element.city;
+  }
+
+  )
+})
+
 this._costOfOrderService.GetByTravelOrderId(this.TravelOrder[i].id).subscribe(c=>{
   c.forEach(element => {
     this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
@@ -76,9 +89,7 @@ this._costOfOrderService.GetByTravelOrderId(this.TravelOrder[i].id).subscribe(c=
     this.TravelOrder[i].totalCost=element.totalCost;
     this.TravelOrder[i].totalWagesAndSalaryPerNight=element.totalWagesAndSalaryPerNight;
     this.TravelOrder[i].transportOfficialCarBam=element.transportOfficialCarBam;
-    this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;
-
-       
+    this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;       
   });
 })
 console.log(data);

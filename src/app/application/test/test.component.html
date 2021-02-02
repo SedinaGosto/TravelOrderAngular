@@ -4,9 +4,9 @@
         <div >
         <br><br>
     <div class="name">
-        <span class="above"><u > AS PANAMERA d.o.o</u><span class="below">(naziv preduzeća - ustanove)</span></span>
+        <span class="above"><u > {{item.name}}</u><span class="below">(naziv preduzeća - ustanove)</span></span>
    <br>
-   <span class="above"><u style="width: 30px;">  Mostar, {{item.startDate | date}} </u><span class="below">(mjesto i datum)</span></span>
+   <span class="above" style="margin-left: 8%;"><u >{{item.adress}}, {{item.city}} </u> <span class="below">(adresa i mjesto)</span></span>
     </div><br><br><br>
     <div class="center">
         <h3>NALOG ZA SLUŽBENO PUTOVANJE</h3>
@@ -14,7 +14,7 @@
     </div><br><br><br>
 
     <div class="mainText">
-        <p>Za <u > {{ item.employeeName}}</u> na radu u <span class="above"><u > AS PANAMERA d.o.o</u> <span class="below">(naziv poslovne ili org.jedinice)</span></span> na radnom mjestu <span class="above"><u >{{item.typeofWork}}</u><span class="below">(naziv radnog mjesta)</span></span> otputovati će dana
+        <p>Za <u > {{ item.employeeName}}</u> na radu u <span class="above"><u > {{item.name}}</u> <span class="below">(naziv poslovne ili org.jedinice)</span></span> na radnom mjestu <span class="above"><u >{{item.typeofWork}}</u><span class="below">(naziv radnog mjesta)</span></span> otputovati će dana
             <u>{{item.startDate | date}} </u>  godine na službeno putovanje u <span class="above"> <u>{{item.locationName}} </u> <span class="below">(mjesto)</span></span> radi <span class="above"> <u>{{item.reasonOfTravel}} </u><span class="below">(razlog)</span></span><br>
             <span class="above"><u>{{item.descriptionOfTravel}} </u> <span class="below">(opis zadataka)</span></span>
                         </p><br>
@@ -35,7 +35,7 @@
     </div><br>
     <div class="footer">
         <p>_________________________________________________<span style="margin-left:6%; margin-right: 6%; font-weight: bold;">M.P</span>______________________________________________</p>
-        <p class="footersubname" >(Paraf šefa posl.org.jed)<span style="margin-left:360px;">(Potpis direktora)</span></p>
+        <p class="footersubname" >(Paraf šefa posl.org.jed)<span style="margin-left:330px;">(Potpis direktora)</span></p>
     </div>
     <br><br>
     <div class="table">
@@ -224,7 +224,7 @@
 
    <br><br>
     <div >
-        <p style="margin-left:7%;">Mostar,<span style="margin-left:14%">godine</span></p>
+        <p style="margin-left:7%;">{{item.city}},<span style="margin-left:14%">godine</span></p>
         <hr>
     </div>
     <br><br>
@@ -235,26 +235,26 @@
 
     <br><br><br><br>
     <div class="footer">
-        <p>__________________________________________________<span style="margin-left:7%; margin-right: 7%; font-weight: bold;">M.P</span>_______________________________________________</p>
-        <p class="footersubname" >(Paraf šefa posl.org.jed)<span style="margin-left:360px;">(Potpis direktora)</span></p>
+        <p>__________________________________________________<span style="margin-left:6%; margin-right: 6%; font-weight: bold;">M.P</span>_______________________________________________</p>
+        <p class="footersubname" >(Paraf šefa posl.org.jed)<span style="margin-left:330px;">(Potpis direktora)</span></p>
     </div>
 
 <br><br><br><br>
     <table>
         <tr>
             <td>
-                <p style="text-align: left;">LIKVIDATURA</p>
-                <p style="text-align: left; letter-spacing: -1px;" >Ispravno s KM _____________________</p>
+                <p style="text-align: left; margin-left: 1%;">LIKVIDATURA</p>
+                <p style="text-align: left;  margin-left: 1%;" >Ispravno s KM <span style="letter-spacing: -1px;"> _____________________ </span> </p>
             </td>
             <td>
-                <p style="text-align: left;">BLAGAJNA</p>
-                <p style="text-align: left;" >Isplaćeno </p>
-                <p style="text-align: left;letter-spacing: -1px;" >Vraćeno KM _____________________</p>
+                <p style="text-align: left; margin-left: 1%;">BLAGAJNA</p>
+                <p style="text-align: left; margin-left: 1%;" >Isplaćeno </p>
+                <p style="text-align: left; margin-left: 1%;" >Vraćeno KM <span style="letter-spacing: -1px;"> _____________________</span> </p>
 
             </td>
             <td>
-                <p style="text-align: center;">Rukovoodilac računovodstva</p>
-                <p style="text-align: center; letter-spacing: -1px;">________________________________</p>
+                <p style="text-align: center; margin-left: 1%;">Rukovoodilac računovodstva</p>
+                <p style="text-align: center; margin-left: 1%;"> <span style="letter-spacing: -1px;"> ________________________________</span></p>
             </td>
         </tr>
     </table>
