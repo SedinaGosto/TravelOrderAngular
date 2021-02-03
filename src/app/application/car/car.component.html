@@ -30,27 +30,22 @@
         <td *ngIf="item.officialCar" > Službeno </td>
       
         <td> <button type="button" class="btn btn-outline-primary" routerLink="add-car/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
-        <button type="button" class="btn btn-outline-danger" style="margin-left: 2%;"><i class="fa fa-fw fa-remove" data-toggle="modal" data-target="#exampleModalCenter"></i></button>
+        <button type="button" class="btn btn-outline-danger" style="margin-left: 2%;" data-toggle="modal" data-target="#exampleModalCenter"  (click)="Delete(item.id)"><i class="fa fa-fw fa-remove" ></i></button>
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                ...
+    
+              <div class="modal-body" style="font-size: 18px;">
+                Jeste li sigurni da želite obrisati zapis?
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="delete()" style="font-size:20px;"> DA</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-size:20px;">NE</button>
               </div>
             </div>
           </div>
         </div>
-      </td>      
+      </td>  
       </tr>
 </tbody> 
 </table>

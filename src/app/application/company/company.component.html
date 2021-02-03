@@ -1,9 +1,9 @@
 
 
-
-<button type="button" class="btn btn-outline-primary" routerLink="add-company" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>
-
-<table class="table" > 
+<div *ngIf="company.length==0">
+    <button type="button" class="btn btn-outline-primary" routerLink="add-company" id="addNew"> <i class="fa fa-fw fa-plus-circle"></i> Dodaj novu</button>
+</div>
+<table class="table" >
 <thead>
     <tr>
         <th>Naziv</th>
@@ -20,9 +20,8 @@
         <td>{{item.adress}}</td>  
         <td>{{item.city}}</td>  
         <td> <button type="button" class="btn btn-outline-primary" routerLink="add-company/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
-        <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button></td>      
+        <!--<button type="button" class="btn btn-outline-danger" (click) = "delete(item)"  style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button>--></td>      
       </tr>
 </tbody> 
 </table>
-
 <br>

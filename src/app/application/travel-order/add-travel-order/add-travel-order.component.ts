@@ -45,7 +45,8 @@ export class AddTravelOrderComponent implements OnInit {
   travelorder=[];
   checkEmployee=false;
  
-
+  startLocation:string;
+startLocationId:number;
 
 uniquenumber:string;
 numberofOrder:string;
@@ -62,6 +63,18 @@ employee:Employee;
     })
     this._carService.GetAll().subscribe(typeOfCarsData=>{
       this.listOfTypeOfCars=typeOfCarsData
+    })
+
+    this._locationService.GetStartLocation(true).subscribe(location=>{
+      location.forEach(element => {
+     this.startLocation=element.name;
+     this.startLocationId=element.id
+     this.travelOrderFrm.controls['startLocation'].setValue(element.name);
+     this.travelOrderFrm.controls['startLocationId'].setValue(element.id.toString());
+
+   });
+
+
     })
      
   
@@ -100,22 +113,23 @@ employee:Employee;
              if(this.travelOrderFrm.value.locationMondayId != "" && this.travelOrderFrm.value.locationMondayId != undefined){
               travelOrder = new TravelOrderUpsert(0, "", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString,
-              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+               this.travelOrderFrm.value.totalHours, ModifayDate,
               ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationMondayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarMondayId);
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarMondayId,this.travelOrderFrm.value.startLocationId);
              }
              else{
                travelOrder = null;
              }
           
+            
              break;
            case 2:
             if(this.travelOrderFrm.value.locationTuesdayId != "" && this.travelOrderFrm.value.locationTuesdayId != undefined){
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+               this.travelOrderFrm.value.totalHours, ModifayDate,
               ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationTuesdayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarTuesdayId);
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarTuesdayId,this.travelOrderFrm.value.startLocationId);
             }
             else{
               travelOrder = null;
@@ -127,9 +141,9 @@ employee:Employee;
             if(this.travelOrderFrm.value.locationWednesdayId != "" && this.travelOrderFrm.value.locationWednesdayId != undefined){
               travelOrder=new TravelOrderUpsert(0," ", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+               this.travelOrderFrm.value.totalHours, ModifayDate,
               ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationWednesdayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarWednesdayId);
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarWednesdayId,this.travelOrderFrm.value.startLocationId);
             }
             else{
               travelOrder = null
@@ -139,9 +153,9 @@ employee:Employee;
             if(this.travelOrderFrm.value.locationThursdayId != "" && this.travelOrderFrm.value.locationThursdayId != undefined){
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-              this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+              this.travelOrderFrm.value.totalHours, ModifayDate,
               ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationThursdayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarThursdayId);
+              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarThursdayId,this.travelOrderFrm.value.startLocationId);
             }
            
             else{
@@ -152,9 +166,9 @@ employee:Employee;
             if(this.travelOrderFrm.value.locationFridayId != "" && this.travelOrderFrm.value.locationFridayId != undefined){
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
             this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-            this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours, ModifayDate,
+             this.travelOrderFrm.value.totalHours, ModifayDate,
             ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationFridayId,
-            this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarFridayId);
+            this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarFridayId,this.travelOrderFrm.value.startLocationId);
             }
             else{
               travelOrder = null
@@ -203,7 +217,6 @@ employee:Employee;
       this.travelOrderFrm.controls['daysOfTravel'].setValue(o.daysOfTravel),
       this.travelOrderFrm.controls['advancePayment'].setValue(o.advancePayment),
     // this.travelOrderFrm.controls['advancePaymentString'].setValue(o.advancePaymentString);
-      this.travelOrderFrm.controls['restOfAdvancePayment'].setValue(o.restOfAdvancePayment);
     //  this.travelOrderFrm.controls['totalHours'].setValue(o.totalHours);
       this.travelOrderFrm.controls['startDate'].setValue(o.startDate);
       this.travelOrderFrm.controls['endDate'].setValue(o.endDate);

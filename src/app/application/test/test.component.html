@@ -15,7 +15,7 @@
 
     <div class="mainText">
         <p>Za <u > {{ item.employeeName}}</u> na radu u <span class="above"><u > {{item.name}}</u> <span class="below">(naziv poslovne ili org.jedinice)</span></span> na radnom mjestu <span class="above"><u >{{item.typeofWork}}</u><span class="below">(naziv radnog mjesta)</span></span> otputovati će dana
-            <u>{{item.startDate | date}} </u>  godine na službeno putovanje u <span class="above"> <u>{{item.locationName}} </u> <span class="below">(mjesto)</span></span> radi <span class="above"> <u>{{item.reasonOfTravel}} </u><span class="below">(razlog)</span></span><br>
+            <u>{{item.startDate | date: 'dd.MM.yyyy'}} </u>  godine na službeno putovanje u <span class="above"> <u>{{item.locationName}} </u> <span class="below">(mjesto)</span></span> radi <span class="above"> <u>{{item.reasonOfTravel}} </u><span class="below">(razlog)</span></span><br>
             <span class="above"><u>{{item.descriptionOfTravel}} </u> <span class="below">(opis zadataka)</span></span>
                         </p><br>
         <p>Predvidivo trajanje putovanja je   <u> __{{item.daysOfTravel }}__ </u> dana.</p>
@@ -78,8 +78,8 @@
     <h5>OBRAČUN PUTNIH TROŠKOVA</h5><br><br><br>
     <div class="textSecondPage"> 
     <p>Za obavljeno službeno putovanje na temelju ovog naloga podnosimo ovaj obračun:</p>
-    <p>Na put sam krenu(o)la dana <u>{{item.startDate | date}} </u> godine u <u>{{item.startDate | date:'shortTime' }} </u> sati.</p>
-    <p>Vrati(o)la sam se dana <u>{{item.startDate | date}} </u> godine u <u>{{item.startDate | date:'shortTime' }} </u>  sati.</p><br>
+    <p>Na put sam krenu(o)la dana <u>{{item.startDate | date: 'dd.MM.yyyy'}} </u> godine u <u>{{item.startDate | date:'shortTime' }} </u> sati.</p>
+    <p>Vrati(o)la sam se dana <u>{{item.endDate | date: 'dd.MM.yyyy'}} </u> godine u <u>{{item.endDate | date:'shortTime' }} </u>  sati.</p><br>
     <p>Na putu sam prove(o)la  <u>{{item.totalHours}} </u> sati, što čini ukupno <u>{{item.totalNumbersOfWages}} </u> dnevnica.</p>
     </div>
     
