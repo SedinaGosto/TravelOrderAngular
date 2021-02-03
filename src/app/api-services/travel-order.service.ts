@@ -47,4 +47,9 @@ export class TravelOrderService {
     return this.http.put(url, travelOrder);    
   }
 
+  Delete(id:number): Observable<TravelOrder> {
+    const url = `${_url}/${id}`;
+    return this.http.delete<TravelOrder>(url);
+  }
+
 }

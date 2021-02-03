@@ -34,7 +34,7 @@ export class AddLocationComponent implements OnInit {
   onSubmit(){
     if (!this.locationFrm.valid) 
     return;
-    var location = new LocationUpsert(0,this.locationFrm.value.name, this.locationFrm.value.numberOfKilometers);
+    var location = new LocationUpsert(0,this.locationFrm.value.name, this.locationFrm.value.numberOfKilometers,false);
     console.log(location)
     if (this.editMode){
       this._locationService.Update(this.locationId, location).subscribe(data=>{
