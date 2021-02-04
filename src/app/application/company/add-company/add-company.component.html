@@ -1,0 +1,82 @@
+<div class="okvir">
+    <h2 class="form-title" style="padding: 5%; " *ngIf = "!editMode">Dodaj novu firmu </h2>
+    <h2 class="form-title" style="padding: 5%; " *ngIf = "editMode">Uredi firmu</h2>
+    
+    
+    <form id="company-form" (ngSubmit)="onSubmit()" #companyForm="ngForm">
+    
+    
+          <div class="col-auto">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text inputLabelStyle" > Naziv: </div>
+              </div>
+              <input type="text" class="form-control inputStyle" id="inputName" placeholder="Naziv" name="name" required #name="ngModel" ngModel>
+    
+            </div>
+          </div>
+    
+          <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
+            <span *ngIf="name.errors.required">
+                Naziv je obavezno polje.
+            </span>
+        </div>
+    
+        
+          <div class="col-auto">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text inputLabelStyle" > ID broj: </div>
+              </div>
+              <input type="text" class="form-control inputStyle" id="inputIdNumber" placeholder="ID broj" name="idNumber" required #idNumber="ngModel" ngModel>
+    
+    
+            </div>
+          </div>
+    
+          <div class="alert-div" *ngIf="idNumber.invalid && (idNumber.dirty || idNumber.touched)">
+            <span *ngIf="idNumber.errors.required">
+                ID broj je obavezno polje.
+            </span>
+        </div>
+
+          <div class="col-auto">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text inputLabelStyle" > Grad: </div>
+              </div>
+              <input type="text" class="form-control inputStyle" id="inputCity" placeholder="Grad" name="city" required #city="ngModel" ngModel>
+            </div>
+          </div>
+    
+          <div class="alert-div" *ngIf="city.invalid && (city.dirty || city.touched)">
+            <span *ngIf="typeOfWork.errors.required">
+                Grad je obavezno polje.
+            </span>
+        </div>
+
+          <div class="col-auto">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text inputLabelStyle" > Adresa: </div>
+              </div>
+              <input type="text" class="form-control inputStyle" id="inputAdress" name="adress" placeholder="Adresa" required #adress="ngModel" ngModel>
+    
+            </div>
+          </div>
+          <div class="alert-div" *ngIf="adress.invalid && (adress.dirty || adress.touched)">
+            <span *ngIf="adress.errors.required">
+                Adresa je obavezno polje.
+            </span>
+        </div>
+                      
+          <div class="form-group row">
+        
+            <div class="col-sm-12"> 
+              <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!companyForm.valid"><i class="fas fa-save"></i>  Sačuvaj</button>
+            </div>
+          </div>
+    </form>
+    
+    </div>
+    

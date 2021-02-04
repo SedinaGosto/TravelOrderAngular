@@ -15,6 +15,8 @@ import { CarComponent } from './car/car.component';
 import { AddCarComponent } from './car/add-car/add-car.component';
 import { TestComponent } from './test/test.component';
 import { UpdateTravelOrderComponent } from './travel-order/update-travel-order/update-travel-order.component';
+import { CompanyComponent } from './company/company.component';
+import { AddCompanyComponent } from './company/add-company/add-company.component';
 
 const routes: Routes = [
   {
@@ -39,6 +41,9 @@ const routes: Routes = [
   { path: 'cost-of-order/add-cost-of-order/:id', component: AddCostOfOrderComponent },
   { path: 'test', component: TestComponent },
   { path: 'travel-order/update-travel-order/:id', component: UpdateTravelOrderComponent },
+  { path: 'company', component: CompanyComponent },
+  { path: 'company/add-company', component: AddCompanyComponent },
+  { path: 'company/add-company/:id', component: AddCompanyComponent },
 
 
 

@@ -33,6 +33,11 @@ export class LocationService {
     return this.http.get<Location[]>(url);
   }
 
+  GetStartLocation(start:boolean):Observable<Location[]>{
+    const url = `${_url}?startLocation=${start}`;
+    return this.http.get<Location[]>(url);
+  }
+
   Add(location: LocationUpsert): Observable<Location> {
     return this.http.post<Location>(_url, location);
   }

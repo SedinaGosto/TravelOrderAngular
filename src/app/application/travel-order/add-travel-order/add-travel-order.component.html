@@ -19,30 +19,13 @@
     </div>
   </div>
 
- <!--<div class="form-group row">
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="inputStartDate"
-       onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel>
-    </div>
-  </div>--> 
-
- <!--<div class="col-auto">
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <div class="input-group-text inputLabelStyle" >Naziv:</div>
-      </div>
-      <input type="text" class="form-control inputStyle" id="inputStartDate"
-      onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel style="margin-left:-0.2">
-    </div>
-  </div>
-  --> 
   <div class="col-auto">
     <div class="input-group mb-2">
       <div class="input-group-prepend">
         <div class="input-group-text inputLabelStyle" >Početak:</div>
       </div>
-      <input type="text" class="form-control inputStyle" id="inputStartDate"
-      onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Početak" name="startDate" #startDate="ngModel" ngModel>
+      <input type="datetime-local" class="form-control inputStyle" id="inputStartDate"
+       required name="startDate" #startDate="ngModel" ngModel>
     </div>
   </div>
 
@@ -52,20 +35,14 @@
     </span>
 </div> 
 
-<!--<div class="form-group row">
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="inputEndDate" (change)="CheckEmployee()" 
-      onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Kraj" name="endDate" #endDate="ngModel" ngModel>
-                  
-    </div>
-  </div>-->
+
   <div class="col-auto">
     <div class="input-group mb-2">
       <div class="input-group-prepend">
         <div class="input-group-text inputLabelStyle" >Kraj:</div>
       </div>
-      <input type="text" class="form-control inputStyle" id="inputEndDate" (change)="CheckEmployee()" 
-      onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required placeholder="Kraj" name="endDate" #endDate="ngModel" ngModel>
+      <input type="datetime-local" class="form-control inputStyle" id="inputEndDate" (change)="CheckEmployee()" 
+       required name="endDate" #endDate="ngModel" ngModel>
                   
     </div>
   </div>
@@ -80,13 +57,6 @@
     </span>
 </div>
 
-
- <!-- <div class="form-group row">
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="inputReasonOfTravel" required placeholder="Razlog" name="reasonOfTravel" #reasonOfTravel="ngModel" ngModel>
-    </div>
-  </div>
-  -->
   <div class="col-auto">
     <div class="input-group mb-2">
       <div class="input-group-prepend">
@@ -99,23 +69,20 @@
     <span *ngIf="reasonOfTravel.errors.required">
                         Razlog je obavezno polje.
     </span>
-</div>    
+</div>  
+
 <div class="col-auto">
   <div class="input-group mb-2">
     <div class="input-group-prepend">
       <div class="input-group-text inputLabelStyle" > Početna lokacija: </div>
     </div>
-    <input type="text" class="form-control inputStyle" id="inputstartLocation" name="startLocation"  #startLocation="ngModel" ngModel>
+    <input type="text" class="form-control inputStyle" id="inputstartLocation" name="startLocation"  #startLocation="ngModel" ngModel readonly>
     <input type="text" class="form-control" id="inputstartLocationId" name="startLocationId" readonly #startLocationId="ngModel" ngModel hidden>
 
 
   </div>
 </div>
-<!--<div class="form-group row">
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="inputDescriptionOfTravel" name="descriptionOfTravel" required placeholder="Opis" #descriptionOfTravel="ngModel" ngModel>
-    </div>
-  </div>-->
+
   <div class="col-auto">
     <div class="input-group mb-2">
       <div class="input-group-prepend">
@@ -130,13 +97,6 @@
                         Opis je obavezno polje.
     </span>
 </div>
-
- <!-- <div class="form-group row">
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="inputAdvancePayment" required name="advancePayment" placeholder="Akontacija" #advancePayment="ngModel" ngModel>
-    </div>
-  </div>
-  -->
 
   <div class="col-auto">
     <div class="input-group mb-2">
@@ -155,17 +115,6 @@
 
   <p style="color:dimgray;font-weight: bold; text-align: center; margin-top: 5%;">Ponedjeljak</p>
 
-<!--<div class="form-group row">
-    <div class="col-sm-12">
-      <select name="locationMondayId" #locationMondayId="ngModel" [(ngModel)]="fromLocationMondayID"   class="custom-select mr-sm-4"  ngModel>
-        <option [ngValue]="undefined">Odaberi lokaciju</option>
-        <option *ngFor="let item of listOfLocations" [value]=item.id >               
-            {{item.name}} 
-        </option>
-    </select>
-    </div>
-  </div>-->
-
   <div class="col-auto">
     <div class="input-group mb-2">
       <div class="input-group-prepend">
@@ -180,18 +129,6 @@
     </div>
 
   </div>
-
-
-<!--<div class="form-group row">
-    <div class="col-sm-12">
-      <select class="custom-select mr-sm-4" name="typeOfCarMondayId" #typeOfCarMondayId="ngModel" [(ngModel)]="fromCarMondayID"   ngModel>
-        <option [ngValue]="undefined">Odaberi vozilo</option>
-        <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
-            {{item.name}} 
-        </option>
-    </select>
-    </div>
-  </div>-->
 
   <div class="col-auto">
     <div class="input-group mb-2">
@@ -209,18 +146,6 @@
 
   <p style="color:dimgray;font-weight: bold; margin-top: 5%;">Utorak</p>
 
-<!-- <div class="form-group row">
-      <div class="col-sm-12">
-        <select name="locationTuesdayId" #locationTuesdayId="ngModel" [(ngModel)]="fromLocationTuesdayID"  class="custom-select mr-sm-4"  ngModel>
-        <option [ngValue]="undefined">Odaberi lokaciju</option>
-          
-          <option *ngFor="let item of listOfLocations" [value]=item.id >               
-              {{item.name}} 
-          </option>
-      </select>
-      </div>
-    </div>--> 
-
     <div class="col-auto">
       <div class="input-group mb-2">
         <div class="input-group-prepend">
@@ -236,17 +161,6 @@
         </div>
     </div>
   
- <!-- <div class="form-group row">
-      <div class="col-sm-12">
-        <select name="typeOfCarTuesdayId" #typeOfCarTuesdayId="ngModel" [(ngModel)]="fromCarTuesdayID" class="custom-select mr-sm-4"  ngModel>
-        <option [ngValue]="undefined">Odaberi vozilo</option>
-          
-          <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
-              {{item.name}} 
-          </option>
-      </select>
-      </div>
-    </div>-->
     <div class="col-auto">
       <div class="input-group mb-2">
         <div class="input-group-prepend">
@@ -265,18 +179,6 @@
     <p style="color:dimgray;font-weight: bold; margin-top: 5%;">Srijeda</p>
 
 
-   <!--<div class="form-group row">
-        <div class="col-sm-12">
-          <select name="locationWednesdayId" #locationWednesdayId="ngModel"  [(ngModel)]="fromLocationWednesdayID"   class="custom-select mr-sm-4"  ngModel>
-        <option [ngValue]="undefined">Odaberi lokaciju</option>
-           
-            <option *ngFor="let item of listOfLocations" [value]=item.id >               
-                {{item.name}} 
-            </option>
-        </select>
-        </div>
-      </div>--> 
-
       <div class="col-auto">
         <div class="input-group mb-2">
           <div class="input-group-prepend">
@@ -291,19 +193,8 @@
             </select>
             </div>
       </div>
-    
-    <!--<div class="form-group row">
-        <div class="col-sm-12">
-          <select name="typeOfCarWednesdayId" #typeOfCarWednesdayId="ngModel"  [(ngModel)]="fromCarWednesdayID"  class="custom-select mr-sm-4"  ngModel>
-        <option [ngValue]="undefined">Odaberi vozilo</option>
-            
-            <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
-                {{item.name}} 
-            </option>
-        </select>
-        </div>
-      </div>-->
-      <div class="col-auto">
+      
+    <div class="col-auto">
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <div class="input-group-text inputLabelStyle" >Vozilo:</div>
@@ -319,18 +210,7 @@
       </div>
 
       <p style="color:dimgray;font-weight: bold; margin-top: 5%;">Četvrtak</p>
-
-      <!--<div class="form-group row">
-          <div class="col-sm-12">
-            <select name="locationThursdayId" #locationThursdayId="ngModel"  [(ngModel)]="fromLocationThursdayID"  class="custom-select mr-sm-4"  ngModel>
-              <option [ngValue]="undefined">Odaberi lokaciju</option>
-
-              <option *ngFor="let item of listOfLocations" [value]=item.id >               
-                  {{item.name}} 
-              </option>
-          </select>
-          </div>
-        </div>-->
+  
         <div class="col-auto">
           <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -346,18 +226,6 @@
           </div>
         </div>
       
-      <!--<div class="form-group row">
-          <div class="col-sm-12">
-            <select name="typeOfCarThursdayId" #typeOfCarThursdayId="ngModel"  [(ngModel)]="fromCarThursdayID"  class="custom-select mr-sm-4" ngModel>
-        <option [ngValue]="undefined">Odaberi vozilo</option>
-            
-              <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
-                  {{item.name}} 
-              </option>
-          </select>
-          </div>
-        </div>-->
-
         <div class="col-auto">
           <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -374,18 +242,6 @@
         </div>
         <p style="color:dimgray;font-weight: bold; margin-top: 5%;">Petak</p>
 
-<!--<div class="form-group row">
-    <div class="col-sm-12">
-      <select name="locationFridayId" #locationFridayId="ngModel" class="custom-select mr-sm-4"   [(ngModel)]="fromLocationFridayID"   ngModel>
-        <option [ngValue]="undefined">Odaberi lokaciju</option>
-        
-        <option *ngFor="let item of listOfLocations" [value]=item.id >               
-            {{item.name}} 
-        </option>
-    </select>
-    </div>
-  </div>-->
-
   <div class="col-auto">
     <div class="input-group mb-2">
       <div class="input-group-prepend">
@@ -400,18 +256,6 @@
     </select>
     </div>
   </div>
-
-<!--<div class="form-group row">
-    <div class="col-sm-12">
-      <select name="typeOfCarFridayId" #typeOfCarFridayId="ngModel"  [(ngModel)]="fromCarFridayID" class="custom-select mr-sm-4"  ngModel>
-        <option [ngValue]="undefined">Odaberi vozilo</option>
-        
-        <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
-            {{item.name}} 
-        </option>
-    </select>
-    </div>
-  </div>-->
 
   <div class="col-auto">
     <div class="input-group mb-2">

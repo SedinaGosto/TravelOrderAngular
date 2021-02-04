@@ -13,6 +13,7 @@ export class CarComponent implements OnInit {
 
   Car=[];
 
+  carId:number;
   name= '';
 
   ngOnInit(): void {
@@ -29,11 +30,17 @@ export class CarComponent implements OnInit {
     console.log(data)});
   }
 
-  delete(car:Car): void {
-    this._carService.Delete(car.id).subscribe(car => {
-      this.ngOnInit();    
-    });
+  Delete(_carId) {
+    this.carId = _carId ; // **stored particular Id**
   }
+
+  delete(){
+    this._carService.Delete(this.carId).subscribe(data => {     
+       this.ngOnInit();    
+      })
+  }
+
+ 
 
   searchByName(){
     this._carService.GetByName(this.name)

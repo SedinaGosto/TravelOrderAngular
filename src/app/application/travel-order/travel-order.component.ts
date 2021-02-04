@@ -24,6 +24,8 @@ export class TravelOrderComponent implements OnInit {
   startDate:Date;
   endDate:Date;
 
+  travelOrderId:number;
+
   ngOnInit(): void {
     if(this.TravelOrder.length>0){
       this.TravelOrder=[];
@@ -43,8 +45,11 @@ export class TravelOrderComponent implements OnInit {
         this._locationService.GetById(this.TravelOrder[i].locationId).subscribe(l=>{
           this.TravelOrder[i].locationName=l.name
         })
+        this._locationService.GetById(this.TravelOrder[i].locationStartId).subscribe(sl=>{
+          this.TravelOrder[i].startLocation=sl.name
+        })
         this._employeeService.GetById(this.TravelOrder[i].employeeId).subscribe(e=>{
-          this.TravelOrder[i].employeeName=e.name
+          this.TravelOrder[i].employeeName=e.name +" "+ e.surname
         })
         this._carService.GetById(this.TravelOrder[i].carId).subscribe(t=>{
           this.TravelOrder[i].carName=t.name
@@ -58,6 +63,14 @@ export class TravelOrderComponent implements OnInit {
       this.router.navigate(['/PDF',{startDate:this.startDate, endDate:this.endDate}]);
     }
  
-    
-
+    Delete(_travelOrderId) {
+      this.travelOrderId = _travelOrderId ; // **stored particular Id**
+    }
+  
+    delete(){
+      this._travelOrderService.Delete(this.travelOrderId).subscribe(data => {     
+         this.ngOnInit();    
+        })
+    }
+  
 }

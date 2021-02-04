@@ -57,7 +57,7 @@ export class UpdateTravelOrderComponent implements OnInit {
   onSubmit(){
    var travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
     this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-    this.travelOrderFrm.value.restOfAdvancePayment, this.travelOrderFrm.value.totalHours,  this.travelOrderFrm.value.startDate,
+    this.travelOrderFrm.value.totalHours,  this.travelOrderFrm.value.startDate,
     this.travelOrderFrm.value.endDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationId,
     this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.carId,this.travelOrderFrm.value.startLocationId);
   
@@ -78,10 +78,7 @@ export class UpdateTravelOrderComponent implements OnInit {
     this.travelOrderFrm=new NgForm([],[]);
     this._travelOrderService.GetById(this.travelOrderId).subscribe(o=>{
       this._employeeService.GetById(o.employeeId).subscribe(e=>{
-        this._locationService.GetById(o.locationId).subscribe(l=>{
-
-    
-
+        this._locationService.GetById(o.locationStartId).subscribe(l=>{
 
         console.log(o);
         console.log(e);
@@ -89,23 +86,17 @@ export class UpdateTravelOrderComponent implements OnInit {
         this.travelOrderFrm.controls['numberOfOrder'].setValue(o.numberOfOrder),
           this.travelOrderFrm.controls['reasonOfTravel'].setValue(o.reasonOfTravel),
           this.travelOrderFrm.controls['descriptionOfTravel'].setValue(o.descriptionOfTravel),
-          //this.travelOrderFrm.controls['daysOfTravel'].setValue(o.daysOfTravel),
-          this.travelOrderFrm.controls['advancePayment'].setValue(o.advancePayment),
-        // this.travelOrderFrm.controls['advancePaymentString'].setValue(o.advancePaymentString);
-        //  this.travelOrderFrm.controls['restOfAdvancePayment'].setValue(o.restOfAdvancePayment);
-        //  this.travelOrderFrm.controls['totalHours'].setValue(o.totalHours);
+          this.travelOrderFrm.controls['advancePayment'].setValue(o.advancePayment),     
           this.travelOrderFrm.controls['startDate'].setValue(o.startDate);
           this.travelOrderFrm.controls['endDate'].setValue(o.endDate);
-        //  this.travelOrderFrm.controls['totalDaysOfTravel'].setValue(o.totalDaysOfTravel);
           this.travelOrderFrm.controls['locationId'].setValue(o.locationId);
           this.travelOrderFrm.controls['employeeId'].setValue(o.employeeId);
           this.travelOrderFrm.controls['employee'].setValue(e.name+ " "+e.surname);
           this.travelOrderFrm.controls['startLocation'].setValue(l.name);
           this.travelOrderFrm.controls['startLocationId'].setValue(l.id);
-
           this.travelOrderFrm.controls['carId'].setValue(o.carId);
-        })
 
+        })
       })
    
     

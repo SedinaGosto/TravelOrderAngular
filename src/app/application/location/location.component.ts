@@ -16,6 +16,7 @@ export class LocationComponent implements OnInit {
   Location=[];
 
   name= '';
+  locationId:number;
 
   ngOnInit(): void {
     if(this.Location.length>0){
@@ -31,11 +32,16 @@ export class LocationComponent implements OnInit {
     console.log(data)});
   }
 
-  delete(location:Location): void {
-    this._locationService.Delete(location.id).subscribe(location => {
-      this.ngOnInit();    
-    });
+  Delete(_locationId) {
+    this.locationId = _locationId ; // **stored particular Id**
   }
+
+  delete(){
+    this._locationService.Delete(this.locationId).subscribe(data => {     
+       this.ngOnInit();    
+      })
+  }
+
 
   searchByName(){
     this._locationService.GetByName(this.name)

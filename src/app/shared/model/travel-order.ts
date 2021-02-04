@@ -6,7 +6,7 @@ export class TravelOrder {
     daysOfTravel: number;
     advancePayment: number;
     advancePaymentString: string;
-    restOfAdvancePayment: number;
+  
     totalHours: string;
     startDate: Date;
     endDate: Date;

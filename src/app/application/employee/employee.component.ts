@@ -16,6 +16,7 @@ export class EmployeeComponent implements OnInit {
   employee=[];
   name= '';
  
+  employeeId:number;
 
   ngOnInit(): void {
     if(this.employee.length>0){
@@ -30,11 +31,16 @@ export class EmployeeComponent implements OnInit {
     console.log(data)});
   }
 
-  delete(employee:Employee): void {
-    this._employeeService.Delete(employee.id).subscribe(employee => {
-      this.ngOnInit();    
-    });
+  Delete(_employeeId) {
+    this.employeeId = _employeeId ; // **stored particular Id**
   }
+
+  delete(){
+    this._employeeService.Delete(this.employeeId).subscribe(data => {     
+       this.ngOnInit();    
+      })
+  }
+
 
   searchByName(){
     this._employeeService.GetByName(this.name)
