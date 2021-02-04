@@ -32,11 +32,7 @@ export class TravelOrderComponent implements OnInit {
     }
     this.GetAll();
   }
-  delete(travelOrder:TravelOrder): void {
-    this._travelOrderService.Delete(travelOrder.id).subscribe(data => {
-      this.ngOnInit();    
-    });
-  }
+
   GetAll(){
     this._travelOrderService.GetAll().subscribe(data=>{
       console.log(data);

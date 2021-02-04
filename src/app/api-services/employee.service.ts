@@ -6,7 +6,7 @@ import { Employee } from '../shared/model/employee';
 import { EmployeeUpsert } from '../shared/model/employee-upsert';
 
 
-const _url=environment.baseUrl+'/Employee';
+const _url=environment.baseUrl+"/employee";
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +31,8 @@ export class EmployeeService {
   }
 
 
-  Add(employee: EmployeeUpsert): Observable<Employee> {
-    return this.http.post<Employee>(_url, employee);
+  Add(employee: EmployeeUpsert) {
+    return this.http.post(_url, employee);
   }
 
   Update(id:number, employee: EmployeeUpsert): Observable<any> {

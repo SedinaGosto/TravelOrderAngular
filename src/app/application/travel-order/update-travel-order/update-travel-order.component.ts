@@ -58,8 +58,8 @@ export class UpdateTravelOrderComponent implements OnInit {
    var travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
     this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
     this.travelOrderFrm.value.totalHours,  this.travelOrderFrm.value.startDate,
-    this.travelOrderFrm.value.endDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationId,
-    this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.carId,this.travelOrderFrm.value.startLocationId);
+    this.travelOrderFrm.value.endDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationId),
+    Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.carId),Number(this.travelOrderFrm.value.startLocationId));
   
   if (this.editMode){
     console.log(travelOrder);

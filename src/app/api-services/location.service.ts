@@ -28,10 +28,6 @@ export class LocationService {
     const url = `${_url}/${id}`;
     return this.http.get<Location>(url);
   }
-  GetStartLocation(start:boolean):Observable<Location[]>{
-    const url = `${_url}?startLocation=${start}`;
-    return this.http.get<Location[]>(url);
-  }
 
   GetStartLocation(start:boolean):Observable<Location[]>{
     const url = `${_url}?startLocation=${start}`;

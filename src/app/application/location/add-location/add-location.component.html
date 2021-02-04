@@ -23,7 +23,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text inputLabelStyle" >Broj kilometara:</div>
             </div>
-            <input type="text" name="numberOfKilometers" class="form-control inputStyle" required placeholder="Broj kilometara" id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel >
+            <input type="number" name="numberOfKilometers" class="form-control inputStyle" required placeholder="Broj kilometara" id="inputNumberOfKilometers"  #numberOfKilometers="ngModel" ngModel >
           </div>
         </div>
         <div class="alert-div" *ngIf="numberOfKilometers.invalid && (numberOfKilometers.dirty || numberOfKilometers.touched)">
