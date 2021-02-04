@@ -1,4 +1,5 @@
 import { getLocaleDateTimeFormat } from '@angular/common';
+import { Identifiers } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +12,7 @@ import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
 import { CostOfOrderUpsert } from 'src/app/shared/model/cost-of-order-upsert';
 import { Employee } from 'src/app/shared/model/employee';
+import { Location } from 'src/app/shared/model/location';
 import { TravelOrderUpsert } from 'src/app/shared/model/travel-order-upsert';
 
 @Component({
@@ -44,13 +46,16 @@ export class AddTravelOrderComponent implements OnInit {
   listOfTypeOfCars=[];
   travelorder=[];
   checkEmployee=false;
- 
   startLocation:string;
 startLocationId:number;
+ 
+
 
 uniquenumber:string;
 numberofOrder:string;
 employee:Employee;
+
+
 
   @ViewChild('travelOrderForm') public travelOrderFrm: NgForm;
 
@@ -64,7 +69,6 @@ employee:Employee;
     this._carService.GetAll().subscribe(typeOfCarsData=>{
       this.listOfTypeOfCars=typeOfCarsData
     })
-
     this._locationService.GetStartLocation(true).subscribe(location=>{
       location.forEach(element => {
      this.startLocation=element.name;
@@ -106,6 +110,7 @@ employee:Employee;
      this._travelOrderService.GetByEmployee(id).subscribe(travel => {
 
      while (ModifayDate <= date) {
+       console.log(this.travelOrderFrm.value.startLocationId)
        if (ModifayDate.getDay() != 0 && ModifayDate.getDay() != 6) {
          switch (ModifayDate.getDay()) {
            case 1:
@@ -114,8 +119,8 @@ employee:Employee;
               travelOrder = new TravelOrderUpsert(0, "", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString,
                this.travelOrderFrm.value.totalHours, ModifayDate,
-              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationMondayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarMondayId,this.travelOrderFrm.value.startLocationId);
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationMondayId),
+              Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.typeOfCarMondayId),Number(this.travelOrderFrm.value.startLocationId));
              }
              else{
                travelOrder = null;
@@ -128,8 +133,8 @@ employee:Employee;
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
                this.travelOrderFrm.value.totalHours, ModifayDate,
-              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationTuesdayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarTuesdayId,this.travelOrderFrm.value.startLocationId);
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationTuesdayId),
+              Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.typeOfCarTuesdayId),Number(this.travelOrderFrm.value.startLocationId));
             }
             else{
               travelOrder = null;
@@ -142,8 +147,8 @@ employee:Employee;
               travelOrder=new TravelOrderUpsert(0," ", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
                this.travelOrderFrm.value.totalHours, ModifayDate,
-              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationWednesdayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarWednesdayId,this.travelOrderFrm.value.startLocationId);
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationWednesdayId),
+              Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.typeOfCarWednesdayId),Number(this.travelOrderFrm.value.startLocationId));
             }
             else{
               travelOrder = null
@@ -154,8 +159,8 @@ employee:Employee;
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
               this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
               this.travelOrderFrm.value.totalHours, ModifayDate,
-              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationThursdayId,
-              this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarThursdayId,this.travelOrderFrm.value.startLocationId);
+              ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationThursdayId),
+              Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.typeOfCarThursdayId),Number(this.travelOrderFrm.value.startLocationId));
             }
            
             else{
@@ -167,8 +172,8 @@ employee:Employee;
               travelOrder=new TravelOrderUpsert(0,"", this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
             this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
              this.travelOrderFrm.value.totalHours, ModifayDate,
-            ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, this.travelOrderFrm.value.locationFridayId,
-            this.travelOrderFrm.value.employeeId, this.travelOrderFrm.value.typeOfCarFridayId,this.travelOrderFrm.value.startLocationId);
+            ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel,Number(this.travelOrderFrm.value.locationFridayId),
+            Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.typeOfCarFridayId),Number(this.travelOrderFrm.value.startLocationId));
             }
             else{
               travelOrder = null

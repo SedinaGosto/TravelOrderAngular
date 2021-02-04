@@ -42,9 +42,12 @@ export class AddEmployeeComponent implements OnInit {
       })
     
     } 
-    else{     
+    else{   
+      console.log(employee);  
       this._employeeService.Add(employee).subscribe(data=>{
         this.router.navigate(['app/employee']);
+      }, error=>{
+        console.log(error)
       })
     } 
 
