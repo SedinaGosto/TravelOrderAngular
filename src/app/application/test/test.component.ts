@@ -52,6 +52,9 @@ this.TravelOrder.push(data[i])
 this._locationService.GetById(this.TravelOrder[i].locationId).subscribe(l=>{
 this.TravelOrder[i].locationName=l.name;
 })
+this._locationService.GetById(this.TravelOrder[i].locationStartId).subscribe(sl=>{
+  this.TravelOrder[i].startLocation=sl.name;
+  })
 this._employeeService.GetById(this.TravelOrder[i].employeeId).subscribe(e=>{
 this.TravelOrder[i].employeeName=e.name+ " "+e.surname;
 this.TravelOrder[i].typeofWork=e.typeOfWork;
