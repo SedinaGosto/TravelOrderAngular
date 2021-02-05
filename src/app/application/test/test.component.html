@@ -7,7 +7,7 @@
             <figure>
                 <span class="above" ><u > {{item.name}}</u><span class="below"></span></span>
 
-                <figcaption style="font-size: 14px; margin-top: -12%;" >(naziv preduzeća - ustanove)</figcaption>
+                <figcaption style="font-size: 14px; margin-top: -10%;" >(naziv preduzeća - ustanove)</figcaption>
               </figure>
             
       <br>
@@ -15,7 +15,7 @@
         <span class="above" ><u >{{item.adress}}, {{item.city}} </u> <span class="below"></span></span>
 
 
-        <figcaption style="font-size: 14px; margin-top: -12%;" >(adresa i mjesto)</figcaption>
+        <figcaption style="font-size: 14px; margin-top: -10%;" >(adresa i mjesto)</figcaption>
       </figure>
    
     </div><br><br><br>
@@ -25,11 +25,11 @@
     </div><br><br><br>
 
     <div class="mainText">
-        <p>Za <u > {{ item.employeeName}}</u> na radu u <span class="above"><u > {{item.name}}</u> <span class="below">(naziv poslovne ili org.jedinice)</span></span> na radnom mjestu <span class="above"><u >{{item.typeofWork}}</u><span class="below">(naziv radnog mjesta)</span></span> otputovati će dana
+        <p>Za <u > {{ item.employeeName}}</u> na radu u <span class="above"><u > {{item.name}}</u> <span class="below">(poslovna ili org.jedinice)</span></span> na radnom mjestu <span class="above"><u >{{item.typeofWork}}</u><span class="below">(radno mjesto)</span></span> otputovati će dana
             <u>{{item.startDate | date: 'dd.MM.yyyy'}} </u>  godine na službeno putovanje u <span class="above"> <u>{{item.locationName}} </u> <span class="below">(mjesto)</span></span> radi <span class="above"> <u>{{item.reasonOfTravel}} </u><span class="below">(razlog)</span></span><br>
             <span class="above"><u>{{item.descriptionOfTravel}} </u> <span class="below">(opis zadataka)</span></span>
                         </p><br>
-        <p>Predvidivo trajanje putovanja je   <u> __{{item.daysOfTravel }}__ </u> dana.</p>
+        <p>Predvidivo trajanje putovanja je   <u>{{item.daysOfTravel }} </u> dan(a).</p>
         <p>Za ovo službeno putovanje odobrava se isplata akontacije putnih troškova u iznosu od KM <u>{{item.advancePayment}} </u>,</p> 
         <p>slovima(KM) <u>{{item.advancePaymentString}} </u></p>
         <p>Za prijevoz može koristiti:</p>
