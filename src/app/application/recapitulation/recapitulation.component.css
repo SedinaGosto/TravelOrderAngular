@@ -1,0 +1,12 @@
+
+.inputStyle{
+    padding-left:80px; 
+    border-left: transparent;
+}
+
+.inputLabelStyle{
+    width: 100px;
+    background-color: transparent;
+    border-right: transparent; 
+    font-weight: bold;
+}

@@ -4,4 +4,5 @@ export class Company {
     idnumber: string;
     adress: string;
     city: string;
+    priceOfFuel:number;
 }

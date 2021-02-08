@@ -27,6 +27,8 @@ import { TestComponent } from './test/test.component';
 import { UpdateTravelOrderComponent } from './travel-order/update-travel-order/update-travel-order.component';
 import { CompanyComponent } from './company/company.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
+import { RecapitulationComponent } from './recapitulation/recapitulation.component';
+import { RecapitulationPDFComponent } from './recapitulation-pdf/recapitulation-pdf.component';
 registerLocaleData(hr);
 
 
@@ -48,6 +50,8 @@ registerLocaleData(hr);
     UpdateTravelOrderComponent,
     CompanyComponent,
     AddCompanyComponent,
+    RecapitulationComponent,
+    RecapitulationPDFComponent,
   ],
   imports: [
     CommonModule, 
