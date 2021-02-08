@@ -12,6 +12,8 @@ export class CostOfOrder {
     otherCostString: string;
     otherCostDecimal: number;
     totalCostFinish: number;
+ 
+
     travelOrderId: number;
     totalWagesAndSalaryPerNight:number;
     transportOfficialCarBam:number;

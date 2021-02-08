@@ -23,6 +23,7 @@ export class TravelOrder {
     carName: string;
     privateCar:boolean;
     officialCar:boolean;
+    IsMoneyReturn: boolean;
 
     costOfOrder:[];
 

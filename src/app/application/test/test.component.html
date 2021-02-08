@@ -226,7 +226,9 @@
             <td colspan="3" style="text-align: center; font-weight: bold;">{{ item.advancePayment}} KM</td>
         </tr>
         <tr>
-            <td colspan="11" style="text-align:left;">OSTATAK ZA ISPLATU - POVRAT</td>
+            <td colspan="11" style="text-align:left;" *ngIf=item.IsMoneyReturn >OSTATAK ZA ISPLATU</td>
+            <td colspan="11" style="text-align:left;" *ngIf=!item.IsMoneyReturn >OSTATAK ZA POVRAT</td>
+
             <td colspan="3" style="text-align: center;  font-weight: bold;"> {{item.totalCostFinish}} KM</td>
         </tr>
 

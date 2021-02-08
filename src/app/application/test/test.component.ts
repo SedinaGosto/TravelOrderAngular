@@ -88,11 +88,17 @@ this._costOfOrderService.GetByTravelOrderId(this.TravelOrder[i].id).subscribe(c=
     this.TravelOrder[i].otherCostDecimal=element.otherCostDecimal;
     this.TravelOrder[i].totalFuelKilometersDecimalBam=element.totalFuelKilometersDecimalBam;
     this.TravelOrder[i].totalFuelKilometers=element.totalFuelKilometers;
-    this.TravelOrder[i].totalCostFinish=element.totalCostFinish;
+    this.TravelOrder[i].totalCostFinish=Math.abs(element.totalCostFinish);
     this.TravelOrder[i].totalCost=element.totalCost;
     this.TravelOrder[i].totalWagesAndSalaryPerNight=element.totalWagesAndSalaryPerNight;
     this.TravelOrder[i].transportOfficialCarBam=element.transportOfficialCarBam;
-    this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;       
+    this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;
+    if(element.totalCostFinish<0)
+    this.TravelOrder[i].IsMoneyReturn=true;  
+    else    
+    this.TravelOrder[i].IsMoneyReturn=false;  
+
+
   });
 })
 console.log(data);
