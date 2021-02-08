@@ -1,0 +1,62 @@
+
+  
+<br>
+<div class="name" style="display: block;" >
+    <figure>
+        <span class="above" ><u > {{companyName}}</u><span class="below"></span></span>
+
+        <figcaption style="font-size: 12px; margin-top: -10%;" >(naziv preduzeća - ustanove)</figcaption>
+      </figure>
+    
+
+<figure>
+<span class="above" ><u >{{adress}}, {{city}} </u> <span class="below"></span></span>
+
+
+<figcaption style="font-size: 12px; margin-top: -10%;" >(adresa i mjesto)</figcaption>
+</figure>
+
+</div>
+<div class="center">
+<p >REKAPITULACIJA PODATAKA</p>
+</div>
+<table  class="table" style="margin-top: 2%;"> 
+    <thead>
+        <tr>       
+            <th>Broj naloga</th>
+            <th>Zaposlenik</th>
+            <th>Početna lokacija</th>
+            <th>Lokacija </th>
+            <th>Vozilo</th>
+            <th>Početak</th>
+            <th>Kraj</th>           
+            <th>Dnevnica(KM)</th>           
+            <th>Ukupno dnevnica(KM)</th>  
+            <th>Gorivo(l/KM)</th>           
+            <th>Broj kilometara(KM)</th>           
+            <th>Ukupno za prijevoz(KM)</th>           
+            <th>Ostali troškovi(KM)</th>           
+            <th>Ukupan iznos</th>
+           
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let item of TravelOrder"  >
+            <td>{{item.numberOfOrder}}</td>
+            <td>{{item.employeeName}}</td>   
+            <td>{{item.startLocation}}</td>   
+            <td>{{item.locationName}}</td>  
+            <td>{{item.carName}}</td>  
+            <td>{{item.startDate | date: 'dd.MM.yyyy, hh:mm' }}</td>  
+            <td>{{item.endDate | date: 'dd.MM.yyyy'}}</td>  
+            <td>{{item.priceOfWage}}</td>
+            <td>{{item.totalNumbersOfWagesDecimalBam}}</td>
+            <td>{{item.priceOfFuel}}</td>
+            <td>{{item.numberOfKilometers}}</td>
+            <td>{{item.totalTransportPrivateOfficialCar}}</td>
+            <td>{{item.otherCostDecimal}}</td>
+            <td>{{item.totalCost}}</td>
+               
+        </tr>
+    </tbody> 
+    </table>

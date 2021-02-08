@@ -69,6 +69,21 @@
                 Adresa je obavezno polje.
             </span>
         </div>
+
+        <div class="col-auto">
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text inputLabelStyle" > Cijena goriva: </div>
+            </div>
+            <input type="number" class="form-control inputStyle" id="inputPriceOfFuel" name="priceOfFuel" placeholder="Cijena goriva" required #priceOfFuel="ngModel" ngModel>
+  
+          </div>
+        </div>
+        <div class="alert-div" *ngIf="priceOfFuel.invalid && (priceOfFuel.dirty || priceOfFuel.touched)">
+          <span *ngIf="priceOfFuel.errors.required">
+              Cijena goriva je obavezno polje.
+          </span>
+      </div>
                       
           <div class="form-group row">
         

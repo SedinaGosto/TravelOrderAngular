@@ -35,7 +35,7 @@ export class AddCompanyComponent implements OnInit {
     if (!this.companyFrm.valid) 
       return;
     var company = new CompanyUpsert(0,this.companyFrm.value.name, this.companyFrm.value.idNumber, this.companyFrm.value.adress,
-                  this.companyFrm.value.city);
+                  this.companyFrm.value.city, this.companyFrm.value.priceOfFuel);
     if (this.editMode){
       this._companyService.Update(this.companyId, company).subscribe(data=>{
         this.router.navigate(['app/company']);
@@ -56,6 +56,7 @@ export class AddCompanyComponent implements OnInit {
       this.companyFrm.controls['idNumber'].setValue(o.idnumber),
       this.companyFrm.controls['adress'].setValue(o.adress);
       this.companyFrm.controls['city'].setValue(o.city);
+      this.companyFrm.controls['priceOfFuel'].setValue(o.priceOfFuel);
   
     });
   }

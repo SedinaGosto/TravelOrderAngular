@@ -17,10 +17,12 @@ import { TestComponent } from './test/test.component';
 import { UpdateTravelOrderComponent } from './travel-order/update-travel-order/update-travel-order.component';
 import { CompanyComponent } from './company/company.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
+import { RecapitulationComponent } from './recapitulation/recapitulation.component';
+import { RecapitulationPDFComponent } from './recapitulation-pdf/recapitulation-pdf.component';
 
 const routes: Routes = [
-  {
-   path: 'PDF/:startDate/:endDate', component: TestComponent}, 
+  { path: 'PDF/:startDate/:endDate', component: TestComponent}, 
+  { path: 'recapitulationPDF/:startDate/:endDate', component: RecapitulationPDFComponent}, 
   { path: 'app', component: ApplicationComponent, canActivate: [AuthGuard], children: [
   { path: '', redirectTo: '/app/employee', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -44,6 +46,7 @@ const routes: Routes = [
   { path: 'company', component: CompanyComponent },
   { path: 'company/add-company', component: AddCompanyComponent },
   { path: 'company/add-company/:id', component: AddCompanyComponent },
+  { path: 'recapitulation', component: RecapitulationComponent },
 
 
 

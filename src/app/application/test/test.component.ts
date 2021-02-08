@@ -71,6 +71,7 @@ this._companyService.GetAll().subscribe(company=>{
     this.TravelOrder[i].name=element.name;
     this.TravelOrder[i].adress=element.adress;
     this.TravelOrder[i].city=element.city;
+    //this.TravelOrder[i].priceOfFuel=element.priceOfFuel;
   }
 
   )
@@ -80,6 +81,7 @@ this._costOfOrderService.GetByTravelOrderId(this.TravelOrder[i].id).subscribe(c=
   c.forEach(element => {
     this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
     this.TravelOrder[i].priceOfWage=element.priceOfWage;
+    this.TravelOrder[i].priceOfFuel=element.priceOfFuel;
     this.TravelOrder[i].totalNumbersOfWages=element.totalNumbersOfWages;
     this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
     this.TravelOrder[i].numberOfKilometers=element.numberOfKilometers;
@@ -109,7 +111,7 @@ console.log(data);
 }
 
 
-generatePDF() {
+/*generatePDF() {
   
   (function ($) {
     $(document).ready(function(){
@@ -144,7 +146,7 @@ generatePDF() {
       });
     })
   })(jQuery);
-  }
+  }*/
 }
 
 

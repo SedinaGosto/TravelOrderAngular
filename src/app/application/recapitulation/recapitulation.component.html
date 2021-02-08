@@ -1,0 +1,76 @@
+  <br>
+  <div class="input-group row" id="searchStartDate" >
+   
+    <div class="col-md-5">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text inputLabelStyle" > Datum od: </div>
+        </div>
+        <input type="datetime-local" class="form-control inputStyle"
+          required   [(ngModel)]="startDate" (change)="Init()">
+
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <div class="input-group-text inputLabelStyle" > Datum do: </div>
+        </div>
+        <input type="datetime-local" class="form-control inputStyle" 
+          required [(ngModel)]="endDate" (change)="Init()">
+
+      </div>
+    </div>
+    <div class="input-group-append" style="margin-left:6%">
+      <button class="btn btn-primary" type="button" [routerLink]="['/recapitulationPDF',startDate,endDate]" [disabled]="startDate==undefined || endDate==undefined ||startDate>endDate " >
+        <i class="fas fa-file-pdf"></i>
+      </button>
+    </div>
+  </div>
+ 
+<br><br>
+
+<table class="table" > 
+    <thead>
+        <tr>       
+            <th>Broj naloga</th>
+            <th>Zaposlenik</th>
+            <th>Početna lokacija</th>
+            <th>Lokacija </th>
+            <th>Vozilo</th>
+            <th>Početak</th>
+            <th>Kraj</th>           
+            <th>Dnevnica(KM)</th>           
+            <th>Ukupno dnevnica(KM)</th>  
+            <th>Gorivo(l/KM)</th>           
+            <th>Broj kilometara(KM)</th>           
+            <th>Ukupno za prijevoz(KM)</th>           
+            <th>Ostali troškovi(KM)</th>           
+            <th>Ukupan iznos</th>
+         
+           
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let item of TravelOrder">
+            <td>{{item.numberOfOrder}}</td>
+            <td>{{item.employeeName}}</td>   
+            <td>{{item.startLocation}}</td>   
+            <td>{{item.locationName}}</td>  
+            <td>{{item.carName}}</td>  
+            <td>{{item.startDate | date: 'dd.MM.yyyy, hh:mm' }}</td>  
+            <td>{{item.endDate | date: 'dd.MM.yyyy'}}</td>  
+            <td>{{item.priceOfWage}}</td>
+            <td>{{item.totalNumbersOfWagesDecimalBam}}</td>
+            <td>{{item.priceOfFuel}}</td>
+            <td>{{item.numberOfKilometers}}</td>
+            <td>{{item.totalTransportPrivateOfficialCar}}</td>
+            <td>{{item.otherCostDecimal}}</td>
+            <td>{{item.totalCost}}</td>
+            
+               
+        </tr>
+       
+    </tbody> 
+    </table>
