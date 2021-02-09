@@ -29,6 +29,8 @@ import { CompanyComponent } from './company/company.component';
 import { AddCompanyComponent } from './company/add-company/add-company.component';
 import { RecapitulationComponent } from './recapitulation/recapitulation.component';
 import { RecapitulationPDFComponent } from './recapitulation-pdf/recapitulation-pdf.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+
 registerLocaleData(hr);
 
 
@@ -58,7 +60,8 @@ registerLocaleData(hr);
     AppRoutingModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   providers: [EmployeeService, LocationService, CarService,
     { provide: LOCALE_ID, useValue: "hr-HR" },

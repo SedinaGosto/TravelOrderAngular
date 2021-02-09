@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarService } from 'src/app/api-services/car.service';
 import { Car } from 'src/app/shared/model/car';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-car',
@@ -9,7 +11,7 @@ import { Car } from 'src/app/shared/model/car';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-  constructor( private _carService: CarService, private router: Router) { }
+  constructor( private _carService: CarService, private router: Router, private spinner: NgxSpinnerService) { }
 
   Car=[];
 
@@ -25,9 +27,14 @@ export class CarComponent implements OnInit {
 
 
   GetAll():void{
+    this.spinner.show();
     this._carService.GetAll()
     .subscribe(data => {this.Car = data
-    console.log(data)});
+    console.log(data)    
+    });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
   }
 
   Delete(_carId) {

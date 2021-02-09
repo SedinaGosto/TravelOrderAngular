@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { Employee } from 'src/app/shared/model/employee';
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-employee',
@@ -11,7 +13,7 @@ import { Employee } from 'src/app/shared/model/employee';
 export class EmployeeComponent implements OnInit {
 
  
-  constructor( private _employeeService: EmployeeService, private router: Router) { }
+  constructor( private _employeeService: EmployeeService, private router: Router, private spinner: NgxSpinnerService) { }
 
   employee=[];
   name= '';
@@ -26,9 +28,15 @@ export class EmployeeComponent implements OnInit {
   }
 
   GetAll():void{
+    this.spinner.show();
     this._employeeService.GetAll()
     .subscribe(data => {this.employee = data
-    console.log(data)});
+    console.log(data)
+   
+  });
+  setTimeout(() => {
+    this.spinner.hide();
+  }, 3000);
   }
 
   Delete(_employeeId) {

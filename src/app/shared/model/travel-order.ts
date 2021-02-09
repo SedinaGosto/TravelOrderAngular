@@ -25,6 +25,9 @@ export class TravelOrder {
     officialCar:boolean;
     IsMoneyReturn: boolean;
 
+    returnMoney:number;
+    payOffMoney:number;
+
     costOfOrder:[];
 
   

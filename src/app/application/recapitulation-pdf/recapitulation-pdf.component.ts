@@ -28,6 +28,9 @@ totalKilometers=0;
 totalTransport=0;
 totalOtherCost=0;
 totalCost=0;
+totalAdvancePayment=0;
+totalReturnMoney=0;
+totalPayOffMoney=0;
 
 startDate:Date;
 endDate:Date; 
@@ -45,6 +48,10 @@ ngOnInit(): void {
     console.log(data);
     for (let i = 0; i < data.length; i++) {  
       this.TravelOrder.push(data[i])
+      this._travelOrderService.GetById(this.TravelOrder[i].id).subscribe(to=>{
+        this.totalAdvancePayment+=to.advancePayment;
+      })
+
       this._locationService.GetById(this.TravelOrder[i].locationId).subscribe(l=>{
         this.TravelOrder[i].locationName=l.name;
       })
@@ -66,21 +73,16 @@ ngOnInit(): void {
         
       this._costOfOrderService.GetByTravelOrderId(this.TravelOrder[i].id).subscribe(c=>{
           c.forEach(element => {
-    //  this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
       this.TravelOrder[i].priceOfWage=element.priceOfWage;
       this.TravelOrder[i].totalNumbersOfWages=element.totalNumbersOfWages;
-    //  this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
       this.TravelOrder[i].numberOfKilometers=element.numberOfKilometers;
       this.TravelOrder[i].totalNumbersOfWagesDecimalBam=element.totalNumbersOfWagesDecimalBam;
       this.TravelOrder[i].otherCostString=element.otherCostString;
       this.TravelOrder[i].otherCostDecimal=element.otherCostDecimal;
       this.TravelOrder[i].totalFuelKilometersDecimalBam=element.totalFuelKilometersDecimalBam;
-    //  this.TravelOrder[i].totalFuelKilometers=element.totalFuelKilometers;
       this.TravelOrder[i].totalCostFinish=element.totalCostFinish;
       this.TravelOrder[i].totalCost=element.totalCost;
       this.TravelOrder[i].priceOfFuel=element.priceOfFuel;
-    //  this.TravelOrder[i].totalWagesAndSalaryPerNight=element.totalWagesAndSalaryPerNight;    
-    //this.TravelOrder[i].transportOfficialCarBam=element.transportOfficialCarBam;
       this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;   
 
       this.totalWagesDecimal+= element.totalNumbersOfWagesDecimalBam
@@ -89,6 +91,19 @@ ngOnInit(): void {
       this.totalOtherCost+= element.otherCostDecimal
       this.totalCost+= element.totalCost
       
+      if(element.totalCostFinish<0){
+        this.TravelOrder[i].returnMoney=Math.abs(element.totalCostFinish);  
+        this.TravelOrder[i].payOffMoney=0;
+      }
+      else  {  
+        this.TravelOrder[i].payOffMoney=Math.abs(element.totalCostFinish);
+        this.TravelOrder[i].returnMoney=0; 
+      }
+
+      this.totalPayOffMoney+=this.TravelOrder[i].payOffMoney;
+      this.totalReturnMoney+= this.TravelOrder[i].returnMoney;
+
+    
       
     });
   })

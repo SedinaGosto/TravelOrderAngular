@@ -7,6 +7,7 @@ import { TravelOrderService } from 'src/app/api-services/travel-order.service';
 import { Employee } from 'src/app/shared/model/employee';
 import { Location } from 'src/app/shared/model/location';
 import { TravelOrder } from 'src/app/shared/model/travel-order';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -17,7 +18,7 @@ import { TravelOrder } from 'src/app/shared/model/travel-order';
 export class TravelOrderComponent implements OnInit {
 
   constructor( private _travelOrderService: TravelOrderService, private _employeeService: EmployeeService, 
-              private _locationService: LocationService, private _carService: CarService, private router: Router) { }
+              private _locationService: LocationService, private _carService: CarService, private router: Router, private spinner: NgxSpinnerService) { }
 
   TravelOrder=[];
 
@@ -27,13 +28,44 @@ export class TravelOrderComponent implements OnInit {
   travelOrderId:number;
 
   ngOnInit(): void {
-   /* if(this.TravelOrder.length>0){
+    if(this.TravelOrder.length>0){
       this.TravelOrder=[];
     }
-    this.GetAll();*/
+    this.GetAll();
   }
 
+
   GetAll(){
+    this.spinner.show();
+
+    this._travelOrderService.GetAll().subscribe(data=>{
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        this.TravelOrder.push(data[i])
+        this._locationService.GetById(this.TravelOrder[i].locationId).subscribe(l=>{
+          this.TravelOrder[i].locationName=l.name
+        })
+        this._locationService.GetById(this.TravelOrder[i].locationStartId).subscribe(sl=>{
+          this.TravelOrder[i].startLocation=sl.name
+        })
+        this._employeeService.GetById(this.TravelOrder[i].employeeId).subscribe(e=>{
+          this.TravelOrder[i].employeeName=e.name +" "+ e.surname
+        })
+        this._carService.GetById(this.TravelOrder[i].carId).subscribe(t=>{
+          this.TravelOrder[i].carName=t.name
+        })
+      }
+      
+     
+    });
+     setTimeout(() => {
+      this.spinner.hide();
+    }, 5000);
+    }
+
+  GetAllByDate(){
+    this.spinner.show();
+
     this._travelOrderService.GetByDate(this.startDate,this.endDate).subscribe(data=>{
       console.log(data);
       for (let i = 0; i < data.length; i++) {
@@ -51,8 +83,12 @@ export class TravelOrderComponent implements OnInit {
           this.TravelOrder[i].carName=t.name
         })
       }
-
+      
+     
     });
+     setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
     }
 
     redirect(){
@@ -76,7 +112,7 @@ export class TravelOrderComponent implements OnInit {
         this.TravelOrder=[];
       }
       if(this.endDate!=undefined)
-      this.GetAll();
+      this.GetAllByDate();
   
     }
   

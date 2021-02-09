@@ -19,6 +19,8 @@
 <div class="center">
 <p >REKAPITULACIJA PODATAKA</p>
 </div>
+
+
 <table  class="table" style="margin-top: 2%;"> 
     <thead>
         <tr>       
@@ -31,11 +33,15 @@
             <th>Kraj</th>           
             <th>Dnevnica(KM)</th>           
             <th>Ukupno dnevnica(KM)</th>  
-            <th>Gorivo(l/KM)</th>           
-            <th>Broj kilometara(KM)</th>           
+            <th>Cijena goriva</th>           
+            <th>Broj kilometara</th>           
             <th>Ukupno za prijevoz(KM)</th>           
-            <th>Ostali troškovi(KM)</th>           
-            <th>Ukupan iznos(KM)</th>
+            <th>Ostali troškovi(KM)</th>
+            <th>Uplaćena akontacija</th>  
+            <th>Ukupan iznos troškova(KM)</th>                        
+            <th>Povrat(KM)</th>  
+            <th>Isplata(KM)</th>         
+
            
         </tr>
     </thead>
@@ -54,21 +60,27 @@
             <td>{{item.numberOfKilometers}}</td>
             <td>{{item.totalTransportPrivateOfficialCar}}</td>
             <td>{{item.otherCostDecimal}}</td>
+            <td>{{item.advancePayment}}</td>
             <td>{{item.totalCost}}</td>
-               
+
+            <td> {{item.payOffMoney}} </td>
+            <td> {{item.returnMoney}} </td>
         </tr>
+               
         <tr >
-            <td colspan="7" style="text-align: left; font-weight: bold; font-size: 14px;" > Ukupno:</td>
+            <td colspan="7" style="text-align: left; font-weight: bold; font-size:14px" > Ukupno:</td>
             <td></td>
             <td class="total" > {{totalWagesDecimal}} KM </td>
             <td></td>
-            <td class="total" >{{totalKilometers}} KM </td>
+            <td class="total" > {{totalKilometers}} </td>
             <td class="total" > {{totalTransport}} KM </td>
             <td class="total" > {{totalOtherCost}} KM </td>
-            <td class="total" > {{totalCost}} KM </td>
+            <td class="total" > {{totalAdvancePayment}} KM</td>
+            <td class="total" > {{totalCost}} KM </td> 
+            <td class="total" > {{totalPayOffMoney}} KM</td>
+            <td class="total" > {{totalReturnMoney}} KM</td>
             
             
         </tr>
     </tbody> 
     </table>
-

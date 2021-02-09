@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LocationService } from 'src/app/api-services/location.service';
 import { Location } from 'src/app/shared/model/location';
 import { LocationUpsert } from 'src/app/shared/model/location-upsert';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-location',
@@ -11,7 +12,7 @@ import { LocationUpsert } from 'src/app/shared/model/location-upsert';
 })
 export class LocationComponent implements OnInit {
 
-  constructor( private _locationService: LocationService, private router: Router) { }
+  constructor( private _locationService: LocationService, private router: Router, private spinner: NgxSpinnerService) { }
 
   Location=[];
 
@@ -27,9 +28,16 @@ export class LocationComponent implements OnInit {
 
 
   GetAll():void{
+    this.spinner.show();
+ 
     this._locationService.GetAll()
     .subscribe(data => {this.Location = data
-    console.log(data)});
+    console.log(data)
+     
+    });
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
   }
 
   Delete(_locationId) {
