@@ -46,6 +46,8 @@ export class AddTravelOrderComponent implements OnInit {
   listOfTypeOfCars=[];
   travelorder=[];
   checkEmployee=false;
+  checkEndDate=false;
+
   startLocation:string;
 startLocationId:number;
  
@@ -205,27 +207,19 @@ employee:Employee;
         }
       })
 
-  
-
-
- // this.router.navigate(['app/travel-order']);
-  }
+    }
 
   private initForm(){
     this.travelOrderFrm=new NgForm([],[]);
     this._travelOrderService.GetById(this.tavelOrderId).subscribe(o=>{
     console.log(o);
       
-    //  this.travelOrderFrm.controls['numberOfOrder'].setValue(o.numberOfOrder),
       this.travelOrderFrm.controls['reasonOfTravel'].setValue(o.reasonOfTravel),
       this.travelOrderFrm.controls['descriptionOfTravel'].setValue(o.descriptionOfTravel),
       this.travelOrderFrm.controls['daysOfTravel'].setValue(o.daysOfTravel),
       this.travelOrderFrm.controls['advancePayment'].setValue(o.advancePayment),
-    // this.travelOrderFrm.controls['advancePaymentString'].setValue(o.advancePaymentString);
-    //  this.travelOrderFrm.controls['totalHours'].setValue(o.totalHours);
       this.travelOrderFrm.controls['startDate'].setValue(o.startDate);
       this.travelOrderFrm.controls['endDate'].setValue(o.endDate);
-    //  this.travelOrderFrm.controls['totalDaysOfTravel'].setValue(o.totalDaysOfTravel);
       this.travelOrderFrm.controls['locationId'].setValue(o.locationId);
       this.travelOrderFrm.controls['employeeId'].setValue(o.employeeId);
       this.travelOrderFrm.controls['carId'].setValue(o.carId);
@@ -253,6 +247,14 @@ employee:Employee;
       }
     }) 
   }
+    if(this.travelOrderFrm.value.startDate>= this.travelOrderFrm.value.endDate){
+      this.checkEndDate=true;
+    }
+    else{
+      this.checkEndDate=false;
+    }
   }
+
+
 
 }

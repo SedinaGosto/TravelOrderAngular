@@ -1,24 +1,8 @@
 <div class="okvir">
-    <h2 class="form-title" style="padding: 5%; " >Uredi nalog</h2>
+    <h2 class="form-title" style="padding: 5%; letter-spacing: 1px; " >Uredi nalog</h2>
     
     <form id="travelOrder-form" (ngSubmit)="onSubmit()" #travelOrderForm="ngForm">
     
-        <!--<div class="form-group row">
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="numberOfOrder" name="numberOfOrder" readonly #numberOfOrder="ngModel" ngModel>
-         
-
-            </div>
-          
-        
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="inputemployee" name="employee" readonly #employee="ngModel" ngModel>
-              
-
-            </div>
-            <input type="text" class="form-control" id="inputemployeeId" name="employeeId" readonly #employeeId="ngModel" ngModel hidden>
-
-        </div>-->
         <div class="col-auto">
           <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -43,7 +27,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text inputLabelStyle" > Početna lokacija: </div>
             </div>
-            <input type="text" class="form-control inputStyle" id="inputstartLocation" name="startLocation"  #startLocation="ngModel" ngModel >
+            <input type="text" class="form-control inputStyle" id="inputstartLocation" name="startLocation"  #startLocation="ngModel" ngModel readonly >
             <input type="text" class="form-control" id="inputstartLocationId" name="startLocationId"  #startLocationId="ngModel" ngModel hidden>
 
 
@@ -56,7 +40,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text inputLabelStyle" > Početak: </div>
           </div>
-          <input type="datetime-local" class="form-control inputStyle" id="inputStartDate"
+          <input type="datetime-local" class="form-control inputStyle" id="inputStartDate"  (change)="CheckEmployee()"
             required  name="startDate" #startDate="ngModel" ngModel>
 
         </div>
@@ -88,7 +72,12 @@
               Zaposlenik već ima angažman u tom periodu.
         </span>
     </div>
-    
+    <div class="alert-div" *ngIf="checkEndDate">
+      <span >
+           Datum početka ne smije biti veći od datuma završetka.
+      </span>
+    </div>
+
       <div class="col-auto">
         <div class="input-group mb-2">
           <div class="input-group-prepend">
@@ -124,7 +113,7 @@
           <div class="input-group-prepend">
             <div class="input-group-text inputLabelStyle" > Akontacija: </div>
           </div>
-          <input type="text" class="form-control inputStyle" id="inputAdvancePayment" required name="advancePayment" placeholder="Akontacija" #advancePayment="ngModel" ngModel>
+          <input type="number" class="form-control inputStyle" id="inputAdvancePayment" required name="advancePayment" placeholder="Akontacija" #advancePayment="ngModel" ngModel>
 
 
         </div>
@@ -153,16 +142,6 @@
         </div>
       </div>
     
-    <!--<div class="form-group row">
-        <div class="col-sm-12">
-          <select class="custom-select mr-sm-4" name="carId" #carId="ngModel"   ngModel>
-       
-            <option *ngFor="let item of listOfTypeOfCars" [value]=item.id >               
-                {{item.name}} 
-            </option>
-        </select>
-        </div>
-      </div>-->
       <div class="col-auto">
         <div class="input-group mb-2">
           <div class="input-group-prepend">
@@ -180,7 +159,7 @@
       </div>
       <div class="form-group row">
             <div class="col-sm-12">
-            <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!travelOrderForm.valid"><i class="fas fa-save" ></i>  Sačuvaj</button>
+            <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!travelOrderForm.valid || checkEndDate==true || checkEmployee==true"><i class="fas fa-save" ></i>  Sačuvaj</button>
         </div>
        </div>
     

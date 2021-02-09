@@ -2,9 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from 'src/app/api-services/car.service';
+import { CostOfOrderService } from 'src/app/api-services/cost-of-order.service';
 import { EmployeeService } from 'src/app/api-services/employee.service';
 import { LocationService } from 'src/app/api-services/location.service';
 import { TravelOrderService } from 'src/app/api-services/travel-order.service';
+import { CostOfOrder } from 'src/app/shared/model/cost-of-order';
+import { CostOfOrderUpsert } from 'src/app/shared/model/cost-of-order-upsert';
 import { TravelOrderUpsert } from 'src/app/shared/model/travel-order-upsert';
 
 @Component({
@@ -14,7 +17,7 @@ import { TravelOrderUpsert } from 'src/app/shared/model/travel-order-upsert';
 })
 export class UpdateTravelOrderComponent implements OnInit {
   constructor(private _travelOrderService: TravelOrderService, private _employeeService: EmployeeService, private _locationService: LocationService, 
-    private _carService: CarService, private router: Router, private route: ActivatedRoute) { }
+    private _carService: CarService, private _costOfOrderService: CostOfOrderService, private router: Router, private route: ActivatedRoute) { }
 
   editMode = false;
 
@@ -26,7 +29,7 @@ export class UpdateTravelOrderComponent implements OnInit {
   travelorder=[];
   travelOrderId:number;
   checkEmployee=false;
-
+  checkEndDate=false;
   
 
   
@@ -55,22 +58,28 @@ export class UpdateTravelOrderComponent implements OnInit {
   
   
   onSubmit(){
-   var travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
-    this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
-    this.travelOrderFrm.value.totalHours,  this.travelOrderFrm.value.startDate,
-    this.travelOrderFrm.value.endDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationId),
-    Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.carId),Number(this.travelOrderFrm.value.startLocationId));
+
+    if (!this.travelOrderFrm.valid) 
+    return;
+      var travelOrder=new TravelOrderUpsert(0,this.travelOrderFrm.value.numberOfOrder, this.travelOrderFrm.value.reasonOfTravel, this.travelOrderFrm.value.descriptionOfTravel,
+        this.travelOrderFrm.value.daysOfTravel, this.travelOrderFrm.value.advancePayment, this.travelOrderFrm.value.advancePaymentString, 
+        this.travelOrderFrm.value.totalHours,  this.travelOrderFrm.value.startDate,
+        this.travelOrderFrm.value.endDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationId),
+        Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.carId),Number(this.travelOrderFrm.value.startLocationId));
   
-  if (this.editMode){
-    console.log(travelOrder);
-    this._travelOrderService.Update(this.travelOrderId, travelOrder).subscribe(data=>{
-      
+    if (this.editMode){
+      console.log(travelOrder);
+      this._travelOrderService.Update(this.travelOrderId, travelOrder).subscribe(data=>{
+        this._costOfOrderService.GetByTravelOrderId(this.travelOrderId).subscribe(costOfOrder=>{
+          costOfOrder.forEach(element => {
+              this._costOfOrderService.Update(element.id,element).subscribe(test=>{
+                console.log( test);
+              });
+          });
+        })
       this.router.navigate(['app/travel-order']);
     })   
   } 
-  
- 
-  
   
   }
   
@@ -120,6 +129,12 @@ export class UpdateTravelOrderComponent implements OnInit {
 
       }
     }) 
+  }
+  if(this.travelOrderFrm.value.startDate>= this.travelOrderFrm.value.endDate){
+    this.checkEndDate=true;
+  }
+  else{
+    this.checkEndDate=false;
   }
   }
 }

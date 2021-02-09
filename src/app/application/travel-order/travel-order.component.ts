@@ -27,14 +27,14 @@ export class TravelOrderComponent implements OnInit {
   travelOrderId:number;
 
   ngOnInit(): void {
-    if(this.TravelOrder.length>0){
+   /* if(this.TravelOrder.length>0){
       this.TravelOrder=[];
     }
-    this.GetAll();
+    this.GetAll();*/
   }
 
   GetAll(){
-    this._travelOrderService.GetAll().subscribe(data=>{
+    this._travelOrderService.GetByDate(this.startDate,this.endDate).subscribe(data=>{
       console.log(data);
       for (let i = 0; i < data.length; i++) {
         this.TravelOrder.push(data[i])
@@ -67,6 +67,17 @@ export class TravelOrderComponent implements OnInit {
       this._travelOrderService.Delete(this.travelOrderId).subscribe(data => {     
          this.ngOnInit();    
         })
+    }
+
+
+    Init()
+    {
+      if(this.TravelOrder.length>0){
+        this.TravelOrder=[];
+      }
+      if(this.endDate!=undefined)
+      this.GetAll();
+  
     }
   
 }

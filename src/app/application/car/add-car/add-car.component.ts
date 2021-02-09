@@ -19,7 +19,7 @@ export class AddCarComponent implements OnInit {
   carId:number;
   
   private:boolean;
-  official:boolean=true;
+  official=true;
 
   _typeOfCar:string;
   mode:boolean=true;
@@ -41,10 +41,11 @@ export class AddCarComponent implements OnInit {
     if (!this.carFrm.valid) 
     return;
     var car = new CarUpsert(0,this.carFrm.value.name, this.carFrm.value.model, this.carFrm.value.numberOfRegistration, this.private, this.official);
-    
+  
     if (this.editMode){
       this._carService.Update(this.carId, car).subscribe(data=>{
         this.router.navigate(['app/car']);
+        console.log(data);
       })
     
     } 
@@ -63,10 +64,17 @@ export class AddCarComponent implements OnInit {
       this.carFrm.controls['model'].setValue(data.model);
       this.carFrm.controls['numberOfRegistration'].setValue(data.numberOfRegistration);
       if(data.officialCar){
+        this.private=false;
+        this.official=true;
         this._typeOfCar="officialCar"
       }
-      else{
+      else if(data.privateCar){
+        this.private=true;
+        this.official=false;
         this._typeOfCar="privateCar"
+      }
+      else{
+
       }
       this.carFrm.controls['_typeOfCar'].setValue(this._typeOfCar);
 
@@ -79,10 +87,14 @@ export class AddCarComponent implements OnInit {
     if(item=='privatno'){
       this.private=true;
       this.official=false;
+
     }
-    else{
+    else if(item=='sluzbeno'){
       this.private=false;
       this.official=true;
+    }
+    else{
+
     }
   }
 

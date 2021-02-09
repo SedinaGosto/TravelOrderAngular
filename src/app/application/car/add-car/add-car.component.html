@@ -1,20 +1,9 @@
 <div class="okvir">
-    <h2 class="form-title" style="padding: 5%; " *ngIf = "!editMode">Dodaj novi tip vozila</h2>
-    <h2 class="form-title" style="padding: 5%; " *ngIf = "editMode">Uredi tip vozila</h2>
+    <h2 class="form-title" style="padding: 5%; letter-spacing: 1px; " *ngIf = "!editMode">Dodaj novi tip vozila</h2>
+    <h2 class="form-title" style="padding: 5%;  letter-spacing: 1px;" *ngIf = "editMode">Uredi tip vozila</h2>
 
 <form id="car-form" (ngSubmit)="onSubmit()" #carForm="ngForm">
     
-   <!--<div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" id="inputName" name="name" class="form-control" placeholder="Naziv" required #name="ngModel" ngModel>
-        </div>
-      </div>
-      <div class="alert-div" *ngIf="name.invalid && (name.dirty || name.touched)">
-        <span *ngIf="name.errors.required">
-            Naziv je obavezno polje.
-        </span>
-    </div>
---> 
 <div class="col-auto">
   <div class="input-group mb-2">
     <div class="input-group-prepend">
@@ -28,13 +17,6 @@
       Naziv je obavezno polje.
   </span>
 </div>
-
-
-      <!--<div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" id="inputModel" name="model" class="form-control" placeholder="Model" required #model="ngModel" ngModel>
-        </div>
-      </div>-->
 
       <div class="col-auto">
         <div class="input-group mb-2">
@@ -50,11 +32,6 @@
         </span>
     </div>
 
-      <!--<div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" id="inputNumberOfRegistration" name="numberOfRegistration" placeholder="Broj registracije" class="form-control" required #numberOfRegistration="ngModel" ngModel>
-        </div>
-      </div>-->
       <div class="col-auto">
         <div class="input-group mb-2">
           <div class="input-group-prepend">
@@ -69,22 +46,6 @@
         </span>
     </div>
 
-        <!--<div class=" form-group row" style="color:gray"> 
-          <legend class="col-form-label col-sm-7" >Tip vozila</legend>
-          <div class="col-sm-5  ">
-            <div class="form-check form-check-inline">
-                <input class="form-check-input inline"  type="radio" id="privateCar" name="_typeOfCar"  value="privateCar"  #_typeOfCar="ngModel" ngModel (click)="onClick('privatno')">
-                <label class="form-check-label" for="privateCar">Privatno</label><br>
-               
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input inline"  type="radio" id="officialCar" [value]="true" [(ngModel)]="mode" name="_typeOfCar" value="officialCar"  #_typeOfCar="ngModel" ngModel  (click)="onClick('sluzbeno')">           
-                     <label class="form-check-label" for="officialCar">Službeno</label><br>
-            </div>
-           
-        </div>
-        </div>-->
-
         <div class="col-auto">
           <div class="input-group mb-2">
             <div class="input-group-prepend " >
@@ -97,7 +58,7 @@
              
           </div>
           <div class="form-check form-check-inline ">
-              <input class="form-check-input inline "  type="radio" id="officialCar" [value]="true" [(ngModel)]="mode" name="_typeOfCar" value="officialCar"  #_typeOfCar="ngModel" ngModel  (click)="onClick('sluzbeno')">           
+              <input class="form-check-input inline "  type="radio" id="officialCar" name="_typeOfCar" value="officialCar"  #_typeOfCar="ngModel" ngModel  (click)="onClick('sluzbeno')">           
                    <label class="form-check-label" for="officialCar">Službeno</label><br>
           </div>
       

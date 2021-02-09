@@ -40,7 +40,7 @@ this.initForm();
 
 onSubmit(){
 var costOfOrder=new CostOfOrderUpsert(0,this.costOfOrderFrm.value.totalNumbersOfWages, this.costOfOrderFrm.value.priceOfWage, this.costOfOrderFrm.value.totalNumbersOfWagesDecimalBam,
-                  this.costOfOrderFrm.value.salaryPerNight, 0, this.costOfOrderFrm.value.totalCost, 
+                  this.costOfOrderFrm.value.salaryPerNight, this.costOfOrderFrm.value.priceOfFuel, this.costOfOrderFrm.value.totalCost, 
                   this.costOfOrderFrm.value.numberOfKilometers, 0, this.costOfOrderFrm.value.totalFuelKilometersDecimalBam,
                   this.costOfOrderFrm.value.otherCostString, this.costOfOrderFrm.value.otherCostDecimal, this. costOfOrderFrm.value.totalCostFinish,
                   this.costOfOrderFrm.value.travelOrderId, this.costOfOrderFrm.value.totalWagesAndSalaryPerNight,this.costOfOrderFrm.value.transportOfficialCarBam,
@@ -71,7 +71,7 @@ private initForm(){
             this.costOfOrderFrm.controls['priceOfWage'].setValue(cost.priceOfWage),
             this.costOfOrderFrm.controls['totalNumbersOfWagesDecimalBam'].setValue(cost.totalNumbersOfWagesDecimalBam),
             this.costOfOrderFrm.controls['salaryPerNight'].setValue(cost.salaryPerNight),
-            //this.costOfOrderFrm.controls['priceOfFuel'].setValue(cost.priceOfFuel),
+            this.costOfOrderFrm.controls['priceOfFuel'].setValue(cost.priceOfFuel),
              this.costOfOrderFrm.controls['totalCost'].setValue(cost.totalCost);
             this.costOfOrderFrm.controls['numberOfKilometers'].setValue(cost.numberOfKilometers);
             // this.costOfOrderFrm.controls['totalFuelKilometers'].setValue(o.totalFuelKilometers);
@@ -87,28 +87,6 @@ private initForm(){
          
   })
   
-  /*this.costOfOrderFrm=new NgForm([],[]);
-  this._costOfOrderService.GetById(this.costOfOrderId).subscribe(o=>{
-    console.log(o);
-
-   
-
-   // this.costOfOrderFrm.controls['totalNumbersOfWages'].setValue(o.totalNumbersOfWages),
-    this.costOfOrderFrm.controls['priceOfWage'].setValue(o.priceOfWage),
-   // this.costOfOrderFrm.controls['totalNumbersOfWagesDecimalBam'].setValue(o.totalNumbersOfWagesDecimalBam),
-    this.costOfOrderFrm.controls['salaryPerNight'].setValue(o.salaryPerNight),
-    this.costOfOrderFrm.controls['priceOfFuel'].setValue(o.priceOfFuel),
-   // this.costOfOrderFrm.controls['totalCost'].setValue(o.totalCost);
-    this.costOfOrderFrm.controls['numberOfKilometers'].setValue(o.numberOfKilometers);
-   // this.costOfOrderFrm.controls['totalFuelKilometers'].setValue(o.totalFuelKilometers);
-   // this.costOfOrderFrm.controls['totalFuelKilometersDecimalBam'].setValue(o.totalFuelKilometersDecimalBam);
-   // this.costOfOrderFrm.controls['otherCostString'].setValue(o.otherCostString);
-   // this.costOfOrderFrm.controls['otherCostDecimal'].setValue(o.otherCostDecimal);
-   // this.costOfOrderFrm.controls['totalCostFinish'].setValue(o.totalCostFinish);
-   // this.costOfOrderFrm.controls['travelOrderId'].setValue(o.travelOrderId);
-
-});*/
-
 }
 
 

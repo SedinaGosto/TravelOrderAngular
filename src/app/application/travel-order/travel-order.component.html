@@ -1,19 +1,13 @@
   
   <div class="input-group row" id="searchStartDate" >
-    <!--<input type="text" class="form-control" placeholder="Datum od..." [(ngModel)]="startDate"
-          onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required >
-         
-    <input type="text" class="form-control" placeholder="Datum do..." [(ngModel)]="endDate"
-          onfocus="(this.type='datetime-local')" onblur="(this.type='text')" required style="margin-left:3%">
-       
-    -->
+
     <div class="col-md-5">
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <div class="input-group-text inputLabelStyle" > Datum od: </div>
         </div>
         <input type="datetime-local" class="form-control inputStyle"
-          required   [(ngModel)]="startDate">
+          required   [(ngModel)]="startDate" (change)="Init()">
 
       </div>
     </div>
@@ -24,7 +18,7 @@
           <div class="input-group-text inputLabelStyle" > Datum do: </div>
         </div>
         <input type="datetime-local" class="form-control inputStyle" 
-          required [(ngModel)]="endDate">
+          required [(ngModel)]="endDate" (change)="Init()">
 
       </div>
     </div>

@@ -24,6 +24,11 @@ startDate:Date;
 endDate:Date;
 
  
+totalWagesDecimal=0;
+totalKilometers=0;
+totalTransport=0;
+totalOtherCost=0;
+totalCost=0;
 
 ngOnInit(): void {
 
@@ -54,29 +59,27 @@ ngOnInit(): void {
   
         
       this._costOfOrderService.GetByTravelOrderId(this.TravelOrder[i].id).subscribe(c=>{
-          c.forEach(element => {
-    //  this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
+          c.forEach(element => {    
       this.TravelOrder[i].priceOfWage=element.priceOfWage;
       this.TravelOrder[i].totalNumbersOfWages=element.totalNumbersOfWages;
-    //  this.TravelOrder[i].salaryPerNight=element.salaryPerNight;
       this.TravelOrder[i].numberOfKilometers=element.numberOfKilometers;
       this.TravelOrder[i].totalNumbersOfWagesDecimalBam=element.totalNumbersOfWagesDecimalBam;
       this.TravelOrder[i].otherCostString=element.otherCostString;
       this.TravelOrder[i].otherCostDecimal=element.otherCostDecimal;
       this.TravelOrder[i].totalFuelKilometersDecimalBam=element.totalFuelKilometersDecimalBam;
-    //  this.TravelOrder[i].totalFuelKilometers=element.totalFuelKilometers;
       this.TravelOrder[i].totalCostFinish=element.totalCostFinish;
       this.TravelOrder[i].totalCost=element.totalCost;
       this.TravelOrder[i].priceOfFuel=element.priceOfFuel;
-    //  this.TravelOrder[i].totalWagesAndSalaryPerNight=element.totalWagesAndSalaryPerNight;    
-    //this.TravelOrder[i].transportOfficialCarBam=element.transportOfficialCarBam;
       this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;       
+      this.totalWagesDecimal+= element.totalNumbersOfWagesDecimalBam
+      this.totalKilometers+= element.numberOfKilometers
+      this.totalTransport+= element.totalTransportPrivateOfficialCar
+      this.totalOtherCost+= element.otherCostDecimal
+      this.totalCost+= element.totalCost
     });
   })
   console.log(data);
-  
-  }
-  
+  }  
   });
   }
 

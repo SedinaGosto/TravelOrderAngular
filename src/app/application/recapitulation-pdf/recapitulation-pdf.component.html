@@ -1,5 +1,4 @@
 
-  
 <br>
 <div class="name" style="display: block;" >
     <figure>
@@ -36,7 +35,7 @@
             <th>Broj kilometara(KM)</th>           
             <th>Ukupno za prijevoz(KM)</th>           
             <th>Ostali troškovi(KM)</th>           
-            <th>Ukupan iznos</th>
+            <th>Ukupan iznos(KM)</th>
            
         </tr>
     </thead>
@@ -47,8 +46,8 @@
             <td>{{item.startLocation}}</td>   
             <td>{{item.locationName}}</td>  
             <td>{{item.carName}}</td>  
-            <td>{{item.startDate | date: 'dd.MM.yyyy, hh:mm' }}</td>  
-            <td>{{item.endDate | date: 'dd.MM.yyyy'}}</td>  
+            <td>{{item.startDate | date: 'dd.MM.yyyy HH:mm' }}</td>  
+            <td>{{item.endDate | date: 'dd.MM.yyyy HH:mm'}}</td>  
             <td>{{item.priceOfWage}}</td>
             <td>{{item.totalNumbersOfWagesDecimalBam}}</td>
             <td>{{item.priceOfFuel}}</td>
@@ -58,5 +57,18 @@
             <td>{{item.totalCost}}</td>
                
         </tr>
+        <tr >
+            <td colspan="7" style="text-align: left; font-weight: bold; font-size: 14px;" > Ukupno:</td>
+            <td></td>
+            <td class="total" > {{totalWagesDecimal}} KM </td>
+            <td></td>
+            <td class="total" >{{totalKilometers}} KM </td>
+            <td class="total" > {{totalTransport}} KM </td>
+            <td class="total" > {{totalOtherCost}} KM </td>
+            <td class="total" > {{totalCost}} KM </td>
+            
+            
+        </tr>
     </tbody> 
     </table>
+

@@ -23,7 +23,11 @@ companyName:string;
 adress:string;
 city:string;
 
-
+totalWagesDecimal=0;
+totalKilometers=0;
+totalTransport=0;
+totalOtherCost=0;
+totalCost=0;
 
 startDate:Date;
 endDate:Date; 
@@ -77,7 +81,15 @@ ngOnInit(): void {
       this.TravelOrder[i].priceOfFuel=element.priceOfFuel;
     //  this.TravelOrder[i].totalWagesAndSalaryPerNight=element.totalWagesAndSalaryPerNight;    
     //this.TravelOrder[i].transportOfficialCarBam=element.transportOfficialCarBam;
-      this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;       
+      this.TravelOrder[i].totalTransportPrivateOfficialCar=element.totalTransportPrivateOfficialCar;   
+
+      this.totalWagesDecimal+= element.totalNumbersOfWagesDecimalBam
+      this.totalKilometers+= element.numberOfKilometers
+      this.totalTransport+= element.totalTransportPrivateOfficialCar
+      this.totalOtherCost+= element.otherCostDecimal
+      this.totalCost+= element.totalCost
+      
+      
     });
   })
   console.log(data);
@@ -89,6 +101,8 @@ ngOnInit(): void {
    })
  
   })
+
+
   }
   
   });

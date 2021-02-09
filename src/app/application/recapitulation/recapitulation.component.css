@@ -10,3 +10,13 @@
     border-right: transparent; 
     font-weight: bold;
 }
+
+th,td{
+    text-align: center;
+  }
+
+ .total{
+  text-align: center; 
+  font-weight: bold;
+  font-size: 14px;
+ }

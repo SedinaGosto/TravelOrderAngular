@@ -1,7 +1,7 @@
 
 <div class="okvir">
-<h2 class="form-title" style="padding: 5%; " *ngIf = "!editMode">Dodaj novi nalog</h2>
-<h2 class="form-title" style="padding: 5%; " *ngIf = "editMode">Uredi nalog</h2>
+<h2 class="form-title" style="padding: 5%; letter-spacing: 1px;" *ngIf = "!editMode">Dodaj novi nalog</h2>
+<h2 class="form-title" style="padding: 5%; letter-spacing: 1px;" *ngIf = "editMode">Uredi nalog</h2>
 
 <form id="travelOrder-form" (ngSubmit)="onSubmit()" #travelOrderForm="ngForm">
 
@@ -25,7 +25,7 @@
         <div class="input-group-text inputLabelStyle" >Početak:</div>
       </div>
       <input type="datetime-local" class="form-control inputStyle" id="inputStartDate"
-       required name="startDate" #startDate="ngModel" ngModel>
+       required name="startDate" #startDate="ngModel" ngModel (change)="CheckEmployee()">
     </div>
   </div>
 
@@ -55,6 +55,11 @@
     <span >
           Zaposlenik već ima angažman u tom periodu.
     </span>
+</div>
+<div class="alert-div" *ngIf="checkEndDate">
+  <span >
+       Datum početka ne smije biti veći od datuma završetka.
+  </span>
 </div>
 
   <div class="col-auto">
@@ -286,7 +291,7 @@
 
   <div class="form-group row">
         <div class="col-sm-12">
-        <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!travelOrderForm.valid"><i class="fas fa-save" ></i>  Sačuvaj</button>
+        <button type="submit" id="submit" class="btn btn-outline-info" [disabled]="!travelOrderForm.valid || checkEndDate==true || checkEmployee==true"><i class="fas fa-save" ></i>  Sačuvaj</button>
     </div>
    </div>
 

@@ -36,3 +36,14 @@ p{
     font-size: 0.75em;
     text-align: left;*/
   }
+
+
+  th,td{
+    text-align: center;
+  }
+
+ .total{
+  text-align: center; 
+  font-weight: bold;
+  font-size: 14px;
+ }
