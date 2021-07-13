@@ -15,7 +15,6 @@
             <th>Iznos dnevnice</th>
             <th>Ukupan broj dnevnica</th>
             <th>Izdatak za noćenje</th>
-            <!--<th>Gorivo (l/KM) </th>-->
             <th>Broj kilometara</th>
             <th>Akcija</th>
         </tr>
@@ -25,7 +24,6 @@
             <td>{{item.priceOfWage}}</td>
             <td>{{item.totalNumbersOfWages}}</td>   
             <td>{{item.salaryPerNight}}</td>  
-           <!-- <td>{{item.priceOfFuel}}</td>  -->
             <td>{{item.numberOfKilometers}}</td>  
             <td> <button type="button" class="btn btn-outline-primary" routerLink="add-cost-of-order/{{item.id}}"> <i class="fa fa-fw fa-edit"></i></button>      
             <button type="button" class="btn btn-outline-danger" (click) = "delete(item)" style="margin-left: 2%;"><i class="fa fa-fw fa-remove"></i></button></td>      

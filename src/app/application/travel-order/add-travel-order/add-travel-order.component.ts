@@ -126,9 +126,7 @@ employee:Employee;
              }
              else{
                travelOrder = null;
-             }
-          
-            
+             }       
              break;
            case 2:
             if(this.travelOrderFrm.value.locationTuesdayId != "" && this.travelOrderFrm.value.locationTuesdayId != undefined){
@@ -163,8 +161,7 @@ employee:Employee;
               this.travelOrderFrm.value.totalHours, ModifayDate,
               ModifayDate, this.travelOrderFrm.value.totalDaysOfTravel, Number(this.travelOrderFrm.value.locationThursdayId),
               Number(this.travelOrderFrm.value.employeeId), Number(this.travelOrderFrm.value.typeOfCarThursdayId),Number(this.travelOrderFrm.value.startLocationId));
-            }
-           
+            }          
             else{
               travelOrder = null;
             }
@@ -179,12 +176,9 @@ employee:Employee;
             }
             else{
               travelOrder = null
-            }
-            
+            }         
              break;
          }
-        
-
            if (travellength == 0) {
              travellength = travel.length;
            }
@@ -200,8 +194,6 @@ employee:Employee;
             })
            })
           }
-           
-
           }
           ModifayDate= new Date(ModifayDate.setDate(ModifayDate.getDate() + 1))
         }
@@ -212,7 +204,6 @@ employee:Employee;
   private initForm(){
     this.travelOrderFrm=new NgForm([],[]);
     this._travelOrderService.GetById(this.tavelOrderId).subscribe(o=>{
-    console.log(o);
       
       this.travelOrderFrm.controls['reasonOfTravel'].setValue(o.reasonOfTravel),
       this.travelOrderFrm.controls['descriptionOfTravel'].setValue(o.descriptionOfTravel),
@@ -223,27 +214,20 @@ employee:Employee;
       this.travelOrderFrm.controls['locationId'].setValue(o.locationId);
       this.travelOrderFrm.controls['employeeId'].setValue(o.employeeId);
       this.travelOrderFrm.controls['carId'].setValue(o.carId);
-    
-    });
-    
+    });   
   }
-
-
 
   CheckEmployee(){
     
     if(this.travelOrderFrm.value.employeeId!=undefined && this.travelOrderFrm.value.startDate!="" && this.travelOrderFrm.value.endDate!="")
-    {
- 
+    { 
     this._travelOrderService.GetByEmployeeAndDate(this.travelOrderFrm.value.employeeId,this.travelOrderFrm.value.startDate,this.travelOrderFrm.value.endDate).subscribe(data=>{
-
       if(data.length>0)
       {
         this.checkEmployee=true;
       }
       else{
         this.checkEmployee=false;
-
       }
     }) 
   }

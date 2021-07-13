@@ -82,12 +82,9 @@ export class LocationComponent implements OnInit {
       console.log(newLocation)
       this._locationService.Update(element.id,newLocation).subscribe(data=>{
        console.log(data);
-      })
-      
+      })      
     }
   });
- 
-
   }
 
 }

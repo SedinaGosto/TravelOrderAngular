@@ -74,7 +74,6 @@ private initForm(){
             this.costOfOrderFrm.controls['priceOfFuel'].setValue(cost.priceOfFuel),
              this.costOfOrderFrm.controls['totalCost'].setValue(cost.totalCost);
             this.costOfOrderFrm.controls['numberOfKilometers'].setValue(cost.numberOfKilometers);
-            // this.costOfOrderFrm.controls['totalFuelKilometers'].setValue(o.totalFuelKilometers);
              this.costOfOrderFrm.controls['totalFuelKilometersDecimalBam'].setValue(cost.totalFuelKilometersDecimalBam);
              this.costOfOrderFrm.controls['otherCostString'].setValue(cost.otherCostString);
              this.costOfOrderFrm.controls['otherCostDecimal'].setValue(cost.otherCostDecimal);

@@ -71,7 +71,6 @@ this._companyService.GetAll().subscribe(company=>{
     this.TravelOrder[i].name=element.name;
     this.TravelOrder[i].adress=element.adress;
     this.TravelOrder[i].city=element.city;
-    //this.TravelOrder[i].priceOfFuel=element.priceOfFuel;
   }
 
   )

@@ -20,16 +20,12 @@ export class AddLocationComponent implements OnInit {
   locationId:number;
   
   ngOnInit(): void {
-
     if (this.route.snapshot.params['id']){
       this.editMode = true;
-      this.locationId = this.route.snapshot.params['id'];
-      
+      this.locationId = this.route.snapshot.params['id'];     
       this.initForm();
     }
-
   }
-
 
   onSubmit(){
     if (!this.locationFrm.valid) 
@@ -40,14 +36,12 @@ export class AddLocationComponent implements OnInit {
       this._locationService.Update(this.locationId, location).subscribe(data=>{
         this.router.navigate(['app/location']);
       })
-    
     } 
     else{     
       this._locationService.Add(location).subscribe(data=>{
         this.router.navigate(['app/location']);
       })
     } 
-
   }
 
   private initForm(){
